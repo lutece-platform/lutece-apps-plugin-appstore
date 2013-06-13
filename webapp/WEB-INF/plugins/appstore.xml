@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<plug-in>
+    <name>appstore</name>
+    <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
+    <version>1.0.0</version>
+    <documentation></documentation>
+    <installation></installation>
+    <changes></changes>
+    <user-guide></user-guide>
+    <description>App Store</description>
+    <provider>Mairie de Paris</provider>
+    <provider-url>http://dev.lutece.paris.fr</provider-url>
+    <icon-url>images/admin/skin/plugins/appstore/appstore.png</icon-url>
+    <copyright>Copyright (c) 2013 Mairie de Paris</copyright>
+    <db-pool-required>1</db-pool-required>
+    
+    <!-- Admin features parameters -->
+    <admin-features>
+        <admin-feature>
+            <feature-id>APPSTORE_MANAGEMENT</feature-id>
+            <feature-title>appstore.adminFeature.manageappstore.name</feature-title>
+            <feature-description>appstore.adminFeature.manageappstore.description</feature-description>
+            <feature-level>0</feature-level>
+            <feature-url>jsp/admin/plugins/appstore/ManageApplications.jsp</feature-url>
+            <feature-icon-url></feature-icon-url>
+      </admin-feature>
+    </admin-features>    
+  	<!-- XPages parameters -->
+    <applications>
+        <application>
+            <application-id>appstore</application-id>
+            <application-class>fr.paris.lutece.plugins.appstore.web.AppStoreApp</application-class>
+        </application>
+    </applications>
+	<!-- Portlet parameters -->
+    <portlets>
+   </portlets>
+</plug-in>
+

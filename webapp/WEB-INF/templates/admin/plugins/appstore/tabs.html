@@ -1,0 +1,26 @@
+<#macro tabs tab >
+<div>
+    <ul class="nav nav-tabs">
+        <li <#if tab="applications">class="active"</#if>>
+            <a href="jsp/admin/plugins/appstore/ManageApplications.jsp">
+                #i18n{appstore.pageTitle.manageApplications}
+            </a>
+        </li>
+        <li <#if tab="components">class="active"</#if>>
+            <a href="jsp/admin/plugins/appstore/ManageComponents.jsp">
+                #i18n{appstore.pageTitle.manageComponents}
+            </a>
+        </li>
+        <li <#if tab="categories">class="active"</#if>>
+            <a href="jsp/admin/plugins/appstore/ManageCategories.jsp">
+                #i18n{appstore.pageTitle.manageCategories}
+            </a>
+        </li>
+        <li <#if tab="icons">class="active"</#if>>
+            <a href="jsp/admin/plugins/appstore/ManageIcons.jsp">
+                #i18n{appstore.pageTitle.manageIcons}
+            </a>
+        </li>
+    </ul>
+</div>
+</#macro>

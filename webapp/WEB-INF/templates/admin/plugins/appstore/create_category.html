@@ -1,0 +1,33 @@
+<#include "tabs.html" /> 
+<@tabs tab="categories" />
+
+<div class="content-box" >
+
+    <form class="form-horizontal" method="post"  name="create_category" id="create_category" action="jsp/admin/plugins/appstore/DoCreateCategory.jsp">
+        <fieldset>
+            <legend>#i18n{appstore.create_category.tableLabel}</legend>
+
+
+            <input type="hidden" id="category_id_category" name="category_id_category"  />
+            <div class="control-group">
+                <label class="control-label" for="category_name" >#i18n{appstore.create_category.rowTitleName} * :</label>
+                <div class="controls">
+                    <input type="text" id="category_name" name="category_name" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="category_categoryOrder" >#i18n{appstore.create_category.rowTitleCategory_order} * :</label>
+                <div class="controls">
+                    <input type="text" id="category_category_order" name="category_category_order" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="#i18n{appstore.create_category.buttonValidate}" tabindex="3" />
+            </div>
+        </fieldset>
+    </form>
+
+
+</div>
+
+

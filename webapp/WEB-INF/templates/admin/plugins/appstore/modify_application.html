@@ -1,0 +1,81 @@
+<#include "tabs.html" /> 
+<@tabs tab="applications" />
+
+
+<div class="content-box">
+
+    <form class="form-horizontal" method="post"  name="modify_application" action="jsp/admin/plugins/appstore/DoModifyApplication.jsp">
+        <fieldset>
+            <legend>#i18n{appstore.modify_application.tableLabel}</legend>
+
+
+            <input type="hidden" id="application_id_application" name="application_id_application" value="${application.idApplication}"/>
+
+            <div class="control-group">
+                <label class="control-label" for="application_title" >#i18n{appstore.modify_application.rowTitleTitle} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_title" name="application_title" size="60" maxlength="50" value="${application.title}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_description" >#i18n{appstore.modify_application.rowTitleDescription} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_description" name="application_description" size="60" maxlength="50" value="${application.description}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_id_category" >#i18n{appstore.modify_application.rowTitleId_category} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_id_category" name="application_id_category" size="60" maxlength="50" value="${application.idCategory}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_application_order" >#i18n{appstore.modify_application.rowTitleApplication_order} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" value="${application.applicationOrder}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_id_icon" >#i18n{appstore.modify_application.rowTitleId_icon} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" value="${application.idIcon}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_pom_url" >#i18n{appstore.modify_application.rowTitlePom_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" value="${application.pomUrl}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_webapp_url" >#i18n{appstore.modify_application.rowTitleWebapp_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" value="${application.webappUrl}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="application_sql_script_url" >#i18n{appstore.modify_application.rowTitleSql_script_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" value="${application.sqlScriptUrl}" tabindex="1" />
+                </div>
+            </div>
+
+
+            <div class="form-actions">   
+                <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_application.buttonModifyApplication}" tabindex="3" />
+                <input class="btn" type="button" onclick="javascript:history.go(-1)" value="Annuler" />	
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+
+

@@ -1,0 +1,73 @@
+<#include "tabs.html" /> 
+<@tabs tab="components" />
+
+<div class="row-fluid" >
+    <div class="span12">
+
+        <form method="post"  action="jsp/admin/plugins/appstore/CreateComponent.jsp">
+            <button class="btn btn-primary pull-right" type="submit">
+                <i class="icon-plus icon-white"></i>
+                #i18n{appstore.manage_component.buttonAddComponent}
+            </button>
+        </form>
+
+    <h4>#i18n{appstore.manage_component.tableLabel}</h4>    
+
+    <@paginationAdmin paginator=paginator combo=1 />
+    
+    <table class="table table-condensed table-striped">
+        <tr>
+                    <input type="hidden" id="component_id_component" name="component_id_component"  />
+                    <th>#i18n{appstore.manage_component.columnGroup_id}</th>
+                    <th>#i18n{appstore.manage_component.columnTitle}</th>
+                    <th>#i18n{appstore.manage_component.columnDescription}</th>
+                    <th>#i18n{appstore.manage_component.columnArtifact_id}</th>
+                    <th>#i18n{appstore.manage_component.columnVersion}</th>
+                    <th>#i18n{appstore.manage_component.columnComponent_type}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+            <#list component_list as component >
+        <tr>
+                    <input type="hidden" id="component_id_component" name="component_id_component"  />
+                        <td>
+                            ${component.groupId}
+                        </td>
+                        <td>
+                            ${component.title}
+                        </td>
+                        <td>
+                            ${component.description}
+                        </td>
+                        <td>
+                            ${component.artifactId}
+                        </td>
+                        <td>
+                            ${component.version}
+                        </td>
+                        <td>
+                            ${component.componentType}
+                        </td>
+        <td>
+            <a href="jsp/admin/plugins/appstore/ModifyComponent.jsp?component_id_component=${component.idComponent}"
+               class="btn btn-primary" title="#i18n{portal.util.labelModify}">
+                <i class="icon-edit icon-white"></i>
+            </a>
+
+            <a href="jsp/admin/plugins/appstore/RemoveComponent.jsp?component_id_component=${component.idComponent}"
+               class="btn btn-danger" title="#i18n{portal.util.labelDelete}" >
+                <i class="icon-trash icon-white"></i>
+            </a>
+        </td>
+        </tr>
+        </#list>
+    </table>
+
+    <@paginationAdmin paginator=paginator />
+
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,57 @@
+<#include "tabs.html" /> 
+<@tabs tab="categories" />
+
+<div class="row-fluid" >
+    <div class="span12">
+
+        <form method="post"  action="jsp/admin/plugins/appstore/CreateCategory.jsp">
+            <button class="btn btn-primary pull-right" type="submit">
+                <i class="icon-plus icon-white"></i>
+                #i18n{appstore.manage_category.buttonAddCategory}
+            </button>
+        </form>
+
+    <h4>#i18n{appstore.manage_category.tableLabel}</h4>    
+
+    <@paginationAdmin paginator=paginator combo=1 />
+    
+    <table class="table table-condensed table-striped">
+        <tr>
+                    <input type="hidden" id="category_id_category" name="category_id_category"  />
+                    <th>#i18n{appstore.manage_category.columnName}</th>
+                    <th>#i18n{appstore.manage_category.columnCategory_order}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+            <#list category_list as category >
+        <tr>
+                    <input type="hidden" id="category_id_category" name="category_id_category"  />
+                        <td>
+                            ${category.name}
+                        </td>
+                        <td>
+                            ${category.categoryOrder}
+                        </td>
+        <td>
+            <a href="jsp/admin/plugins/appstore/ModifyCategory.jsp?category_id_category=${category.idCategory}"
+               class="btn btn-primary" title="#i18n{portal.util.labelModify}">
+                <i class="icon-edit icon-white"></i>
+            </a>
+
+            <a href="jsp/admin/plugins/appstore/RemoveCategory.jsp?category_id_category=${category.idCategory}"
+               class="btn btn-danger" title="#i18n{portal.util.labelDelete}" >
+                <i class="icon-trash icon-white"></i>
+            </a>
+        </td>
+        </tr>
+        </#list>
+    </table>
+
+    <@paginationAdmin paginator=paginator />
+
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,82 @@
+<#include "tabs.html" /> 
+<@tabs tab="applications" />
+
+
+<div class="row-fluid" >
+    <div class="span12">
+
+        <form method="post"  action="jsp/admin/plugins/appstore/CreateApplication.jsp">
+            <button class="btn btn-primary pull-right" type="submit">
+                <i class="icon-plus icon-white"></i>
+                #i18n{appstore.manage_application.buttonAddApplication}
+            </button>
+        </form>
+
+    <h4>#i18n{appstore.manage_application.tableLabel}</h4>    
+
+    <@paginationAdmin paginator=paginator combo=1 />
+    
+    <table class="table table-condensed table-striped">
+        <tr>
+                    <input type="hidden" id="application_id_application" name="application_id_application"  />
+                    <th>#i18n{appstore.manage_application.columnTitle}</th>
+                    <th>#i18n{appstore.manage_application.columnDescription}</th>
+                    <th>#i18n{appstore.manage_application.columnId_category}</th>
+                    <th>#i18n{appstore.manage_application.columnApplication_order}</th>
+                    <th>#i18n{appstore.manage_application.columnId_icon}</th>
+                    <th>#i18n{appstore.manage_application.columnPom_url}</th>
+                    <th>#i18n{appstore.manage_application.columnWebapp_url}</th>
+                    <th>#i18n{appstore.manage_application.columnSql_script_url}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+            <#list application_list as application >
+        <tr>
+                    <input type="hidden" id="application_id_application" name="application_id_application"  />
+                        <td>
+                            ${application.title}
+                        </td>
+                        <td>
+                            ${application.description}
+                        </td>
+                        <td>
+                            ${application.idCategory}
+                        </td>
+                        <td>
+                            ${application.applicationOrder}
+                        </td>
+                        <td>
+                            ${application.idIcon}
+                        </td>
+                        <td>
+                            ${application.pomUrl}
+                        </td>
+                        <td>
+                            ${application.webappUrl}
+                        </td>
+                        <td>
+                            ${application.sqlScriptUrl}
+                        </td>
+        <td>
+            <a href="jsp/admin/plugins/appstore/ModifyApplication.jsp?application_id_application=${application.idApplication}"
+               class="btn btn-primary" title="#i18n{portal.util.labelModify}">
+                <i class="icon-edit icon-white"></i>
+            </a>
+
+            <a href="jsp/admin/plugins/appstore/RemoveApplication.jsp?application_id_application=${application.idApplication}"
+               class="btn btn-danger" title="#i18n{portal.util.labelDelete}" >
+                <i class="icon-trash icon-white"></i>
+            </a>
+        </td>
+        </tr>
+        </#list>
+    </table>
+
+    <@paginationAdmin paginator=paginator />
+
+    </div>
+</div>
+
+
+
+
+

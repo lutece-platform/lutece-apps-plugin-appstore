@@ -1,0 +1,69 @@
+<#include "tabs.html" /> 
+<@tabs tab="applications" />
+
+<div class="content-box" >
+
+    <form class="form-horizontal" method="post"  name="create_application" id="create_application" action="jsp/admin/plugins/appstore/DoCreateApplication.jsp">
+        <fieldset>
+            <legend>#i18n{appstore.create_application.tableLabel}</legend>
+
+
+            <input type="hidden" id="application_id_application" name="application_id_application"  />
+            <div class="control-group">
+                <label class="control-label" for="application_title" >#i18n{appstore.create_application.rowTitleTitle} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_title" name="application_title" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_description" >#i18n{appstore.create_application.rowTitleDescription} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_description" name="application_description" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_idCategory" >#i18n{appstore.create_application.rowTitleId_category} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_id_category" name="application_id_category" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_applicationOrder" >#i18n{appstore.create_application.rowTitleApplication_order} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_idIcon" >#i18n{appstore.create_application.rowTitleId_icon} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_pomUrl" >#i18n{appstore.create_application.rowTitlePom_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_webappUrl" >#i18n{appstore.create_application.rowTitleWebapp_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="application_sqlScriptUrl" >#i18n{appstore.create_application.rowTitleSql_script_url} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" tabindex="1" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="#i18n{appstore.create_application.buttonValidate}" tabindex="3" />
+            </div>
+        </fieldset>
+    </form>
+
+
+</div>
+
+
