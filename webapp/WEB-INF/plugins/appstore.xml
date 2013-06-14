@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <plug-in>
     <name>appstore</name>
-    <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
+    <class>fr.paris.lutece.plugins.appstore.service.AppStorePlugin</class>
     <version>1.0.0</version>
     <documentation></documentation>
     <installation></installation>

@@ -131,7 +131,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
     private static final String MARK_APPLICATION = "application";
     private static final String MARK_COMPONENT_LIST = "component_list";
     private static final String MARK_COMPONENT = "component";
-    private static final String MARK_BUSINESS_CLASSES = "business_classes";
+    private static final String MARK_CATEGORIES_LIST = "categories_list";
     private static final String MARK_PAGINATOR = "paginator";
     private static final String MARK_NB_ITEMS_PER_PAGE = "nb_items_per_page";    
     
@@ -289,6 +289,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
         setPageTitleProperty( PROPERTY_PAGE_TITLE_CREATE_APPLICATION  );
 
         Map<String, Object> model = new HashMap<String, Object>(  );
+        model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories() );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_CREATE_APPLICATION, getLocale(  ), model );
 
@@ -406,7 +407,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
       int nIdCategory = Integer.parseInt( request.getParameter( PARAMETER_CATEGORY_ID_CATEGORY ) );
-			category.setIdCategory( nIdCategory );
+			category.setId( nIdCategory );
         if ( request.getParameter( PARAMETER_CATEGORY_NAME ).equals( "" ) )
         {
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
@@ -460,7 +461,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 			      int nApplicationOrder = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ) );
-      application.setApplicationOrder( nApplicationOrder );
+      application.setOrder( nApplicationOrder );
 			
         
         if ( request.getParameter( PARAMETER_APPLICATION_ID_ICON ).equals( "" ) )
@@ -535,6 +536,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
         Application application =ApplicationHome.findByPrimaryKey( nId );
 
         Map<String, Object> model = new HashMap<String, Object>(  );
+        model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories() );
         model.put( MARK_APPLICATION, application );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_APPLICATION, getLocale(  ), model );
@@ -557,7 +559,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
       int nIdApplication = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
-			application.setIdApplication( nIdApplication );
+			application.setId( nIdApplication );
         if ( request.getParameter( PARAMETER_APPLICATION_TITLE ).equals( "" ) )
         {
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
@@ -579,7 +581,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
       int nApplicationOrder = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ) );
-			application.setApplicationOrder( nApplicationOrder );
+			application.setOrder( nApplicationOrder );
         if ( request.getParameter( PARAMETER_APPLICATION_ID_ICON ).equals( "" ) )
         {
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
@@ -723,7 +725,7 @@ private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.man
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
       int nIdComponent = Integer.parseInt( request.getParameter( PARAMETER_COMPONENT_ID_COMPONENT ) );
-			component.setIdComponent( nIdComponent );
+			component.setId( nIdComponent );
         if ( request.getParameter( PARAMETER_COMPONENT_GROUP_ID ).equals( "" ) )
         {
           return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );

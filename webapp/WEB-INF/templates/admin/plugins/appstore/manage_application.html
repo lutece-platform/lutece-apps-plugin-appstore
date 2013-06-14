@@ -39,13 +39,13 @@
                             ${application.description}
                         </td>
                         <td>
-                            ${application.idCategory}
+                            ${application.category}
                         </td>
                         <td>
-                            ${application.applicationOrder}
+                            ${application.order}
                         </td>
                         <td>
-                            ${application.idIcon}
+                            <img src="image?resource_type=appstore_icon_img&id= ${application.idIcon}" width="50" height="50" />
                         </td>
                         <td>
                             ${application.pomUrl}
@@ -57,12 +57,12 @@
                             ${application.sqlScriptUrl}
                         </td>
         <td>
-            <a href="jsp/admin/plugins/appstore/ModifyApplication.jsp?application_id_application=${application.idApplication}"
+            <a href="jsp/admin/plugins/appstore/ModifyApplication.jsp?application_id_application=${application.id}"
                class="btn btn-primary" title="#i18n{portal.util.labelModify}">
                 <i class="icon-edit icon-white"></i>
             </a>
 
-            <a href="jsp/admin/plugins/appstore/RemoveApplication.jsp?application_id_application=${application.idApplication}"
+            <a href="jsp/admin/plugins/appstore/RemoveApplication.jsp?application_id_application=${application.id}"
                class="btn btn-danger" title="#i18n{portal.util.labelDelete}" >
                 <i class="icon-trash icon-white"></i>
             </a>

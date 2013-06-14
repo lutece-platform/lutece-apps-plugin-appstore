@@ -65,11 +65,11 @@ public class ApplicationBusinessTest extends LuteceTestCase
     {
         // Initialize an object
         Application application = new Application();
-        application.setIdApplication( IDAPPLICATION1 );
+        application.setId( IDAPPLICATION1 );
         application.setTitle( TITLE1 );
         application.setDescription( DESCRIPTION1 );
         application.setIdCategory( IDCATEGORY1 );
-        application.setApplicationOrder( APPLICATIONORDER1 );
+        application.setOrder( APPLICATIONORDER1 );
         application.setIdIcon( IDICON1 );
         application.setPomUrl( POMURL1 );
         application.setWebappUrl( WEBAPPURL1 );
@@ -77,34 +77,34 @@ public class ApplicationBusinessTest extends LuteceTestCase
 
         // Create test
         ApplicationHome.create( application );
-        Application applicationStored = ApplicationHome.findByPrimaryKey( application.getIdApplication() );
-        assertEquals( applicationStored.getIdApplication() , application.getIdApplication() );
+        Application applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
+        assertEquals( applicationStored.getId() , application.getId() );
         assertEquals( applicationStored.getTitle() , application.getTitle() );
         assertEquals( applicationStored.getDescription() , application.getDescription() );
         assertEquals( applicationStored.getIdCategory() , application.getIdCategory() );
-        assertEquals( applicationStored.getApplicationOrder() , application.getApplicationOrder() );
+        assertEquals( applicationStored.getOrder() , application.getOrder() );
         assertEquals( applicationStored.getIdIcon() , application.getIdIcon() );
         assertEquals( applicationStored.getPomUrl() , application.getPomUrl() );
         assertEquals( applicationStored.getWebappUrl() , application.getWebappUrl() );
         assertEquals( applicationStored.getSqlScriptUrl() , application.getSqlScriptUrl() );
 
         // Update test
-        application.setIdApplication( IDAPPLICATION2 );
+        application.setId( IDAPPLICATION2 );
         application.setTitle( TITLE2 );
         application.setDescription( DESCRIPTION2 );
         application.setIdCategory( IDCATEGORY2 );
-        application.setApplicationOrder( APPLICATIONORDER2 );
+        application.setOrder( APPLICATIONORDER2 );
         application.setIdIcon( IDICON2 );
         application.setPomUrl( POMURL2 );
         application.setWebappUrl( WEBAPPURL2 );
         application.setSqlScriptUrl( SQLSCRIPTURL2 );
         ApplicationHome.update( application );
-        applicationStored = ApplicationHome.findByPrimaryKey( application.getIdApplication() );
-        assertEquals( applicationStored.getIdApplication() , application.getIdApplication() );
+        applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
+        assertEquals( applicationStored.getId() , application.getId() );
         assertEquals( applicationStored.getTitle() , application.getTitle() );
         assertEquals( applicationStored.getDescription() , application.getDescription() );
         assertEquals( applicationStored.getIdCategory() , application.getIdCategory() );
-        assertEquals( applicationStored.getApplicationOrder() , application.getApplicationOrder() );
+        assertEquals( applicationStored.getOrder() , application.getOrder() );
         assertEquals( applicationStored.getIdIcon() , application.getIdIcon() );
         assertEquals( applicationStored.getPomUrl() , application.getPomUrl() );
         assertEquals( applicationStored.getWebappUrl() , application.getWebappUrl() );
@@ -114,8 +114,8 @@ public class ApplicationBusinessTest extends LuteceTestCase
         ApplicationHome.getApplicationsList();
 
         // Delete test
-        ApplicationHome.remove( application.getIdApplication() );
-        applicationStored = ApplicationHome.findByPrimaryKey( application.getIdApplication() );
+        ApplicationHome.remove( application.getId() );
+        applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
         assertNull( applicationStored );
         
     }

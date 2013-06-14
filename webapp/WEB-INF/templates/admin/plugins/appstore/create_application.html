@@ -24,7 +24,8 @@
             <div class="control-group">
                 <label class="control-label" for="application_idCategory" >#i18n{appstore.create_application.rowTitleId_category} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_id_category" name="application_id_category" size="60" maxlength="50" tabindex="1" />
+                    <@comboWithParams name="application_id_category" items=categories_list default_value="1" additionalParameters="class=\"\"" />
+                    
                 </div>
             </div>
             <div class="control-group">

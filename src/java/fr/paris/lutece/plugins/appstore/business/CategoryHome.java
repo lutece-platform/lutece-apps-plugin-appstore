@@ -37,6 +37,7 @@ package fr.paris.lutece.plugins.appstore.business;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
+import fr.paris.lutece.util.ReferenceList;
 import java.util.Collection;
 
 /**
@@ -122,6 +123,20 @@ public final class CategoryHome
     public static Collection<Category> getCategorysList( )
     {
         return _dao.selectCategorysList( _plugin );
+    }
+    
+    /**
+     * Gets categories as reference list
+     * @return The reference list
+     */
+    public static ReferenceList getCategories( )
+    {
+        ReferenceList list = new ReferenceList();
+        for( Category category : getCategorysList() )
+        {
+            list.addItem( category.getId(), category.getName() );
+        }
+        return list;
     }
 
 }

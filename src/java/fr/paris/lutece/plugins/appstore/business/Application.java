@@ -31,175 +31,224 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.appstore.business;
 
 /**
  * This is the business class for the object Application
- */ 
+ */
 public class Application
 {
-	// Variables declarations 
-	private int _nIdApplication;
-	private String _strTitle;
-	private String _strDescription;
-	private int _nIdCategory;
-	private int _nApplicationOrder;
-	private int _nIdIcon;
-	private String _strPomUrl;
-	private String _strWebappUrl;
-	private String _strSqlScriptUrl;
-	/**
-	 * Returns the IdApplication
-	 * @return The IdApplication
-	 */
-	public int getIdApplication()
-	{
-		return _nIdApplication;
-	}
+    // Variables declarations 
 
-	/**
-	 * Sets the IdApplication
-	 * @param nIdApplication The IdApplication
-	 */ 
-	public void setIdApplication( int nIdApplication )
-	{
-		_nIdApplication = nIdApplication;
-	}
-	/**
-	 * Returns the Title
-	 * @return The Title
-	 */
-	public String getTitle()
-	{
-		return _strTitle;
-	}
+    private int _nIdApplication;
+    private String _strTitle;
+    private String _strDescription;
+    private int _nIdCategory;
+    private String _strCategory;
+    private int _nOrder;
+    private int _nIdIcon;
+    private String _strPomUrl;
+    private String _strWebappUrl;
+    private String _strSqlScriptUrl;
 
-	/**
-	 * Sets the Title
-	 * @param strTitle The Title
-	 */ 
-	public void setTitle( String strTitle )
-	{
-		_strTitle = strTitle;
-	}
-	/**
-	 * Returns the Description
-	 * @return The Description
-	 */
-	public String getDescription()
-	{
-		return _strDescription;
-	}
+    /**
+     * Returns the IdApplication
+     *
+     * @return The IdApplication
+     */
+    public int getId()
+    {
+        return _nIdApplication;
+    }
 
-	/**
-	 * Sets the Description
-	 * @param strDescription The Description
-	 */ 
-	public void setDescription( String strDescription )
-	{
-		_strDescription = strDescription;
-	}
-	/**
-	 * Returns the IdCategory
-	 * @return The IdCategory
-	 */
-	public int getIdCategory()
-	{
-		return _nIdCategory;
-	}
+    /**
+     * Sets the IdApplication
+     *
+     * @param nIdApplication The IdApplication
+     */
+    public void setId(int nIdApplication)
+    {
+        _nIdApplication = nIdApplication;
+    }
 
-	/**
-	 * Sets the IdCategory
-	 * @param nIdCategory The IdCategory
-	 */ 
-	public void setIdCategory( int nIdCategory )
-	{
-		_nIdCategory = nIdCategory;
-	}
-	/**
-	 * Returns the ApplicationOrder
-	 * @return The ApplicationOrder
-	 */
-	public int getApplicationOrder()
-	{
-		return _nApplicationOrder;
-	}
+    /**
+     * Returns the Title
+     *
+     * @return The Title
+     */
+    public String getTitle()
+    {
+        return _strTitle;
+    }
 
-	/**
-	 * Sets the ApplicationOrder
-	 * @param nApplicationOrder The ApplicationOrder
-	 */ 
-	public void setApplicationOrder( int nApplicationOrder )
-	{
-		_nApplicationOrder = nApplicationOrder;
-	}
-	/**
-	 * Returns the IdIcon
-	 * @return The IdIcon
-	 */
-	public int getIdIcon()
-	{
-		return _nIdIcon;
-	}
+    /**
+     * Sets the Title
+     *
+     * @param strTitle The Title
+     */
+    public void setTitle(String strTitle)
+    {
+        _strTitle = strTitle;
+    }
 
-	/**
-	 * Sets the IdIcon
-	 * @param nIdIcon The IdIcon
-	 */ 
-	public void setIdIcon( int nIdIcon )
-	{
-		_nIdIcon = nIdIcon;
-	}
-	/**
-	 * Returns the PomUrl
-	 * @return The PomUrl
-	 */
-	public String getPomUrl()
-	{
-		return _strPomUrl;
-	}
+    /**
+     * Returns the Description
+     *
+     * @return The Description
+     */
+    public String getDescription()
+    {
+        return _strDescription;
+    }
 
-	/**
-	 * Sets the PomUrl
-	 * @param strPomUrl The PomUrl
-	 */ 
-	public void setPomUrl( String strPomUrl )
-	{
-		_strPomUrl = strPomUrl;
-	}
-	/**
-	 * Returns the WebappUrl
-	 * @return The WebappUrl
-	 */
-	public String getWebappUrl()
-	{
-		return _strWebappUrl;
-	}
+    /**
+     * Sets the Description
+     *
+     * @param strDescription The Description
+     */
+    public void setDescription(String strDescription)
+    {
+        _strDescription = strDescription;
+    }
 
-	/**
-	 * Sets the WebappUrl
-	 * @param strWebappUrl The WebappUrl
-	 */ 
-	public void setWebappUrl( String strWebappUrl )
-	{
-		_strWebappUrl = strWebappUrl;
-	}
-	/**
-	 * Returns the SqlScriptUrl
-	 * @return The SqlScriptUrl
-	 */
-	public String getSqlScriptUrl()
-	{
-		return _strSqlScriptUrl;
-	}
+    /**
+     * Returns the IdCategory
+     *
+     * @return The IdCategory
+     */
+    public int getIdCategory()
+    {
+        return _nIdCategory;
+    }
 
-	/**
-	 * Sets the SqlScriptUrl
-	 * @param strSqlScriptUrl The SqlScriptUrl
-	 */ 
-	public void setSqlScriptUrl( String strSqlScriptUrl )
-	{
-		_strSqlScriptUrl = strSqlScriptUrl;
-	}
+    /**
+     * Sets the IdCategory
+     *
+     * @param nIdCategory The IdCategory
+     */
+    public void setIdCategory(int nIdCategory)
+    {
+        _nIdCategory = nIdCategory;
+    }
+
+    /**
+     * Returns the Category
+     *
+     * @return The Category
+     */
+    public String getCategory()
+    {
+        return _strCategory;
+    }
+
+    /**
+     * Sets the Category
+     *
+     * @param strCategory The Category
+     */
+    public void setCategory(String strCategory)
+    {
+        _strCategory = strCategory;
+    }
+
+    /**
+     * Returns the ApplicationOrder
+     *
+     * @return The ApplicationOrder
+     */
+    public int getOrder()
+    {
+        return _nOrder;
+    }
+
+    /**
+     * Sets the ApplicationOrder
+     *
+     * @param nApplicationOrder The ApplicationOrder
+     */
+    public void setOrder(int nApplicationOrder)
+    {
+        _nOrder = nApplicationOrder;
+    }
+
+    /**
+     * Returns the IdIcon
+     *
+     * @return The IdIcon
+     */
+    public int getIdIcon()
+    {
+        return _nIdIcon;
+    }
+
+    /**
+     * Sets the IdIcon
+     *
+     * @param nIdIcon The IdIcon
+     */
+    public void setIdIcon(int nIdIcon)
+    {
+        _nIdIcon = nIdIcon;
+    }
+
+    /**
+     * Returns the PomUrl
+     *
+     * @return The PomUrl
+     */
+    public String getPomUrl()
+    {
+        return _strPomUrl;
+    }
+
+    /**
+     * Sets the PomUrl
+     *
+     * @param strPomUrl The PomUrl
+     */
+    public void setPomUrl(String strPomUrl)
+    {
+        _strPomUrl = strPomUrl;
+    }
+
+    /**
+     * Returns the WebappUrl
+     *
+     * @return The WebappUrl
+     */
+    public String getWebappUrl()
+    {
+        return _strWebappUrl;
+    }
+
+    /**
+     * Sets the WebappUrl
+     *
+     * @param strWebappUrl The WebappUrl
+     */
+    public void setWebappUrl(String strWebappUrl)
+    {
+        _strWebappUrl = strWebappUrl;
+    }
+
+    /**
+     * Returns the SqlScriptUrl
+     *
+     * @return The SqlScriptUrl
+     */
+    public String getSqlScriptUrl()
+    {
+        return _strSqlScriptUrl;
+    }
+
+    /**
+     * Sets the SqlScriptUrl
+     *
+     * @param strSqlScriptUrl The SqlScriptUrl
+     */
+    public void setSqlScriptUrl(String strSqlScriptUrl)
+    {
+        _strSqlScriptUrl = strSqlScriptUrl;
+    }
 }

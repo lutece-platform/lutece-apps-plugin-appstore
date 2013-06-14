@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2002-2013, Mairie de Paris
  * All rights reserved.
@@ -31,67 +30,26 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.appstore.business;
 
+
 /**
- * This is the business class for the object Category
- */ 
-public class Category
+ *
+ * IReferenceItem
+ *
+ */
+public interface IReferenceItem
 {
-	// Variables declarations 
-	private int _nIdCategory;
-	private String _strName;
-	private int _nCategoryOrder;
-	/**
-	 * Returns the IdCategory
-	 * @return The IdCategory
-	 */
-	public int getId()
-	{
-		return _nIdCategory;
-	}
+    /**
+     * return the item id
+     * @return the item id
+     */
+    int getId(  );
 
-	/**
-	 * Sets the IdCategory
-	 * @param nIdCategory The IdCategory
-	 */ 
-	public void setId( int nIdCategory )
-	{
-		_nIdCategory = nIdCategory;
-	}
-	/**
-	 * Returns the Name
-	 * @return The Name
-	 */
-	public String getName()
-	{
-		return _strName;
-	}
-
-	/**
-	 * Sets the Name
-	 * @param strName The Name
-	 */ 
-	public void setName( String strName )
-	{
-		_strName = strName;
-	}
-	/**
-	 * Returns the CategoryOrder
-	 * @return The CategoryOrder
-	 */
-	public int getCategoryOrder()
-	{
-		return _nCategoryOrder;
-	}
-
-	/**
-	 * Sets the CategoryOrder
-	 * @param nCategoryOrder The CategoryOrder
-	 */ 
-	public void setCategoryOrder( int nCategoryOrder )
-	{
-		_nCategoryOrder = nCategoryOrder;
-	}
+    /**
+     *
+     * @return the item name
+     */
+    String getName(  );
 }

@@ -42,8 +42,7 @@ import fr.paris.lutece.portal.service.plugin.Plugin;
 
 public class CategoryBusinessTest extends LuteceTestCase
 {
-    private final static int IDCATEGORY1 = 1;
-    private final static int IDCATEGORY2 = 2;
+    private final static int IDCATEGORY = 1;
     private final static String NAME1 = "Name1";
     private final static String NAME2 = "Name2";
     private final static int CATEGORYORDER1 = 1;
@@ -53,24 +52,22 @@ public class CategoryBusinessTest extends LuteceTestCase
     {
         // Initialize an object
         Category category = new Category();
-        category.setIdCategory( IDCATEGORY1 );
+        category.setId( IDCATEGORY );
         category.setName( NAME1 );
         category.setCategoryOrder( CATEGORYORDER1 );
 
         // Create test
         CategoryHome.create( category );
-        Category categoryStored = CategoryHome.findByPrimaryKey( category.getIdCategory() );
-        assertEquals( categoryStored.getIdCategory() , category.getIdCategory() );
+        Category categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
+        assertEquals( categoryStored.getId() , category.getId() );
         assertEquals( categoryStored.getName() , category.getName() );
         assertEquals( categoryStored.getCategoryOrder() , category.getCategoryOrder() );
 
         // Update test
-        category.setIdCategory( IDCATEGORY2 );
-        category.setName( NAME2 );
+         category.setName( NAME2 );
         category.setCategoryOrder( CATEGORYORDER2 );
         CategoryHome.update( category );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getIdCategory() );
-        assertEquals( categoryStored.getIdCategory() , category.getIdCategory() );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
         assertEquals( categoryStored.getName() , category.getName() );
         assertEquals( categoryStored.getCategoryOrder() , category.getCategoryOrder() );
 
@@ -78,8 +75,8 @@ public class CategoryBusinessTest extends LuteceTestCase
         CategoryHome.getCategorysList();
 
         // Delete test
-        CategoryHome.remove( category.getIdCategory() );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getIdCategory() );
+        CategoryHome.remove( category.getId() );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
         assertNull( categoryStored );
         
     }

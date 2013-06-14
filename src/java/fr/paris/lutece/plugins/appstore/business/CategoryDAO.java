@@ -52,11 +52,11 @@ public final class CategoryDAO implements ICategoryDAO
 	// Constants
 	
 	private static final String SQL_QUERY_NEW_PK = "SELECT max( id_category ) FROM appstore_category";
-	private static final String SQL_QUERY_SELECT = "SELECT id_category, name, category_order FROM appstore_category WHERE id_category = ?";
-	private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_category ( id_category, name, category_order ) VALUES ( ?, ?, ? ) ";
+	private static final String SQL_QUERY_SELECT = "SELECT id_category, name, id_order FROM appstore_category WHERE id_category = ?";
+	private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_category ( id_category, name, id_order ) VALUES ( ?, ?, ? ) ";
 	private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_category WHERE id_category = ? ";
-	private static final String SQL_QUERY_UPDATE = "UPDATE appstore_category SET id_category = ?, name = ?, category_order = ? WHERE id_category = ?";
-	private static final String SQL_QUERY_SELECTALL = "SELECT id_category, name, category_order FROM appstore_category";
+	private static final String SQL_QUERY_UPDATE = "UPDATE appstore_category SET id_category = ?, name = ?, id_order = ? WHERE id_category = ?";
+	private static final String SQL_QUERY_SELECTALL = "SELECT id_category, name, id_order FROM appstore_category";
 
 
 	
@@ -98,9 +98,9 @@ public final class CategoryDAO implements ICategoryDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT , plugin );
                 
-		category.setIdCategory( newPrimaryKey( plugin ) );
+		category.setId( newPrimaryKey( plugin ) );
                 
-                daoUtil.setInt ( 1, category.getIdCategory ( ) );
+                daoUtil.setInt ( 1, category.getId ( ) );
                 daoUtil.setString ( 2, category.getName ( ) );
                 daoUtil.setInt ( 3, category.getCategoryOrder ( ) );
 
@@ -129,7 +129,7 @@ public final class CategoryDAO implements ICategoryDAO
 		{
 			category = new Category();
 
-                        category.setIdCategory( daoUtil.getInt(  1 ) );
+                        category.setId( daoUtil.getInt(  1 ) );
                         category.setName( daoUtil.getString(  2 ) );
                         category.setCategoryOrder( daoUtil.getInt(  3 ) );
 		}
@@ -164,10 +164,10 @@ public final class CategoryDAO implements ICategoryDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE , plugin );
                 
-        daoUtil.setInt( 1, category.getIdCategory( ) );
+        daoUtil.setInt( 1, category.getId( ) );
         daoUtil.setString( 2, category.getName( ) );
         daoUtil.setInt( 3, category.getCategoryOrder( ) );
-        daoUtil.setInt( 4, category.getIdCategory( ) );
+        daoUtil.setInt( 4, category.getId( ) );
                 
 		daoUtil.executeUpdate( );
 		daoUtil.free( );
@@ -191,7 +191,7 @@ public final class CategoryDAO implements ICategoryDAO
 		{
                 Category category = new Category(  );
 
-                    category.setIdCategory( daoUtil.getInt( 1 ) );
+                    category.setId( daoUtil.getInt( 1 ) );
                     category.setName( daoUtil.getString( 2 ) );
                     category.setCategoryOrder( daoUtil.getInt( 3 ) );
 

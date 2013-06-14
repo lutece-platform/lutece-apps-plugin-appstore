@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2002-2013, Mairie de Paris
  * All rights reserved.
@@ -31,67 +30,64 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.appstore.business;
 
+import fr.paris.lutece.portal.service.plugin.Plugin;
+
+import java.util.List;
+
+
 /**
- * This is the business class for the object Category
- */ 
-public class Category
+ *
+ * IIconDAO
+ *
+ */
+public interface IIconDAO
 {
-	// Variables declarations 
-	private int _nIdCategory;
-	private String _strName;
-	private int _nCategoryOrder;
-	/**
-	 * Returns the IdCategory
-	 * @return The IdCategory
-	 */
-	public int getId()
-	{
-		return _nIdCategory;
-	}
+    /**
+     * Insert a new record in the table.
+     *
+     * @param icon instance of the Icon object to insert
+     * @param plugin the plugin
+     */
+    void insert( Icon icon, Plugin plugin );
 
-	/**
-	 * Sets the IdCategory
-	 * @param nIdCategory The IdCategory
-	 */ 
-	public void setId( int nIdCategory )
-	{
-		_nIdCategory = nIdCategory;
-	}
-	/**
-	 * Returns the Name
-	 * @return The Name
-	 */
-	public String getName()
-	{
-		return _strName;
-	}
+    /**
+     * update record in the table.
+     *
+     * @param  icon instance of the Icon object to update
+     * @param plugin the plugin
+     */
+    void store( Icon icon, Plugin plugin );
 
-	/**
-	 * Sets the Name
-	 * @param strName The Name
-	 */ 
-	public void setName( String strName )
-	{
-		_strName = strName;
-	}
-	/**
-	 * Returns the CategoryOrder
-	 * @return The CategoryOrder
-	 */
-	public int getCategoryOrder()
-	{
-		return _nCategoryOrder;
-	}
+    /**
+     * update icon metadata in the table.
+     *
+     * @param  icon instance of the Icon object to update
+     * @param plugin the plugin
+     */
+    void storeMetadata( Icon icon, Plugin plugin );
 
-	/**
-	 * Sets the CategoryOrder
-	 * @param nCategoryOrder The CategoryOrder
-	 */ 
-	public void setCategoryOrder( int nCategoryOrder )
-	{
-		_nCategoryOrder = nCategoryOrder;
-	}
+    /**
+     * Load the icon Object
+     * @param nIdIcon the icon id
+     * @param plugin the plugin
+     * @return the icon Object
+     */
+    Icon load( int nIdIcon, Plugin plugin );
+
+    /**
+     * Delete the Icon Object
+     * @param nIdIcon theicon id
+     * @param plugin the plugin
+     */
+    void delete( int nIdIcon, Plugin plugin );
+
+    /**
+     * select all Icons
+     * @param plugin the plugin
+     * @return a list of Icon
+     */
+    List<Icon> selectAll( Plugin plugin );
 }

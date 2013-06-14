@@ -98,9 +98,9 @@ public final class ComponentDAO implements IComponentDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT , plugin );
                 
-		component.setIdComponent( newPrimaryKey( plugin ) );
+		component.setId( newPrimaryKey( plugin ) );
                 
-                daoUtil.setInt ( 1, component.getIdComponent ( ) );
+                daoUtil.setInt ( 1, component.getId ( ) );
                 daoUtil.setString ( 2, component.getGroupId ( ) );
                 daoUtil.setString ( 3, component.getTitle ( ) );
                 daoUtil.setString ( 4, component.getDescription ( ) );
@@ -133,7 +133,7 @@ public final class ComponentDAO implements IComponentDAO
 		{
 			component = new Component();
 
-                        component.setIdComponent( daoUtil.getInt(  1 ) );
+                        component.setId( daoUtil.getInt(  1 ) );
                         component.setGroupId( daoUtil.getString(  2 ) );
                         component.setTitle( daoUtil.getString(  3 ) );
                         component.setDescription( daoUtil.getString(  4 ) );
@@ -172,14 +172,14 @@ public final class ComponentDAO implements IComponentDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE , plugin );
                 
-        daoUtil.setInt( 1, component.getIdComponent( ) );
+        daoUtil.setInt( 1, component.getId( ) );
         daoUtil.setString( 2, component.getGroupId( ) );
         daoUtil.setString( 3, component.getTitle( ) );
         daoUtil.setString( 4, component.getDescription( ) );
         daoUtil.setString( 5, component.getArtifactId( ) );
         daoUtil.setString( 6, component.getVersion( ) );
         daoUtil.setString( 7, component.getComponentType( ) );
-        daoUtil.setInt( 8, component.getIdComponent( ) );
+        daoUtil.setInt( 8, component.getId( ) );
                 
 		daoUtil.executeUpdate( );
 		daoUtil.free( );
@@ -203,7 +203,7 @@ public final class ComponentDAO implements IComponentDAO
 		{
                 Component component = new Component(  );
 
-                    component.setIdComponent( daoUtil.getInt( 1 ) );
+                    component.setId( daoUtil.getInt( 1 ) );
                     component.setGroupId( daoUtil.getString( 2 ) );
                     component.setTitle( daoUtil.getString( 3 ) );
                     component.setDescription( daoUtil.getString( 4 ) );

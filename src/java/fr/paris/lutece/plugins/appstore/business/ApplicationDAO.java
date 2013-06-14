@@ -51,12 +51,12 @@ public final class ApplicationDAO implements IApplicationDAO
 	
 	// Constants
 	
-	private static final String SQL_QUERY_NEW_PK = "SELECT max( id_application ) FROM appstore_site";
-	private static final String SQL_QUERY_SELECT = "SELECT id_application, title, description, id_category, application_order, id_icon, pom_url, webapp_url, sql_script_url FROM appstore_site WHERE id_application = ?";
-	private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_site ( id_application, title, description, id_category, application_order, id_icon, pom_url, webapp_url, sql_script_url ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
-	private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_site WHERE id_application = ? ";
-	private static final String SQL_QUERY_UPDATE = "UPDATE appstore_site SET id_application = ?, title = ?, description = ?, id_category = ?, application_order = ?, id_icon = ?, pom_url = ?, webapp_url = ?, sql_script_url = ? WHERE id_application = ?";
-	private static final String SQL_QUERY_SELECTALL = "SELECT id_application, title, description, id_category, application_order, id_icon, pom_url, webapp_url, sql_script_url FROM appstore_site";
+	private static final String SQL_QUERY_NEW_PK = "SELECT max( id_application ) FROM appstore_application";
+	private static final String SQL_QUERY_SELECT = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category AND id_application = ?";
+	private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_application ( id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+	private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_application WHERE id_application = ? ";
+	private static final String SQL_QUERY_UPDATE = "UPDATE appstore_application SET id_application = ?, title = ?, description = ?, id_category = ?, id_order = ?, id_icon = ?, pom_url = ?, webapp_url = ?, sql_script_url = ? WHERE id_application = ?";
+	private static final String SQL_QUERY_SELECTALL = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category ORDER by a.id_order";
 
 
 	
@@ -98,13 +98,13 @@ public final class ApplicationDAO implements IApplicationDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT , plugin );
                 
-		application.setIdApplication( newPrimaryKey( plugin ) );
+		application.setId( newPrimaryKey( plugin ) );
                 
-                daoUtil.setInt ( 1, application.getIdApplication ( ) );
+                daoUtil.setInt ( 1, application.getId ( ) );
                 daoUtil.setString ( 2, application.getTitle ( ) );
                 daoUtil.setString ( 3, application.getDescription ( ) );
                 daoUtil.setInt ( 4, application.getIdCategory ( ) );
-                daoUtil.setInt ( 5, application.getApplicationOrder ( ) );
+                daoUtil.setInt ( 5, application.getOrder ( ) );
                 daoUtil.setInt ( 6, application.getIdIcon ( ) );
                 daoUtil.setString ( 7, application.getPomUrl ( ) );
                 daoUtil.setString ( 8, application.getWebappUrl ( ) );
@@ -135,15 +135,17 @@ public final class ApplicationDAO implements IApplicationDAO
 		{
 			application = new Application();
 
-                        application.setIdApplication( daoUtil.getInt(  1 ) );
+                        application.setId( daoUtil.getInt(  1 ) );
                         application.setTitle( daoUtil.getString(  2 ) );
                         application.setDescription( daoUtil.getString(  3 ) );
                         application.setIdCategory( daoUtil.getInt(  4 ) );
-                        application.setApplicationOrder( daoUtil.getInt(  5 ) );
+                        application.setOrder( daoUtil.getInt(  5 ) );
                         application.setIdIcon( daoUtil.getInt(  6 ) );
                         application.setPomUrl( daoUtil.getString(  7 ) );
                         application.setWebappUrl( daoUtil.getString(  8 ) );
                         application.setSqlScriptUrl( daoUtil.getString(  9 ) );
+                        application.setCategory( daoUtil.getString( 10 ));
+
 		}
 
 		daoUtil.free();
@@ -176,16 +178,16 @@ public final class ApplicationDAO implements IApplicationDAO
 	{
 		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE , plugin );
                 
-        daoUtil.setInt( 1, application.getIdApplication( ) );
+        daoUtil.setInt( 1, application.getId( ) );
         daoUtil.setString( 2, application.getTitle( ) );
         daoUtil.setString( 3, application.getDescription( ) );
         daoUtil.setInt( 4, application.getIdCategory( ) );
-        daoUtil.setInt( 5, application.getApplicationOrder( ) );
+        daoUtil.setInt( 5, application.getOrder( ) );
         daoUtil.setInt( 6, application.getIdIcon( ) );
         daoUtil.setString( 7, application.getPomUrl( ) );
         daoUtil.setString( 8, application.getWebappUrl( ) );
         daoUtil.setString( 9, application.getSqlScriptUrl( ) );
-        daoUtil.setInt( 10, application.getIdApplication( ) );
+        daoUtil.setInt( 10, application.getId( ) );
                 
 		daoUtil.executeUpdate( );
 		daoUtil.free( );
@@ -209,15 +211,16 @@ public final class ApplicationDAO implements IApplicationDAO
 		{
                 Application application = new Application(  );
 
-                    application.setIdApplication( daoUtil.getInt( 1 ) );
+                    application.setId( daoUtil.getInt( 1 ) );
                     application.setTitle( daoUtil.getString( 2 ) );
                     application.setDescription( daoUtil.getString( 3 ) );
                     application.setIdCategory( daoUtil.getInt( 4 ) );
-                    application.setApplicationOrder( daoUtil.getInt( 5 ) );
+                    application.setOrder( daoUtil.getInt( 5 ) );
                     application.setIdIcon( daoUtil.getInt( 6 ) );
                     application.setPomUrl( daoUtil.getString( 7 ) );
                     application.setWebappUrl( daoUtil.getString( 8 ) );
                     application.setSqlScriptUrl( daoUtil.getString( 9 ) );
+                    application.setCategory( daoUtil.getString( 10 ));
 
                 applicationList.add( application );
 		}

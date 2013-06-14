@@ -51,7 +51,7 @@ public class Component
 	 * Returns the IdComponent
 	 * @return The IdComponent
 	 */
-	public int getIdComponent()
+	public int getId()
 	{
 		return _nIdComponent;
 	}
@@ -60,7 +60,7 @@ public class Component
 	 * Sets the IdComponent
 	 * @param nIdComponent The IdComponent
 	 */ 
-	public void setIdComponent( int nIdComponent )
+	public void setId( int nIdComponent )
 	{
 		_nIdComponent = nIdComponent;
 	}

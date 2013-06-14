@@ -42,8 +42,7 @@ import fr.paris.lutece.portal.service.plugin.Plugin;
 
 public class ComponentBusinessTest extends LuteceTestCase
 {
-    private final static int IDCOMPONENT1 = 1;
-    private final static int IDCOMPONENT2 = 2;
+    private final static int IDCOMPONENT = 1;
     private final static String GROUPID1 = "GroupId1";
     private final static String GROUPID2 = "GroupId2";
     private final static String TITLE1 = "Title1";
@@ -61,7 +60,7 @@ public class ComponentBusinessTest extends LuteceTestCase
     {
         // Initialize an object
         Component component = new Component();
-        component.setIdComponent( IDCOMPONENT1 );
+        component.setId( IDCOMPONENT );
         component.setGroupId( GROUPID1 );
         component.setTitle( TITLE1 );
         component.setDescription( DESCRIPTION1 );
@@ -71,8 +70,8 @@ public class ComponentBusinessTest extends LuteceTestCase
 
         // Create test
         ComponentHome.create( component );
-        Component componentStored = ComponentHome.findByPrimaryKey( component.getIdComponent() );
-        assertEquals( componentStored.getIdComponent() , component.getIdComponent() );
+        Component componentStored = ComponentHome.findByPrimaryKey( component.getId() );
+        assertEquals( componentStored.getId() , component.getId() );
         assertEquals( componentStored.getGroupId() , component.getGroupId() );
         assertEquals( componentStored.getTitle() , component.getTitle() );
         assertEquals( componentStored.getDescription() , component.getDescription() );
@@ -81,7 +80,6 @@ public class ComponentBusinessTest extends LuteceTestCase
         assertEquals( componentStored.getComponentType() , component.getComponentType() );
 
         // Update test
-        component.setIdComponent( IDCOMPONENT2 );
         component.setGroupId( GROUPID2 );
         component.setTitle( TITLE2 );
         component.setDescription( DESCRIPTION2 );
@@ -89,8 +87,7 @@ public class ComponentBusinessTest extends LuteceTestCase
         component.setVersion( VERSION2 );
         component.setComponentType( COMPONENTTYPE2 );
         ComponentHome.update( component );
-        componentStored = ComponentHome.findByPrimaryKey( component.getIdComponent() );
-        assertEquals( componentStored.getIdComponent() , component.getIdComponent() );
+        componentStored = ComponentHome.findByPrimaryKey( component.getId() );
         assertEquals( componentStored.getGroupId() , component.getGroupId() );
         assertEquals( componentStored.getTitle() , component.getTitle() );
         assertEquals( componentStored.getDescription() , component.getDescription() );
@@ -102,8 +99,8 @@ public class ComponentBusinessTest extends LuteceTestCase
         ComponentHome.getComponentsList();
 
         // Delete test
-        ComponentHome.remove( component.getIdComponent() );
-        componentStored = ComponentHome.findByPrimaryKey( component.getIdComponent() );
+        ComponentHome.remove( component.getId() );
+        componentStored = ComponentHome.findByPrimaryKey( component.getId() );
         assertNull( componentStored );
         
     }
