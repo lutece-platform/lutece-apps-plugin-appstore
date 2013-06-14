@@ -58,7 +58,6 @@ import fr.paris.lutece.util.html.HtmlTemplate;
 import java.util.HashMap;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
@@ -113,7 +112,6 @@ public class ManageAppStoreJspBean extends PluginAdminPageJspBean
 
 
 // Properties for page titles
-private static final String PROPERTY_PAGE_TITLE_MANAGE_APPSTORES = "appstore.manage_appstores.pageTitle";
     private static final String PROPERTY_PAGE_TITLE_MANAGE_CATEGORYS = "appstore.manage_categorys.pageTitle";
     private static final String PROPERTY_PAGE_TITLE_MODIFY_CATEGORY = "appstore.modify_category.pageTitle";
     private static final String PROPERTY_PAGE_TITLE_CREATE_CATEGORY = "appstore.create_category.pageTitle";

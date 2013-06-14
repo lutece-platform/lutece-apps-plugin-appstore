@@ -1,0 +1,52 @@
+<div class="row-fluid">
+    <div class="span12">
+        <div class="hero-unit">
+            <h1>Lutece <small>Webapp Store</small></h1>
+            <p>Choisissez et télécharger la Webapp qui correspond à vos besoins.</p>
+        </div>
+        <ul class="thumbnails">
+            <#list applications_list as application>
+            
+            <#if application_index % 4 = 0 >
+            
+            </ul>
+            <ul class="thumbnails">
+            
+            </#if>
+            
+            <li class="span3">
+                <div class="thumbnail">
+                    <img src="image?resource_type=appstore_icon_img&id=${application.idIcon}" width="240" height="240" />
+
+                   
+                    <a class="btn btn-primary offset3" href="jsp/site/Portal.jsp?page=appstore&id_application=${application.id}" />
+                    <i class="icon-shopping-cart icon-white"></i>
+                    Choisir
+                    </a>
+                    
+                    <br>
+
+                    <h4>${application.title}</h4>
+                    <p>${application.description}</p>
+
+                </div>
+            </li>
+            </#list>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function($) {
+        $.fn.uniformHeight = function() {
+            var maxHeight = 0,
+                    max = Math.max;
+
+            return this.each(function() {
+                maxHeight = max(maxHeight, $(this).height() + 30);
+            }).height(maxHeight);
+        }
+    })(jQuery);
+
+    $(".thumbnails").find(".thumbnail").uniformHeight();
+</script>
