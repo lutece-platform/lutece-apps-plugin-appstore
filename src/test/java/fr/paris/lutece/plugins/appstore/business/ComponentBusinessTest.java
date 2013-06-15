@@ -31,14 +31,14 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.appstore.business;
 
-import fr.paris.lutece.test.LuteceTestCase;
 import fr.paris.lutece.plugins.appstore.business.Component;
 import fr.paris.lutece.plugins.appstore.business.ComponentHome;
-import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.plugin.Plugin;
+import fr.paris.lutece.portal.service.plugin.PluginService;
+import fr.paris.lutece.test.LuteceTestCase;
+
 
 public class ComponentBusinessTest extends LuteceTestCase
 {
@@ -59,7 +59,7 @@ public class ComponentBusinessTest extends LuteceTestCase
     public void testBusiness(  )
     {
         // Initialize an object
-        Component component = new Component();
+        Component component = new Component(  );
         component.setId( IDCOMPONENT );
         component.setGroupId( GROUPID1 );
         component.setTitle( TITLE1 );
@@ -70,14 +70,15 @@ public class ComponentBusinessTest extends LuteceTestCase
 
         // Create test
         ComponentHome.create( component );
-        Component componentStored = ComponentHome.findByPrimaryKey( component.getId() );
-        assertEquals( componentStored.getId() , component.getId() );
-        assertEquals( componentStored.getGroupId() , component.getGroupId() );
-        assertEquals( componentStored.getTitle() , component.getTitle() );
-        assertEquals( componentStored.getDescription() , component.getDescription() );
-        assertEquals( componentStored.getArtifactId() , component.getArtifactId() );
-        assertEquals( componentStored.getVersion() , component.getVersion() );
-        assertEquals( componentStored.getComponentType() , component.getComponentType() );
+
+        Component componentStored = ComponentHome.findByPrimaryKey( component.getId(  ) );
+        assertEquals( componentStored.getId(  ), component.getId(  ) );
+        assertEquals( componentStored.getGroupId(  ), component.getGroupId(  ) );
+        assertEquals( componentStored.getTitle(  ), component.getTitle(  ) );
+        assertEquals( componentStored.getDescription(  ), component.getDescription(  ) );
+        assertEquals( componentStored.getArtifactId(  ), component.getArtifactId(  ) );
+        assertEquals( componentStored.getVersion(  ), component.getVersion(  ) );
+        assertEquals( componentStored.getComponentType(  ), component.getComponentType(  ) );
 
         // Update test
         component.setGroupId( GROUPID2 );
@@ -87,22 +88,20 @@ public class ComponentBusinessTest extends LuteceTestCase
         component.setVersion( VERSION2 );
         component.setComponentType( COMPONENTTYPE2 );
         ComponentHome.update( component );
-        componentStored = ComponentHome.findByPrimaryKey( component.getId() );
-        assertEquals( componentStored.getGroupId() , component.getGroupId() );
-        assertEquals( componentStored.getTitle() , component.getTitle() );
-        assertEquals( componentStored.getDescription() , component.getDescription() );
-        assertEquals( componentStored.getArtifactId() , component.getArtifactId() );
-        assertEquals( componentStored.getVersion() , component.getVersion() );
-        assertEquals( componentStored.getComponentType() , component.getComponentType() );
+        componentStored = ComponentHome.findByPrimaryKey( component.getId(  ) );
+        assertEquals( componentStored.getGroupId(  ), component.getGroupId(  ) );
+        assertEquals( componentStored.getTitle(  ), component.getTitle(  ) );
+        assertEquals( componentStored.getDescription(  ), component.getDescription(  ) );
+        assertEquals( componentStored.getArtifactId(  ), component.getArtifactId(  ) );
+        assertEquals( componentStored.getVersion(  ), component.getVersion(  ) );
+        assertEquals( componentStored.getComponentType(  ), component.getComponentType(  ) );
 
         // List test
-        ComponentHome.getComponentsList();
+        ComponentHome.getComponentsList(  );
 
         // Delete test
-        ComponentHome.remove( component.getId() );
-        componentStored = ComponentHome.findByPrimaryKey( component.getId() );
+        ComponentHome.remove( component.getId(  ) );
+        componentStored = ComponentHome.findByPrimaryKey( component.getId(  ) );
         assertNull( componentStored );
-        
     }
-
 }

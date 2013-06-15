@@ -31,30 +31,27 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
+
 import java.util.Collection;
+
 
 /**
  * This class provides instances management methods (create, find, ...) for Component objects
  */
-
 public final class ComponentHome
 {
-
     // Static variable pointed at the DAO instance
-
-    private static IComponentDAO _dao = ( IComponentDAO ) SpringContextService.getBean( "appstore.componentDAO" );
+    private static IComponentDAO _dao = (IComponentDAO) SpringContextService.getBean( "appstore.componentDAO" );
     private static Plugin _plugin = PluginService.getPlugin( "appstore" );
 
     /**
      * Private constructor - this class need not be instantiated
      */
-
     private ComponentHome(  )
     {
     }
@@ -64,7 +61,6 @@ public final class ComponentHome
      * @param component The instance of the Component which contains the informations to store
      * @return The  instance of component which has been created with its primary key.
      */
-
     public static Component create( Component component )
     {
         _dao.insert( component, _plugin );
@@ -72,13 +68,11 @@ public final class ComponentHome
         return component;
     }
 
-
     /**
      * Update of the component which is specified in parameter
      * @param component The instance of the Component which contains the data to store
      * @return The instance of the  component which has been updated
      */
-
     public static Component update( Component component )
     {
         _dao.store( component, _plugin );
@@ -86,18 +80,14 @@ public final class ComponentHome
         return component;
     }
 
-
     /**
      * Remove the component whose identifier is specified in parameter
      * @param nComponentId The component Id
      */
-
-
     public static void remove( int nComponentId )
     {
         _dao.delete( nComponentId, _plugin );
     }
-
 
     ///////////////////////////////////////////////////////////////////////////
     // Finders
@@ -107,22 +97,17 @@ public final class ComponentHome
      * @param nKey The component primary key
      * @return an instance of Component
      */
-
     public static Component findByPrimaryKey( int nKey )
     {
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
-
 
     /**
      * Load the data of all the component objects and returns them in form of a collection
      * @return the collection which contains the data of all the component objects
      */
-
-    public static Collection<Component> getComponentsList( )
+    public static Collection<Component> getComponentsList(  )
     {
         return _dao.selectComponentsList( _plugin );
     }
-
 }
-

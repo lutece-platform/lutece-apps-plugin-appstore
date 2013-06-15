@@ -2,11 +2,11 @@
 
 <%@ page errorPage="../../ErrorPage.jsp" %>
 
-<jsp:useBean id="manageappstore" scope="session" class="fr.paris.lutece.plugins.appstore.web.ManageAppStoreJspBean" />
+<jsp:useBean id="appstoreCategory" scope="session" class="fr.paris.lutece.plugins.appstore.web.CategoryJspBean" />
 
 <%
-    manageappstore.init( request, manageappstore.RIGHT_MANAGEAPPSTORE );
-    response.sendRedirect( manageappstore.doRemoveCategory( request ) );
+    appstoreCategory.init( request, appstoreCategory.RIGHT_MANAGEAPPSTORE );
+    response.sendRedirect( appstoreCategory.doRemoveCategory( request ) );
 %>
 
 

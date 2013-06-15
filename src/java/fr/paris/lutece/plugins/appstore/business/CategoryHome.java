@@ -31,31 +31,28 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 import fr.paris.lutece.util.ReferenceList;
+
 import java.util.Collection;
+
 
 /**
  * This class provides instances management methods (create, find, ...) for Category objects
  */
-
 public final class CategoryHome
 {
-
     // Static variable pointed at the DAO instance
-
-    private static ICategoryDAO _dao = ( ICategoryDAO ) SpringContextService.getBean( "appstore.categoryDAO" );
+    private static ICategoryDAO _dao = (ICategoryDAO) SpringContextService.getBean( "appstore.categoryDAO" );
     private static Plugin _plugin = PluginService.getPlugin( "appstore" );
 
     /**
      * Private constructor - this class need not be instantiated
      */
-
     private CategoryHome(  )
     {
     }
@@ -65,7 +62,6 @@ public final class CategoryHome
      * @param category The instance of the Category which contains the informations to store
      * @return The  instance of category which has been created with its primary key.
      */
-
     public static Category create( Category category )
     {
         _dao.insert( category, _plugin );
@@ -73,13 +69,11 @@ public final class CategoryHome
         return category;
     }
 
-
     /**
      * Update of the category which is specified in parameter
      * @param category The instance of the Category which contains the data to store
      * @return The instance of the  category which has been updated
      */
-
     public static Category update( Category category )
     {
         _dao.store( category, _plugin );
@@ -87,18 +81,14 @@ public final class CategoryHome
         return category;
     }
 
-
     /**
      * Remove the category whose identifier is specified in parameter
      * @param nCategoryId The category Id
      */
-
-
     public static void remove( int nCategoryId )
     {
         _dao.delete( nCategoryId, _plugin );
     }
-
 
     ///////////////////////////////////////////////////////////////////////////
     // Finders
@@ -108,36 +98,33 @@ public final class CategoryHome
      * @param nKey The category primary key
      * @return an instance of Category
      */
-
     public static Category findByPrimaryKey( int nKey )
     {
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
-
 
     /**
      * Load the data of all the category objects and returns them in form of a collection
      * @return the collection which contains the data of all the category objects
      */
-
-    public static Collection<Category> getCategorysList( )
+    public static Collection<Category> getCategorysList(  )
     {
         return _dao.selectCategorysList( _plugin );
     }
-    
+
     /**
      * Gets categories as reference list
      * @return The reference list
      */
-    public static ReferenceList getCategories( )
+    public static ReferenceList getCategories(  )
     {
-        ReferenceList list = new ReferenceList();
-        for( Category category : getCategorysList() )
+        ReferenceList list = new ReferenceList(  );
+
+        for ( Category category : getCategorysList(  ) )
         {
-            list.addItem( category.getId(), category.getName() );
+            list.addItem( category.getId(  ), category.getName(  ) );
         }
+
         return list;
     }
-
 }
-

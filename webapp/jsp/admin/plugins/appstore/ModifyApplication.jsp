@@ -4,10 +4,10 @@
 
 <jsp:include page="../../AdminHeader.jsp" />
 
-<jsp:useBean id="manageappstore" scope="session" class="fr.paris.lutece.plugins.appstore.web.ManageAppStoreJspBean" />
+<jsp:useBean id="appstoreApplication" scope="session" class="fr.paris.lutece.plugins.appstore.web.ApplicationJspBean" />
 
-<% manageappstore.init( request, manageappstore.RIGHT_MANAGEAPPSTORE ); %>
-<%= manageappstore.getModifyApplication ( request ) %>
+<% appstoreApplication.init( request, appstoreApplication.RIGHT_MANAGEAPPSTORE ); %>
+<%= appstoreApplication.getModifyApplication ( request ) %>
 
 <%@ include file="../../AdminFooter.jsp" %>
 

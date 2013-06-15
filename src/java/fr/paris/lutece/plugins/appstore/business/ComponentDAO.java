@@ -31,8 +31,6 @@
  *
  * License 1.0
  */
-
-
 package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
@@ -45,177 +43,158 @@ import java.util.Collection;
 /**
  * This class provides Data Access methods for Component objects
  */
-
 public final class ComponentDAO implements IComponentDAO
 {
-	
-	// Constants
-	
-	private static final String SQL_QUERY_NEW_PK = "SELECT max( id_component ) FROM appstore_component";
-	private static final String SQL_QUERY_SELECT = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component WHERE id_component = ?";
-	private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_component ( id_component, group_id, title, description, artifact_id, version, component_type ) VALUES ( ?, ?, ?, ?, ?, ?, ? ) ";
-	private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_component WHERE id_component = ? ";
-	private static final String SQL_QUERY_UPDATE = "UPDATE appstore_component SET id_component = ?, group_id = ?, title = ?, description = ?, artifact_id = ?, version = ?, component_type = ? WHERE id_component = ?";
-	private static final String SQL_QUERY_SELECTALL = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component";
+    // Constants
+    private static final String SQL_QUERY_NEW_PK = "SELECT max( id_component ) FROM appstore_component";
+    private static final String SQL_QUERY_SELECT = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component WHERE id_component = ?";
+    private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_component ( id_component, group_id, title, description, artifact_id, version, component_type ) VALUES ( ?, ?, ?, ?, ?, ?, ? ) ";
+    private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_component WHERE id_component = ? ";
+    private static final String SQL_QUERY_UPDATE = "UPDATE appstore_component SET id_component = ?, group_id = ?, title = ?, description = ?, artifact_id = ?, version = ?, component_type = ? WHERE id_component = ?";
+    private static final String SQL_QUERY_SELECTALL = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component";
 
+    /**
+     * Generates a new primary key
+     * @param plugin The Plugin
+     * @return The new primary key
+     */
+    public int newPrimaryKey( Plugin plugin )
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK, plugin );
+        daoUtil.executeQuery(  );
 
-	
-	/**
-	 * Generates a new primary key
-         * @param plugin The Plugin
-	 * @return The new primary key
-	 */
-    
-	public int newPrimaryKey( Plugin plugin)
-	{
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK , plugin  );
-		daoUtil.executeQuery();
+        int nKey;
 
-		int nKey;
+        if ( !daoUtil.next(  ) )
+        {
+            // if the table is empty
+            nKey = 1;
+        }
 
-		if( !daoUtil.next() )
-		{
-			// if the table is empty
-			nKey = 1;
-		}
+        nKey = daoUtil.getInt( 1 ) + 1;
+        daoUtil.free(  );
 
-		nKey = daoUtil.getInt( 1 ) + 1;
-		daoUtil.free();
+        return nKey;
+    }
 
-		return nKey;
-	}
+    /**
+     * Insert a new record in the table.
+     * @param component instance of the Component object to insert
+     * @param plugin The plugin
+     */
+    public void insert( Component component, Plugin plugin )
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, plugin );
 
+        component.setId( newPrimaryKey( plugin ) );
 
+        daoUtil.setInt( 1, component.getId(  ) );
+        daoUtil.setString( 2, component.getGroupId(  ) );
+        daoUtil.setString( 3, component.getTitle(  ) );
+        daoUtil.setString( 4, component.getDescription(  ) );
+        daoUtil.setString( 5, component.getArtifactId(  ) );
+        daoUtil.setString( 6, component.getVersion(  ) );
+        daoUtil.setString( 7, component.getComponentType(  ) );
 
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
+    }
 
-	/**
-	 * Insert a new record in the table.
-	 * @param component instance of the Component object to insert
-         * @param plugin The plugin
-	 */
+    /**
+     * Load the data of the component from the table
+     * @param nId The identifier of the component
+     * @param plugin The plugin
+     * @return the instance of the Component
+     */
+    public Component load( int nId, Plugin plugin )
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
+        daoUtil.setInt( 1, nId );
+        daoUtil.executeQuery(  );
 
-	public void insert( Component component, Plugin plugin )
-	{
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT , plugin );
-                
-		component.setId( newPrimaryKey( plugin ) );
-                
-                daoUtil.setInt ( 1, component.getId ( ) );
-                daoUtil.setString ( 2, component.getGroupId ( ) );
-                daoUtil.setString ( 3, component.getTitle ( ) );
-                daoUtil.setString ( 4, component.getDescription ( ) );
-                daoUtil.setString ( 5, component.getArtifactId ( ) );
-                daoUtil.setString ( 6, component.getVersion ( ) );
-                daoUtil.setString ( 7, component.getComponentType ( ) );
+        Component component = null;
 
-		daoUtil.executeUpdate();
-		daoUtil.free();
-	}
+        if ( daoUtil.next(  ) )
+        {
+            component = new Component(  );
 
+            component.setId( daoUtil.getInt( 1 ) );
+            component.setGroupId( daoUtil.getString( 2 ) );
+            component.setTitle( daoUtil.getString( 3 ) );
+            component.setDescription( daoUtil.getString( 4 ) );
+            component.setArtifactId( daoUtil.getString( 5 ) );
+            component.setVersion( daoUtil.getString( 6 ) );
+            component.setComponentType( daoUtil.getString( 7 ) );
+        }
 
-	/**
-	 * Load the data of the component from the table
-	 * @param nId The identifier of the component
-         * @param plugin The plugin
-	 * @return the instance of the Component
-	 */
+        daoUtil.free(  );
 
+        return component;
+    }
 
-        public Component load( int nId, Plugin plugin )
-	{
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT , plugin );
-		daoUtil.setInt( 1 , nId );
-		daoUtil.executeQuery();
+    /**
+     * Delete a record from the table
+     * @param nComponentId The identifier of the component
+     * @param plugin The plugin
+     */
+    public void delete( int nComponentId, Plugin plugin )
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
+        daoUtil.setInt( 1, nComponentId );
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
+    }
 
-		Component component = null;
+    /**
+     * Update the record in the table
+     * @param component The reference of the component
+     * @param plugin The plugin
+     */
+    public void store( Component component, Plugin plugin )
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
 
-		if ( daoUtil.next() )
-		{
-			component = new Component();
+        daoUtil.setInt( 1, component.getId(  ) );
+        daoUtil.setString( 2, component.getGroupId(  ) );
+        daoUtil.setString( 3, component.getTitle(  ) );
+        daoUtil.setString( 4, component.getDescription(  ) );
+        daoUtil.setString( 5, component.getArtifactId(  ) );
+        daoUtil.setString( 6, component.getVersion(  ) );
+        daoUtil.setString( 7, component.getComponentType(  ) );
+        daoUtil.setInt( 8, component.getId(  ) );
 
-                        component.setId( daoUtil.getInt(  1 ) );
-                        component.setGroupId( daoUtil.getString(  2 ) );
-                        component.setTitle( daoUtil.getString(  3 ) );
-                        component.setDescription( daoUtil.getString(  4 ) );
-                        component.setArtifactId( daoUtil.getString(  5 ) );
-                        component.setVersion( daoUtil.getString(  6 ) );
-                        component.setComponentType( daoUtil.getString(  7 ) );
-		}
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
+    }
 
-		daoUtil.free();
-		return component;
-	}
+    /**
+     * Load the data of all the components and returns them as a collection
+     * @param plugin The plugin
+     * @return The Collection which contains the data of all the components
+     */
+    public Collection<Component> selectComponentsList( Plugin plugin )
+    {
+        Collection<Component> componentList = new ArrayList<Component>(  );
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
+        daoUtil.executeQuery(  );
 
+        while ( daoUtil.next(  ) )
+        {
+            Component component = new Component(  );
 
-	/**
-	 * Delete a record from the table
-         * @param nComponentId The identifier of the component
-         * @param plugin The plugin
-	 */
+            component.setId( daoUtil.getInt( 1 ) );
+            component.setGroupId( daoUtil.getString( 2 ) );
+            component.setTitle( daoUtil.getString( 3 ) );
+            component.setDescription( daoUtil.getString( 4 ) );
+            component.setArtifactId( daoUtil.getString( 5 ) );
+            component.setVersion( daoUtil.getString( 6 ) );
+            component.setComponentType( daoUtil.getString( 7 ) );
 
-	public void delete( int nComponentId, Plugin plugin )
-	{
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE , plugin );
-		daoUtil.setInt( 1 , nComponentId );
-		daoUtil.executeUpdate();
-		daoUtil.free();
-	}
+            componentList.add( component );
+        }
 
+        daoUtil.free(  );
 
-	/**
-	 * Update the record in the table
-	 * @param component The reference of the component
-         * @param plugin The plugin
-	 */
-
-	public void store( Component component, Plugin plugin )
-	{
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE , plugin );
-                
-        daoUtil.setInt( 1, component.getId( ) );
-        daoUtil.setString( 2, component.getGroupId( ) );
-        daoUtil.setString( 3, component.getTitle( ) );
-        daoUtil.setString( 4, component.getDescription( ) );
-        daoUtil.setString( 5, component.getArtifactId( ) );
-        daoUtil.setString( 6, component.getVersion( ) );
-        daoUtil.setString( 7, component.getComponentType( ) );
-        daoUtil.setInt( 8, component.getId( ) );
-                
-		daoUtil.executeUpdate( );
-		daoUtil.free( );
-	}
-
-
-
-	/**
-	 * Load the data of all the components and returns them as a collection
-         * @param plugin The plugin
-	 * @return The Collection which contains the data of all the components
-	 */
-
-        public Collection<Component> selectComponentsList( Plugin plugin )
-	{
-		Collection<Component> componentList = new ArrayList<Component>(  );
-		DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL , plugin );
-		daoUtil.executeQuery(  );
-
-		while ( daoUtil.next(  ) )
-		{
-                Component component = new Component(  );
-
-                    component.setId( daoUtil.getInt( 1 ) );
-                    component.setGroupId( daoUtil.getString( 2 ) );
-                    component.setTitle( daoUtil.getString( 3 ) );
-                    component.setDescription( daoUtil.getString( 4 ) );
-                    component.setArtifactId( daoUtil.getString( 5 ) );
-                    component.setVersion( daoUtil.getString( 6 ) );
-                    component.setComponentType( daoUtil.getString( 7 ) );
-
-                componentList.add( component );
-		}
-
-		daoUtil.free();
-		return componentList;
-	}
-
+        return componentList;
+    }
 }

@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2002-2013, Mairie de Paris
  * All rights reserved.
@@ -32,47 +31,37 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
+
 import java.util.Collection;
 
 
-
- /**
- * IApplicationDAO Interface
- */
-
+/**
+* IApplicationDAO Interface
+*/
 public interface IApplicationDAO
 {
-
-
     /**
      * Insert a new record in the table.
      * @param application instance of the Application object to inssert
      * @param plugin the Plugin
      */
-
     void insert( Application application, Plugin plugin );
 
-
-
-     /**
-     * Update the record in the table
-     * @param application the reference of the Application
-     * @param plugin the Plugin
-     */
-
+    /**
+    * Update the record in the table
+    * @param application the reference of the Application
+    * @param plugin the Plugin
+    */
     void store( Application application, Plugin plugin );
-
 
     /**
      * Delete a record from the table
      * @param nIdApplication int identifier of the Application to delete
      * @param plugin the Plugin
      */
-
     void delete( int nIdApplication, Plugin plugin );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -84,18 +73,12 @@ public interface IApplicationDAO
      * @param plugin the Plugin
      * @return The instance of the application
      */
-
     Application load( int nKey, Plugin plugin );
 
-
-
-     /**
-     * Load the data of all the application objects and returns them as a collection
-     * @param plugin the Plugin
-     * @return The collection which contains the data of all the application objects
-     */
-
+    /**
+    * Load the data of all the application objects and returns them as a collection
+    * @param plugin the Plugin
+    * @return The collection which contains the data of all the application objects
+    */
     Collection<Application> selectApplicationsList( Plugin plugin );
-    
 }
-

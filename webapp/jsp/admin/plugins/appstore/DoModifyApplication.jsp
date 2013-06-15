@@ -2,10 +2,10 @@
 
 <%@ page errorPage="../../ErrorPage.jsp" %>
 
-<jsp:useBean id="manageappstore" scope="session" class="fr.paris.lutece.plugins.appstore.web.ManageAppStoreJspBean" />
+<jsp:useBean id="appstoreApplication" scope="session" class="fr.paris.lutece.plugins.appstore.web.ApplicationJspBean" />
 
 <%
-    manageappstore.init( request, manageappstore.RIGHT_MANAGEAPPSTORE );
-    response.sendRedirect( manageappstore.doModifyApplication( request ) );
+    appstoreApplication.init( request, appstoreApplication.RIGHT_MANAGEAPPSTORE );
+    response.sendRedirect( appstoreApplication.doModifyApplication( request ) );
 %>
 

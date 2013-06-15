@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2002-2013, Mairie de Paris
  * All rights reserved.
@@ -31,139 +30,147 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.appstore.business;
+
 
 /**
  * This is the business class for the object Component
- */ 
+ */
 public class Component
 {
-	// Variables declarations 
-	private int _nIdComponent;
-	private String _strGroupId;
-	private String _strTitle;
-	private String _strDescription;
-	private String _strArtifactId;
-	private String _strVersion;
-	private String _strComponentType;
-	/**
-	 * Returns the IdComponent
-	 * @return The IdComponent
-	 */
-	public int getId()
-	{
-		return _nIdComponent;
-	}
+    // Variables declarations 
+    private int _nIdComponent;
+    private String _strGroupId;
+    private String _strTitle;
+    private String _strDescription;
+    private String _strArtifactId;
+    private String _strVersion;
+    private String _strComponentType;
 
-	/**
-	 * Sets the IdComponent
-	 * @param nIdComponent The IdComponent
-	 */ 
-	public void setId( int nIdComponent )
-	{
-		_nIdComponent = nIdComponent;
-	}
-	/**
-	 * Returns the GroupId
-	 * @return The GroupId
-	 */
-	public String getGroupId()
-	{
-		return _strGroupId;
-	}
+    /**
+     * Returns the IdComponent
+     * @return The IdComponent
+     */
+    public int getId(  )
+    {
+        return _nIdComponent;
+    }
 
-	/**
-	 * Sets the GroupId
-	 * @param strGroupId The GroupId
-	 */ 
-	public void setGroupId( String strGroupId )
-	{
-		_strGroupId = strGroupId;
-	}
-	/**
-	 * Returns the Title
-	 * @return The Title
-	 */
-	public String getTitle()
-	{
-		return _strTitle;
-	}
+    /**
+     * Sets the IdComponent
+     * @param nIdComponent The IdComponent
+     */
+    public void setId( int nIdComponent )
+    {
+        _nIdComponent = nIdComponent;
+    }
 
-	/**
-	 * Sets the Title
-	 * @param strTitle The Title
-	 */ 
-	public void setTitle( String strTitle )
-	{
-		_strTitle = strTitle;
-	}
-	/**
-	 * Returns the Description
-	 * @return The Description
-	 */
-	public String getDescription()
-	{
-		return _strDescription;
-	}
+    /**
+     * Returns the GroupId
+     * @return The GroupId
+     */
+    public String getGroupId(  )
+    {
+        return _strGroupId;
+    }
 
-	/**
-	 * Sets the Description
-	 * @param strDescription The Description
-	 */ 
-	public void setDescription( String strDescription )
-	{
-		_strDescription = strDescription;
-	}
-	/**
-	 * Returns the ArtifactId
-	 * @return The ArtifactId
-	 */
-	public String getArtifactId()
-	{
-		return _strArtifactId;
-	}
+    /**
+     * Sets the GroupId
+     * @param strGroupId The GroupId
+     */
+    public void setGroupId( String strGroupId )
+    {
+        _strGroupId = strGroupId;
+    }
 
-	/**
-	 * Sets the ArtifactId
-	 * @param strArtifactId The ArtifactId
-	 */ 
-	public void setArtifactId( String strArtifactId )
-	{
-		_strArtifactId = strArtifactId;
-	}
-	/**
-	 * Returns the Version
-	 * @return The Version
-	 */
-	public String getVersion()
-	{
-		return _strVersion;
-	}
+    /**
+     * Returns the Title
+     * @return The Title
+     */
+    public String getTitle(  )
+    {
+        return _strTitle;
+    }
 
-	/**
-	 * Sets the Version
-	 * @param strVersion The Version
-	 */ 
-	public void setVersion( String strVersion )
-	{
-		_strVersion = strVersion;
-	}
-	/**
-	 * Returns the ComponentType
-	 * @return The ComponentType
-	 */
-	public String getComponentType()
-	{
-		return _strComponentType;
-	}
+    /**
+     * Sets the Title
+     * @param strTitle The Title
+     */
+    public void setTitle( String strTitle )
+    {
+        _strTitle = strTitle;
+    }
 
-	/**
-	 * Sets the ComponentType
-	 * @param strComponentType The ComponentType
-	 */ 
-	public void setComponentType( String strComponentType )
-	{
-		_strComponentType = strComponentType;
-	}
+    /**
+     * Returns the Description
+     * @return The Description
+     */
+    public String getDescription(  )
+    {
+        return _strDescription;
+    }
+
+    /**
+     * Sets the Description
+     * @param strDescription The Description
+     */
+    public void setDescription( String strDescription )
+    {
+        _strDescription = strDescription;
+    }
+
+    /**
+     * Returns the ArtifactId
+     * @return The ArtifactId
+     */
+    public String getArtifactId(  )
+    {
+        return _strArtifactId;
+    }
+
+    /**
+     * Sets the ArtifactId
+     * @param strArtifactId The ArtifactId
+     */
+    public void setArtifactId( String strArtifactId )
+    {
+        _strArtifactId = strArtifactId;
+    }
+
+    /**
+     * Returns the Version
+     * @return The Version
+     */
+    public String getVersion(  )
+    {
+        return _strVersion;
+    }
+
+    /**
+     * Sets the Version
+     * @param strVersion The Version
+     */
+    public void setVersion( String strVersion )
+    {
+        _strVersion = strVersion;
+    }
+
+    /**
+     * Returns the ComponentType
+     * @return The ComponentType
+     */
+    public String getComponentType(  )
+    {
+        return _strComponentType;
+    }
+
+    /**
+     * Sets the ComponentType
+     * @param strComponentType The ComponentType
+     */
+    public void setComponentType( String strComponentType )
+    {
+        _strComponentType = strComponentType;
+    }
 }

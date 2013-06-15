@@ -10,12 +10,6 @@
 
             <input type="hidden" id="component_id_component" name="component_id_component" value="${component.id}"/>
 
-            <div class="control-group">
-                <label class="control-label" for="component_group_id" >#i18n{appstore.modify_component.rowTitleGroup_id} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_group_id" name="component_group_id" size="60" maxlength="50" value="${component.groupId}" tabindex="1" />
-                </div>
-            </div>
 
             <div class="control-group">
                 <label class="control-label" for="component_title" >#i18n{appstore.modify_component.rowTitleTitle} * :</label>
@@ -39,9 +33,9 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="component_version" >#i18n{appstore.modify_component.rowTitleVersion} * :</label>
+                <label class="control-label" for="component_group_id" >#i18n{appstore.modify_component.rowTitleGroup_id} * :</label>
                 <div class="controls">
-                    <input type="text" id="component_version" name="component_version" size="60" maxlength="50" value="${component.version}" tabindex="1" />
+                    <input type="text" id="component_group_id" name="component_group_id" size="60" maxlength="50" value="${component.groupId}" tabindex="1" />
                 </div>
             </div>
 
@@ -49,6 +43,13 @@
                 <label class="control-label" for="component_component_type" >#i18n{appstore.modify_component.rowTitleComponent_type} * :</label>
                 <div class="controls">
                     <input type="text" id="component_component_type" name="component_component_type" size="60" maxlength="50" value="${component.componentType}" tabindex="1" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="component_version" >#i18n{appstore.modify_component.rowTitleVersion} * :</label>
+                <div class="controls">
+                    <input type="text" id="component_version" name="component_version" size="60" maxlength="50" value="${component.version}" tabindex="1" readonly/>
                 </div>
             </div>
 

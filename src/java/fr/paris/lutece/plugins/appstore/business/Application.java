@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2002-2013, Mairie de Paris
  * All rights reserved.
@@ -34,13 +33,13 @@
  */
 package fr.paris.lutece.plugins.appstore.business;
 
+
 /**
  * This is the business class for the object Application
  */
 public class Application
 {
     // Variables declarations 
-
     private int _nIdApplication;
     private String _strTitle;
     private String _strDescription;
@@ -57,7 +56,7 @@ public class Application
      *
      * @return The IdApplication
      */
-    public int getId()
+    public int getId(  )
     {
         return _nIdApplication;
     }
@@ -67,7 +66,7 @@ public class Application
      *
      * @param nIdApplication The IdApplication
      */
-    public void setId(int nIdApplication)
+    public void setId( int nIdApplication )
     {
         _nIdApplication = nIdApplication;
     }
@@ -77,7 +76,7 @@ public class Application
      *
      * @return The Title
      */
-    public String getTitle()
+    public String getTitle(  )
     {
         return _strTitle;
     }
@@ -87,7 +86,7 @@ public class Application
      *
      * @param strTitle The Title
      */
-    public void setTitle(String strTitle)
+    public void setTitle( String strTitle )
     {
         _strTitle = strTitle;
     }
@@ -97,7 +96,7 @@ public class Application
      *
      * @return The Description
      */
-    public String getDescription()
+    public String getDescription(  )
     {
         return _strDescription;
     }
@@ -107,7 +106,7 @@ public class Application
      *
      * @param strDescription The Description
      */
-    public void setDescription(String strDescription)
+    public void setDescription( String strDescription )
     {
         _strDescription = strDescription;
     }
@@ -117,7 +116,7 @@ public class Application
      *
      * @return The IdCategory
      */
-    public int getIdCategory()
+    public int getIdCategory(  )
     {
         return _nIdCategory;
     }
@@ -127,7 +126,7 @@ public class Application
      *
      * @param nIdCategory The IdCategory
      */
-    public void setIdCategory(int nIdCategory)
+    public void setIdCategory( int nIdCategory )
     {
         _nIdCategory = nIdCategory;
     }
@@ -137,7 +136,7 @@ public class Application
      *
      * @return The Category
      */
-    public String getCategory()
+    public String getCategory(  )
     {
         return _strCategory;
     }
@@ -147,7 +146,7 @@ public class Application
      *
      * @param strCategory The Category
      */
-    public void setCategory(String strCategory)
+    public void setCategory( String strCategory )
     {
         _strCategory = strCategory;
     }
@@ -157,7 +156,7 @@ public class Application
      *
      * @return The ApplicationOrder
      */
-    public int getOrder()
+    public int getOrder(  )
     {
         return _nOrder;
     }
@@ -167,7 +166,7 @@ public class Application
      *
      * @param nApplicationOrder The ApplicationOrder
      */
-    public void setOrder(int nApplicationOrder)
+    public void setOrder( int nApplicationOrder )
     {
         _nOrder = nApplicationOrder;
     }
@@ -177,7 +176,7 @@ public class Application
      *
      * @return The IdIcon
      */
-    public int getIdIcon()
+    public int getIdIcon(  )
     {
         return _nIdIcon;
     }
@@ -187,7 +186,7 @@ public class Application
      *
      * @param nIdIcon The IdIcon
      */
-    public void setIdIcon(int nIdIcon)
+    public void setIdIcon( int nIdIcon )
     {
         _nIdIcon = nIdIcon;
     }
@@ -197,7 +196,7 @@ public class Application
      *
      * @return The PomUrl
      */
-    public String getPomUrl()
+    public String getPomUrl(  )
     {
         return _strPomUrl;
     }
@@ -207,7 +206,7 @@ public class Application
      *
      * @param strPomUrl The PomUrl
      */
-    public void setPomUrl(String strPomUrl)
+    public void setPomUrl( String strPomUrl )
     {
         _strPomUrl = strPomUrl;
     }
@@ -217,7 +216,7 @@ public class Application
      *
      * @return The WebappUrl
      */
-    public String getWebappUrl()
+    public String getWebappUrl(  )
     {
         return _strWebappUrl;
     }
@@ -227,7 +226,7 @@ public class Application
      *
      * @param strWebappUrl The WebappUrl
      */
-    public void setWebappUrl(String strWebappUrl)
+    public void setWebappUrl( String strWebappUrl )
     {
         _strWebappUrl = strWebappUrl;
     }
@@ -237,7 +236,7 @@ public class Application
      *
      * @return The SqlScriptUrl
      */
-    public String getSqlScriptUrl()
+    public String getSqlScriptUrl(  )
     {
         return _strSqlScriptUrl;
     }
@@ -247,7 +246,7 @@ public class Application
      *
      * @param strSqlScriptUrl The SqlScriptUrl
      */
-    public void setSqlScriptUrl(String strSqlScriptUrl)
+    public void setSqlScriptUrl( String strSqlScriptUrl )
     {
         _strSqlScriptUrl = strSqlScriptUrl;
     }

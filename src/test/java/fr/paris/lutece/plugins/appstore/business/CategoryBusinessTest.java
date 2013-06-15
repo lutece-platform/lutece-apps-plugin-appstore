@@ -31,14 +31,14 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.appstore.business;
 
-import fr.paris.lutece.test.LuteceTestCase;
 import fr.paris.lutece.plugins.appstore.business.Category;
 import fr.paris.lutece.plugins.appstore.business.CategoryHome;
-import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.plugin.Plugin;
+import fr.paris.lutece.portal.service.plugin.PluginService;
+import fr.paris.lutece.test.LuteceTestCase;
+
 
 public class CategoryBusinessTest extends LuteceTestCase
 {
@@ -51,34 +51,33 @@ public class CategoryBusinessTest extends LuteceTestCase
     public void testBusiness(  )
     {
         // Initialize an object
-        Category category = new Category();
+        Category category = new Category(  );
         category.setId( IDCATEGORY );
         category.setName( NAME1 );
         category.setCategoryOrder( CATEGORYORDER1 );
 
         // Create test
         CategoryHome.create( category );
-        Category categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
-        assertEquals( categoryStored.getId() , category.getId() );
-        assertEquals( categoryStored.getName() , category.getName() );
-        assertEquals( categoryStored.getCategoryOrder() , category.getCategoryOrder() );
+
+        Category categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
+        assertEquals( categoryStored.getId(  ), category.getId(  ) );
+        assertEquals( categoryStored.getName(  ), category.getName(  ) );
+        assertEquals( categoryStored.getCategoryOrder(  ), category.getCategoryOrder(  ) );
 
         // Update test
-         category.setName( NAME2 );
+        category.setName( NAME2 );
         category.setCategoryOrder( CATEGORYORDER2 );
         CategoryHome.update( category );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
-        assertEquals( categoryStored.getName() , category.getName() );
-        assertEquals( categoryStored.getCategoryOrder() , category.getCategoryOrder() );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
+        assertEquals( categoryStored.getName(  ), category.getName(  ) );
+        assertEquals( categoryStored.getCategoryOrder(  ), category.getCategoryOrder(  ) );
 
         // List test
-        CategoryHome.getCategorysList();
+        CategoryHome.getCategorysList(  );
 
         // Delete test
-        CategoryHome.remove( category.getId() );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getId() );
+        CategoryHome.remove( category.getId(  ) );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
         assertNull( categoryStored );
-        
     }
-
 }

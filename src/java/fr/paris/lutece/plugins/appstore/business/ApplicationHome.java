@@ -31,30 +31,27 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
+
 import java.util.Collection;
+
 
 /**
  * This class provides instances management methods (create, find, ...) for Application objects
  */
-
 public final class ApplicationHome
 {
-
     // Static variable pointed at the DAO instance
-
-    private static IApplicationDAO _dao = ( IApplicationDAO ) SpringContextService.getBean( "appstore.applicationDAO" );
+    private static IApplicationDAO _dao = (IApplicationDAO) SpringContextService.getBean( "appstore.applicationDAO" );
     private static Plugin _plugin = PluginService.getPlugin( "appstore" );
 
     /**
      * Private constructor - this class need not be instantiated
      */
-
     private ApplicationHome(  )
     {
     }
@@ -64,7 +61,6 @@ public final class ApplicationHome
      * @param application The instance of the Application which contains the informations to store
      * @return The  instance of application which has been created with its primary key.
      */
-
     public static Application create( Application application )
     {
         _dao.insert( application, _plugin );
@@ -72,13 +68,11 @@ public final class ApplicationHome
         return application;
     }
 
-
     /**
      * Update of the application which is specified in parameter
      * @param application The instance of the Application which contains the data to store
      * @return The instance of the  application which has been updated
      */
-
     public static Application update( Application application )
     {
         _dao.store( application, _plugin );
@@ -86,18 +80,14 @@ public final class ApplicationHome
         return application;
     }
 
-
     /**
      * Remove the application whose identifier is specified in parameter
      * @param nApplicationId The application Id
      */
-
-
     public static void remove( int nApplicationId )
     {
         _dao.delete( nApplicationId, _plugin );
     }
-
 
     ///////////////////////////////////////////////////////////////////////////
     // Finders
@@ -107,22 +97,17 @@ public final class ApplicationHome
      * @param nKey The application primary key
      * @return an instance of Application
      */
-
     public static Application findByPrimaryKey( int nKey )
     {
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
-
 
     /**
      * Load the data of all the application objects and returns them in form of a collection
      * @return the collection which contains the data of all the application objects
      */
-
-    public static Collection<Application> getApplicationsList( )
+    public static Collection<Application> getApplicationsList(  )
     {
         return _dao.selectApplicationsList( _plugin );
     }
-
 }
-

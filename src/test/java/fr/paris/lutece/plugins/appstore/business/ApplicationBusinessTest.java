@@ -31,14 +31,14 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.appstore.business;
 
-import fr.paris.lutece.test.LuteceTestCase;
 import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
-import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.plugin.Plugin;
+import fr.paris.lutece.portal.service.plugin.PluginService;
+import fr.paris.lutece.test.LuteceTestCase;
+
 
 public class ApplicationBusinessTest extends LuteceTestCase
 {
@@ -64,7 +64,7 @@ public class ApplicationBusinessTest extends LuteceTestCase
     public void testBusiness(  )
     {
         // Initialize an object
-        Application application = new Application();
+        Application application = new Application(  );
         application.setId( IDAPPLICATION1 );
         application.setTitle( TITLE1 );
         application.setDescription( DESCRIPTION1 );
@@ -77,16 +77,17 @@ public class ApplicationBusinessTest extends LuteceTestCase
 
         // Create test
         ApplicationHome.create( application );
-        Application applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
-        assertEquals( applicationStored.getId() , application.getId() );
-        assertEquals( applicationStored.getTitle() , application.getTitle() );
-        assertEquals( applicationStored.getDescription() , application.getDescription() );
-        assertEquals( applicationStored.getIdCategory() , application.getIdCategory() );
-        assertEquals( applicationStored.getOrder() , application.getOrder() );
-        assertEquals( applicationStored.getIdIcon() , application.getIdIcon() );
-        assertEquals( applicationStored.getPomUrl() , application.getPomUrl() );
-        assertEquals( applicationStored.getWebappUrl() , application.getWebappUrl() );
-        assertEquals( applicationStored.getSqlScriptUrl() , application.getSqlScriptUrl() );
+
+        Application applicationStored = ApplicationHome.findByPrimaryKey( application.getId(  ) );
+        assertEquals( applicationStored.getId(  ), application.getId(  ) );
+        assertEquals( applicationStored.getTitle(  ), application.getTitle(  ) );
+        assertEquals( applicationStored.getDescription(  ), application.getDescription(  ) );
+        assertEquals( applicationStored.getIdCategory(  ), application.getIdCategory(  ) );
+        assertEquals( applicationStored.getOrder(  ), application.getOrder(  ) );
+        assertEquals( applicationStored.getIdIcon(  ), application.getIdIcon(  ) );
+        assertEquals( applicationStored.getPomUrl(  ), application.getPomUrl(  ) );
+        assertEquals( applicationStored.getWebappUrl(  ), application.getWebappUrl(  ) );
+        assertEquals( applicationStored.getSqlScriptUrl(  ), application.getSqlScriptUrl(  ) );
 
         // Update test
         application.setId( IDAPPLICATION2 );
@@ -99,25 +100,23 @@ public class ApplicationBusinessTest extends LuteceTestCase
         application.setWebappUrl( WEBAPPURL2 );
         application.setSqlScriptUrl( SQLSCRIPTURL2 );
         ApplicationHome.update( application );
-        applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
-        assertEquals( applicationStored.getId() , application.getId() );
-        assertEquals( applicationStored.getTitle() , application.getTitle() );
-        assertEquals( applicationStored.getDescription() , application.getDescription() );
-        assertEquals( applicationStored.getIdCategory() , application.getIdCategory() );
-        assertEquals( applicationStored.getOrder() , application.getOrder() );
-        assertEquals( applicationStored.getIdIcon() , application.getIdIcon() );
-        assertEquals( applicationStored.getPomUrl() , application.getPomUrl() );
-        assertEquals( applicationStored.getWebappUrl() , application.getWebappUrl() );
-        assertEquals( applicationStored.getSqlScriptUrl() , application.getSqlScriptUrl() );
+        applicationStored = ApplicationHome.findByPrimaryKey( application.getId(  ) );
+        assertEquals( applicationStored.getId(  ), application.getId(  ) );
+        assertEquals( applicationStored.getTitle(  ), application.getTitle(  ) );
+        assertEquals( applicationStored.getDescription(  ), application.getDescription(  ) );
+        assertEquals( applicationStored.getIdCategory(  ), application.getIdCategory(  ) );
+        assertEquals( applicationStored.getOrder(  ), application.getOrder(  ) );
+        assertEquals( applicationStored.getIdIcon(  ), application.getIdIcon(  ) );
+        assertEquals( applicationStored.getPomUrl(  ), application.getPomUrl(  ) );
+        assertEquals( applicationStored.getWebappUrl(  ), application.getWebappUrl(  ) );
+        assertEquals( applicationStored.getSqlScriptUrl(  ), application.getSqlScriptUrl(  ) );
 
         // List test
-        ApplicationHome.getApplicationsList();
+        ApplicationHome.getApplicationsList(  );
 
         // Delete test
-        ApplicationHome.remove( application.getId() );
-        applicationStored = ApplicationHome.findByPrimaryKey( application.getId() );
+        ApplicationHome.remove( application.getId(  ) );
+        applicationStored = ApplicationHome.findByPrimaryKey( application.getId(  ) );
         assertNull( applicationStored );
-        
     }
-
 }
