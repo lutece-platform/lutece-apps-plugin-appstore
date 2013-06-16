@@ -1,81 +1,121 @@
 <#include "tabs.html" /> 
 <@tabs tab="applications" />
 
+<div class="row-fluid">
+    <div class="span5 well">
+        <form class="form" method="post"  name="modify_application" action="jsp/admin/plugins/appstore/DoModifyApplication.jsp">
+            <fieldset>
+                <legend>#i18n{appstore.modify_application.tableLabel}</legend>
 
-<div class="content-box">
+                <input type="hidden" id="application_id_application" name="application_id_application" value="${application.id}"/>
 
-    <form class="form-horizontal" method="post"  name="modify_application" action="jsp/admin/plugins/appstore/DoModifyApplication.jsp">
-        <fieldset>
-            <legend>#i18n{appstore.modify_application.tableLabel}</legend>
+                <div class="control-group">
+                    <label class="control-label" for="application_title" >#i18n{appstore.modify_application.rowTitleTitle} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_title" name="application_title" size="60" maxlength="50" value="${application.title}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_description" >#i18n{appstore.modify_application.rowTitleDescription} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_description" name="application_description" size="60" maxlength="50" value="${application.description}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_id_category" >#i18n{appstore.modify_application.rowTitleId_category} * :</label>
+                    <div class="controls">
+                        <@comboWithParams name="application_id_category" items=categories_list default_value="${application.idCategory}" additionalParameters="class=\"\"" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_application_order" >#i18n{appstore.modify_application.rowTitleApplication_order} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" value="${application.order}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_id_icon" >#i18n{appstore.modify_application.rowTitleId_icon} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" value="${application.idIcon}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_pom_url" >#i18n{appstore.modify_application.rowTitlePom_url} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" value="${application.pomUrl}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_webapp_url" >#i18n{appstore.modify_application.rowTitleWebapp_url} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" value="${application.webappUrl}" tabindex="1" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_sql_script_url" >#i18n{appstore.modify_application.rowTitleSql_script_url} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" value="${application.sqlScriptUrl}" tabindex="1" />
+                    </div>
+                </div>
 
 
+                <div class="form-actions">   
+                    <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_application.buttonValidate}" tabindex="3" />
+                    <input class="btn" type="button" onclick="javascript:history.go(-1)" value="Annuler" />	
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+    <div class="span6">
+        <form method="post" action="jsp/admin/plugins/appstore/DoModifyComponentList.jsp">
             <input type="hidden" id="application_id_application" name="application_id_application" value="${application.id}"/>
+            <fieldset>
+                <legend>Liste des composants de l'application</legend>
+                <table class="table table-condensed table-striped">
+                    <tr>
+                        <th> </th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Artifact ID</th>
+                        <th>Version</th>
+                    </tr>
+                    <#list components_list?sort_by('title') as component>
+                    <#assign checked = "" >
+                    <#list app_components_list as selected>
+                    <#if component.id = selected.id >
+                    <#assign checked >checked="checked"</#assign>
+                    <#break>
+                    </#if>
+                    </#list>
 
-            <div class="control-group">
-                <label class="control-label" for="application_title" >#i18n{appstore.modify_application.rowTitleTitle} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_title" name="application_title" size="60" maxlength="50" value="${application.title}" tabindex="1" />
-                </div>
+                    <tr>
+                        <td>
+                            <input class="checkbox" type="checkbox" name="id_component" value="${component.id}" ${checked} />
+                        </td>
+                        <td>${component.title}</td>
+                        <td>${component.description}</td>
+                        <td>${component.artifactId}</td>
+                        <td>${component.version}</td>
+                    </tr>
+                    </#list>        
+                </table>
+            </fieldset>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                    Enregistrer les modifications
+                </button>
             </div>
+        </form>
 
-            <div class="control-group">
-                <label class="control-label" for="application_description" >#i18n{appstore.modify_application.rowTitleDescription} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_description" name="application_description" size="60" maxlength="50" value="${application.description}" tabindex="1" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_id_category" >#i18n{appstore.modify_application.rowTitleId_category} * :</label>
-                <div class="controls">
-                    <@comboWithParams name="application_id_category" items=categories_list default_value="${application.idCategory}" additionalParameters="class=\"\"" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_application_order" >#i18n{appstore.modify_application.rowTitleApplication_order} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" value="${application.order}" tabindex="1" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_id_icon" >#i18n{appstore.modify_application.rowTitleId_icon} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" value="${application.idIcon}" tabindex="1" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_pom_url" >#i18n{appstore.modify_application.rowTitlePom_url} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" value="${application.pomUrl}" tabindex="1" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_webapp_url" >#i18n{appstore.modify_application.rowTitleWebapp_url} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" value="${application.webappUrl}" tabindex="1" />
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="application_sql_script_url" >#i18n{appstore.modify_application.rowTitleSql_script_url} * :</label>
-                <div class="controls">
-                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" value="${application.sqlScriptUrl}" tabindex="1" />
-                </div>
-            </div>
-
-
-            <div class="form-actions">   
-                <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_application.buttonValidate}" tabindex="3" />
-                <input class="btn" type="button" onclick="javascript:history.go(-1)" value="Annuler" />	
-            </div>
-
-        </fieldset>
-    </form>
-
+    </div>
 </div>
-
 

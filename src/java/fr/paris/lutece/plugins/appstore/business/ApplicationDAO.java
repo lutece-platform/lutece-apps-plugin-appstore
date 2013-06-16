@@ -53,6 +53,9 @@ public final class ApplicationDAO implements IApplicationDAO
     private static final String SQL_QUERY_UPDATE = "UPDATE appstore_application SET id_application = ?, title = ?, description = ?, id_category = ?, id_order = ?, id_icon = ?, pom_url = ?, webapp_url = ?, sql_script_url = ? WHERE id_application = ?";
     private static final String SQL_QUERY_SELECTALL = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category ORDER by a.id_order";
 
+    private static final String SQL_QUERY_DELETE_COMPONENT = "DELETE FROM appstore_application_component WHERE id_application = ? ";
+    private static final String SQL_QUERY_INSERT_COMPONENT = "INSERT INTO appstore_application_component ( id_application, id_component ) VALUES ( ?, ? ) ";
+    
     /**
      * Generates a new primary key
      * @param plugin The Plugin
@@ -65,12 +68,7 @@ public final class ApplicationDAO implements IApplicationDAO
 
         int nKey;
 
-        if ( !daoUtil.next(  ) )
-        {
-            // if the table is empty
-            nKey = 1;
-        }
-
+        daoUtil.next(  );
         nKey = daoUtil.getInt( 1 ) + 1;
         daoUtil.free(  );
 
@@ -82,6 +80,7 @@ public final class ApplicationDAO implements IApplicationDAO
      * @param application instance of the Application object to insert
      * @param plugin The plugin
      */
+    @Override
     public void insert( Application application, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, plugin );
@@ -108,6 +107,7 @@ public final class ApplicationDAO implements IApplicationDAO
      * @param plugin The plugin
      * @return the instance of the Application
      */
+    @Override
     public Application load( int nId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
@@ -142,6 +142,7 @@ public final class ApplicationDAO implements IApplicationDAO
      * @param nApplicationId The identifier of the application
      * @param plugin The plugin
      */
+    @Override
     public void delete( int nApplicationId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
@@ -155,6 +156,7 @@ public final class ApplicationDAO implements IApplicationDAO
      * @param application The reference of the application
      * @param plugin The plugin
      */
+    @Override
     public void store( Application application, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
@@ -179,6 +181,7 @@ public final class ApplicationDAO implements IApplicationDAO
      * @param plugin The plugin
      * @return The Collection which contains the data of all the applications
      */
+    @Override
     public Collection<Application> selectApplicationsList( Plugin plugin )
     {
         Collection<Application> applicationList = new ArrayList<Application>(  );
@@ -206,5 +209,26 @@ public final class ApplicationDAO implements IApplicationDAO
         daoUtil.free(  );
 
         return applicationList;
+    }
+
+    @Override
+    public void clearComponentsList(int nApplicationId, Plugin plugin)
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE_COMPONENT, plugin );
+        daoUtil.setInt( 1, nApplicationId );
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
+   }
+
+    @Override
+    public void addComponent(int nApplicationId, int nComponentId, Plugin plugin)
+    {
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT_COMPONENT, plugin );
+
+        daoUtil.setInt( 1, nApplicationId );
+        daoUtil.setInt( 2, nComponentId );
+
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
     }
 }

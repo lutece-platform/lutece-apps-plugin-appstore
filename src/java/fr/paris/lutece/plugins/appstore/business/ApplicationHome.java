@@ -110,4 +110,16 @@ public final class ApplicationHome
     {
         return _dao.selectApplicationsList( _plugin );
     }
+    
+    public static void clearComponentsList(int nApplicationId)
+    {
+        _dao.clearComponentsList( nApplicationId , _plugin );
+    }
+
+    public static void addComponent(int nApplicationId, int nComponentId)
+    {
+        _dao.addComponent( nApplicationId , nComponentId , _plugin );
+    }
+
+
 }

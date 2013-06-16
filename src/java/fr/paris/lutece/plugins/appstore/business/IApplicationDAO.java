@@ -81,4 +81,8 @@ public interface IApplicationDAO
     * @return The collection which contains the data of all the application objects
     */
     Collection<Application> selectApplicationsList( Plugin plugin );
+
+    void clearComponentsList(int nApplicationId, Plugin _plugin);
+
+    void addComponent(int nApplicationId, int nComponentId, Plugin _plugin);
 }

@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.appstore.web;
 import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
 import fr.paris.lutece.plugins.appstore.business.CategoryHome;
+import fr.paris.lutece.plugins.appstore.business.ComponentHome;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
@@ -65,7 +66,7 @@ public class ApplicationJspBean extends AppStoreJspBean
     // Constants
 
     // Parameters
-    private static final String PARAMETER_APPLICATION_ID_APPLICATION = "application_id_application";
+    private static final String PARAMETER_ID_APPLICATION = "application_id_application";
     private static final String PARAMETER_APPLICATION_TITLE = "application_title";
     private static final String PARAMETER_APPLICATION_DESCRIPTION = "application_description";
     private static final String PARAMETER_APPLICATION_ID_CATEGORY = "application_id_category";
@@ -74,6 +75,7 @@ public class ApplicationJspBean extends AppStoreJspBean
     private static final String PARAMETER_APPLICATION_POM_URL = "application_pom_url";
     private static final String PARAMETER_APPLICATION_WEBAPP_URL = "application_webapp_url";
     private static final String PARAMETER_APPLICATION_SQL_SCRIPT_URL = "application_sql_script_url";
+    private static final String PARAMETER_ID_COMPONENT = "id_component";
 
     // templates
     private static final String TEMPLATE_MANAGE_APPLICATIONS = "/admin/plugins/appstore/manage_application.html";
@@ -89,6 +91,8 @@ public class ApplicationJspBean extends AppStoreJspBean
     private static final String MARK_APPLICATION_LIST = "application_list";
     private static final String MARK_APPLICATION = "application";
     private static final String MARK_CATEGORIES_LIST = "categories_list";
+    private static final String MARK_COMPONENTS_LIST = "components_list";
+    private static final String MARK_APP_COMPONENTS_LIST = "app_components_list";
 
     // Jsp Definition
     private static final String JSP_DO_REMOVE_APPLICATION = "jsp/admin/plugins/appstore/DoRemoveApplication.jsp";
@@ -236,9 +240,9 @@ public class ApplicationJspBean extends AppStoreJspBean
      */
     public String getConfirmRemoveApplication( HttpServletRequest request )
     {
-        int nId = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
+        int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         UrlItem url = new UrlItem( JSP_DO_REMOVE_APPLICATION );
-        url.addParameter( PARAMETER_APPLICATION_ID_APPLICATION, nId );
+        url.addParameter( PARAMETER_ID_APPLICATION, nId );
 
         return AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_REMOVE_APPLICATION, url.getUrl(  ),
             AdminMessage.TYPE_CONFIRMATION );
@@ -252,7 +256,7 @@ public class ApplicationJspBean extends AppStoreJspBean
      */
     public String doRemoveApplication( HttpServletRequest request )
     {
-        int nId = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
+        int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         ApplicationHome.remove( nId );
 
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
@@ -268,12 +272,14 @@ public class ApplicationJspBean extends AppStoreJspBean
     {
         setPageTitleProperty( PROPERTY_PAGE_TITLE_MODIFY_APPLICATION );
 
-        int nId = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
+        int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         Application application = ApplicationHome.findByPrimaryKey( nId );
 
         Map<String, Object> model = new HashMap<String, Object>(  );
         model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories(  ) );
         model.put( MARK_APPLICATION, application );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.getComponentsList() );
+        model.put( MARK_APP_COMPONENTS_LIST, ComponentHome.findByApplication(nId) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_APPLICATION, getLocale(  ), model );
 
@@ -288,15 +294,15 @@ public class ApplicationJspBean extends AppStoreJspBean
      */
     public String doModifyApplication( HttpServletRequest request )
     {
-        int nId = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
+        int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         Application application = ApplicationHome.findByPrimaryKey( nId );
 
-        if ( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ).equals( "" ) )
+        if ( request.getParameter( PARAMETER_ID_APPLICATION ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        int nIdApplication = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_APPLICATION ) );
+        int nIdApplication = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         application.setId( nIdApplication );
 
         if ( request.getParameter( PARAMETER_APPLICATION_TITLE ).equals( "" ) )
@@ -359,6 +365,23 @@ public class ApplicationJspBean extends AppStoreJspBean
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
         ApplicationHome.update( application );
 
+        return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
+    }
+    
+    public String doModifyComponentsList( HttpServletRequest request )
+    {
+        String[] ids = request.getParameterValues(PARAMETER_ID_COMPONENT);
+        String strApplicationId = request.getParameter(PARAMETER_ID_APPLICATION);
+        int nApplicationId = Integer.parseInt( strApplicationId );
+        
+        ApplicationHome.clearComponentsList( nApplicationId );
+        
+        for( int i = 0 ; i < ids.length ; i++ )
+        {
+            int nIdComponent = Integer.parseInt( ids[i] );
+            ApplicationHome.addComponent( nApplicationId , nIdComponent );
+        }
+        
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
     }
 }

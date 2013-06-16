@@ -1,67 +1,68 @@
 <#include "tabs.html" /> 
 <@tabs tab="components" />
 
-<div class="content-box">
+<div class="row-fluid">
+    <div class="span12">
 
-    <form class="form-horizontal" method="post"  name="modify_component" action="jsp/admin/plugins/appstore/DoModifyComponent.jsp">
-        <fieldset>
-            <legend>#i18n{appstore.modify_component.tableLabel}</legend>
-
-
-            <input type="hidden" id="component_id_component" name="component_id_component" value="${component.id}"/>
+        <form class="form-horizontal" method="post"  name="modify_component" action="jsp/admin/plugins/appstore/DoModifyComponent.jsp">
+            <fieldset>
+                <legend>#i18n{appstore.modify_component.tableLabel}</legend>
 
 
-            <div class="control-group">
-                <label class="control-label" for="component_title" >#i18n{appstore.modify_component.rowTitleTitle} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_title" name="component_title" size="60" maxlength="50" value="${component.title}" tabindex="1" />
+                <input type="hidden" id="component_id_component" name="component_id_component" value="${component.id}"/>
+
+
+                <div class="control-group">
+                    <label class="control-label" for="component_title" >#i18n{appstore.modify_component.rowTitleTitle} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_title" name="component_title" size="60" maxlength="50" value="${component.title}" tabindex="1" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label" for="component_description" >#i18n{appstore.modify_component.rowTitleDescription} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_description" name="component_description" size="60" maxlength="50" value="${component.description}" tabindex="1" />
+                <div class="control-group">
+                    <label class="control-label" for="component_description" >#i18n{appstore.modify_component.rowTitleDescription} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_description" name="component_description" size="60" maxlength="50" value="${component.description}" tabindex="1" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label" for="component_artifact_id" >#i18n{appstore.modify_component.rowTitleArtifact_id} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_artifact_id" name="component_artifact_id" size="60" maxlength="50" value="${component.artifactId}" tabindex="1" />
+                <div class="control-group">
+                    <label class="control-label" for="component_artifact_id" >#i18n{appstore.modify_component.rowTitleArtifact_id} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_artifact_id" name="component_artifact_id" size="60" maxlength="50" value="${component.artifactId}" tabindex="1" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label" for="component_group_id" >#i18n{appstore.modify_component.rowTitleGroup_id} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_group_id" name="component_group_id" size="60" maxlength="50" value="${component.groupId}" tabindex="1" />
+                <div class="control-group">
+                    <label class="control-label" for="component_group_id" >#i18n{appstore.modify_component.rowTitleGroup_id} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_group_id" name="component_group_id" size="60" maxlength="50" value="${component.groupId}" tabindex="1" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label" for="component_component_type" >#i18n{appstore.modify_component.rowTitleComponent_type} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_component_type" name="component_component_type" size="60" maxlength="50" value="${component.componentType}" tabindex="1" />
+                <div class="control-group">
+                    <label class="control-label" for="component_component_type" >#i18n{appstore.modify_component.rowTitleComponent_type} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_component_type" name="component_component_type" size="60" maxlength="50" value="${component.componentType}" tabindex="1" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label class="control-label" for="component_version" >#i18n{appstore.modify_component.rowTitleVersion} * :</label>
-                <div class="controls">
-                    <input type="text" id="component_version" name="component_version" size="60" maxlength="50" value="${component.version}" tabindex="1" readonly/>
+                <div class="control-group">
+                    <label class="control-label" for="component_version" >#i18n{appstore.modify_component.rowTitleVersion} * :</label>
+                    <div class="controls">
+                        <input type="text" id="component_version" name="component_version" size="60" maxlength="50" value="${component.version}" tabindex="1" readonly/>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="form-actions">   
-                <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_component.buttonValidate}" tabindex="3" />
-                <input class="btn" type="button" onclick="javascript:history.go(-1)" value="Annuler" />	
-            </div>
+                <div class="form-actions">   
+                    <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_component.buttonValidate}" tabindex="3" />
+                    <input class="btn" type="button" onclick="javascript:history.go(-1)" value="Annuler" />	
+                </div>
 
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
 
+    </div>
 </div>
-
 
