@@ -256,7 +256,6 @@ public class IconJspBean extends PluginAdminPageJspBean
         throws AccessDeniedException
     {
         String strIdIcon = request.getParameter( PARAMETER_ID_ICON );
-        int nIdIcon = convertStringToInt( strIdIcon );
 
         UrlItem url = new UrlItem( JSP_DO_REMOVE_ICON );
         url.addParameter( PARAMETER_ID_ICON, strIdIcon );

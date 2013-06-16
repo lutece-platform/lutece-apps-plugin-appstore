@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.appstore.business;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -81,4 +82,13 @@ public interface IComponentDAO
     * @return The collection which contains the data of all the component objects
     */
     Collection<Component> selectComponentsList( Plugin plugin );
+
+    
+    /**
+     * Returns a list of component used by the application
+     * @param nApplicationId The application ID
+     * @param plugin the Plugin
+     * @return a List of Component
+     */
+     List<Component> selectByApplication(int nApplicationId, Plugin _plugin);
 }

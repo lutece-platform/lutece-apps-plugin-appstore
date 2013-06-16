@@ -38,6 +38,7 @@ import fr.paris.lutece.util.sql.DAOUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -52,6 +53,8 @@ public final class ComponentDAO implements IComponentDAO
     private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_component WHERE id_component = ? ";
     private static final String SQL_QUERY_UPDATE = "UPDATE appstore_component SET id_component = ?, group_id = ?, title = ?, description = ?, artifact_id = ?, version = ?, component_type = ? WHERE id_component = ?";
     private static final String SQL_QUERY_SELECTALL = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component";
+    private static final String SQL_QUERY_SELECT_BY_APPLICATION = "SELECT a.id_component, a.group_id, a.title, a.description, a.artifact_id, a.version, a.component_type " +
+                  " FROM appstore_component a , appstore_application_component b WHERE a.id_component = b.id_component AND b.id_application = ?";
 
     /**
      * Generates a new primary key
@@ -65,11 +68,7 @@ public final class ComponentDAO implements IComponentDAO
 
         int nKey;
 
-        if ( !daoUtil.next(  ) )
-        {
-            // if the table is empty
-            nKey = 1;
-        }
+        daoUtil.next(  );
 
         nKey = daoUtil.getInt( 1 ) + 1;
         daoUtil.free(  );
@@ -82,6 +81,7 @@ public final class ComponentDAO implements IComponentDAO
      * @param component instance of the Component object to insert
      * @param plugin The plugin
      */
+    @Override
     public void insert( Component component, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, plugin );
@@ -106,6 +106,7 @@ public final class ComponentDAO implements IComponentDAO
      * @param plugin The plugin
      * @return the instance of the Component
      */
+    @Override
     public Component load( int nId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
@@ -137,6 +138,7 @@ public final class ComponentDAO implements IComponentDAO
      * @param nComponentId The identifier of the component
      * @param plugin The plugin
      */
+    @Override
     public void delete( int nComponentId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
@@ -150,6 +152,7 @@ public final class ComponentDAO implements IComponentDAO
      * @param component The reference of the component
      * @param plugin The plugin
      */
+    @Override
     public void store( Component component, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
@@ -172,10 +175,39 @@ public final class ComponentDAO implements IComponentDAO
      * @param plugin The plugin
      * @return The Collection which contains the data of all the components
      */
+    @Override
     public Collection<Component> selectComponentsList( Plugin plugin )
     {
         Collection<Component> componentList = new ArrayList<Component>(  );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
+        daoUtil.executeQuery(  );
+
+        while ( daoUtil.next(  ) )
+        {
+            Component component = new Component(  );
+
+            component.setId( daoUtil.getInt( 1 ) );
+            component.setGroupId( daoUtil.getString( 2 ) );
+            component.setTitle( daoUtil.getString( 3 ) );
+            component.setDescription( daoUtil.getString( 4 ) );
+            component.setArtifactId( daoUtil.getString( 5 ) );
+            component.setVersion( daoUtil.getString( 6 ) );
+            component.setComponentType( daoUtil.getString( 7 ) );
+
+            componentList.add( component );
+        }
+
+        daoUtil.free(  );
+
+        return componentList;
+    }
+
+    @Override
+    public List<Component> selectByApplication(int nApplicationId, Plugin plugin)
+    {
+        List<Component> componentList = new ArrayList<Component>(  );
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT_BY_APPLICATION, plugin );
+        daoUtil.setInt( 1, nApplicationId );
         daoUtil.executeQuery(  );
 
         while ( daoUtil.next(  ) )

@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.appstore.web;
 
 import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
+import fr.paris.lutece.plugins.appstore.business.ComponentHome;
 import fr.paris.lutece.portal.service.message.SiteMessageException;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
@@ -54,13 +55,18 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AppStoreApp implements XPageApplication
 {
-    private static final String PARAMETER_ID_APPLICATION = "id_application";
-    private static final String PROPERTY_PAGE_PATH = "appstore.pagePathLabel";
-    private static final String PROPERTY_PAGE_TITLE = "appstore.pageTitle";
-    private static final String MARK_APPLICATIONS_LIST = "applications_list";
-    private static final String MARK_APPLICATION = "application";
     private static final String TEMPLATE_HOMEPAGE = "/skin/plugins/appstore/appstore.html";
     private static final String TEMPLATE_APPLICATION = "/skin/plugins/appstore/application.html";
+    private static final String TEMPLATE_POM = "/admin/plugins/appstore/pom.xml";
+    
+    private static final String MARK_APPLICATIONS_LIST = "applications_list";
+    private static final String MARK_APPLICATION = "application";
+    private static final String MARK_COMPONENTS_LIST = "components_list";
+    
+    private static final String PARAMETER_ID_APPLICATION = "id_application";
+
+    private static final String PROPERTY_PAGE_PATH = "appstore.pagePathLabel";
+    private static final String PROPERTY_PAGE_TITLE = "appstore.pageTitle";
 
     /**
      * Returns the content of the page appstore.
@@ -112,9 +118,23 @@ public class AppStoreApp implements XPageApplication
         Map<String, Object> model = new HashMap<String, Object>(  );
 
         model.put( MARK_APPLICATION, application );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId() ));
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_APPLICATION, request.getLocale(  ), model );
 
         page.setContent( template.getHtml(  ) );
+    }
+    
+    public String generatePOM( HttpServletRequest request )
+    {
+        int nApplicationId = Integer.parseInt( request.getParameter(PARAMETER_ID_APPLICATION));
+        Application application = ApplicationHome.findByPrimaryKey( nApplicationId );
+        Map<String, Object> model = new HashMap<String, Object>(  );
+
+        model.put( MARK_APPLICATION, application );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId() ));
+
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_POM, request.getLocale(  ), model );
+        return template.getHtml();
     }
 }

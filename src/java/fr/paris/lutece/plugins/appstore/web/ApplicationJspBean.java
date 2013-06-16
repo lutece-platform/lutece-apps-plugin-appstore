@@ -35,13 +35,11 @@ package fr.paris.lutece.plugins.appstore.web;
 
 import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
-import fr.paris.lutece.plugins.appstore.business.Category;
 import fr.paris.lutece.plugins.appstore.business.CategoryHome;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
-import fr.paris.lutece.portal.web.admin.PluginAdminPageJspBean;
 import fr.paris.lutece.portal.web.constants.Messages;
 import fr.paris.lutece.portal.web.util.LocalizedPaginator;
 import fr.paris.lutece.util.html.HtmlTemplate;

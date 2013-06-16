@@ -1,8 +1,9 @@
+
 <div class="row-fluid">
     <div class="span12">
         <div class="hero-unit">
-            <h1>Lutece <small>Webapp Store</small></h1>
-            <p>Choisissez et télécharger la Webapp qui correspond à vos besoins.</p>
+            <h1>#i18n{appstore.appstore.title}</h1>
+            <p>#i18n{appstore.appstore.subtitle}</p>
         </div>
         <ul class="thumbnails">
             <#list applications_list as application>
@@ -21,7 +22,8 @@
                    
                     <a class="btn btn-primary offset3" href="jsp/site/Portal.jsp?page=appstore&id_application=${application.id}" />
                     <i class="icon-shopping-cart icon-white"></i>
-                    Choisir
+                    #i18n{appstore.appstore.buttonChoose}
+                    
                     </a>
                     
                     <br>

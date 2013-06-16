@@ -38,6 +38,7 @@ import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -110,4 +111,16 @@ public final class ComponentHome
     {
         return _dao.selectComponentsList( _plugin );
     }
+    
+    /**
+     * Returns a list of component used by the application
+     * @param nApplicationId The application ID
+     * @return a List of Component
+     */
+    public static List<Component> findByApplication( int nApplicationId )
+    {
+        return _dao.selectByApplication( nApplicationId, _plugin );
+    }
+
+    
 }

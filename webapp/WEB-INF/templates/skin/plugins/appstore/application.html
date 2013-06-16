@@ -3,21 +3,22 @@
         <div class="span4 pull-right">
             <a href="plugins/appstore/${application.webappUrl}" class="btn btn-primary btn-large">
                 <i class="icon-download-alt icon-white"></i>
-                Télécharger la Webapp
+                #i18n{appstore.application.buttonDownloadWebapp}
             </a>
             <br>
             <br>
             <a href="plugins/appstore/${application.sqlScriptUrl}" class="btn btn-primary btn-large">
                 <i class="icon-download-alt icon-white"></i>
-                Télécharger le script SQL
+                #i18n{appstore.application.buttonDownloadSQL}
             </a>
             <br>
             <br>
-            <small>Pour reconstruire la webapp avec Maven </small>
+            <small>#i18n{appstore.application.labelMavenBuild}</small>
             <br>
-            <a href="plugins/appstore/${application.pomUrl}" class="btn btn-primary btn-small">
+            <a href="jsp/site/plugins/appstore/GeneratePOM.jsp?id_application=${application.id}" class="btn btn-primary btn-small">
                 <i class="icon-download-alt icon-white"></i>
-                Télécharger le fichier pom.xml
+                #i18n{appstore.application.buttonDownloadPOM}
+                
             </a>
         </div>
         <div class="span2">
@@ -34,19 +35,33 @@
     <div class="span12">
         <div class="tabbable"> 
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Présenation générale</a></li>
-                <li><a href="#tab2" data-toggle="tab">Installation</a></li>
-                <li><a href="#tab3" data-toggle="tab">Liste des plugins</a></li>
+                <li class="active"><a href="#tab1" data-toggle="tab">#i18n{appstore.application.tabPresentation}</a></li>
+                <li><a href="#tab2" data-toggle="tab">#i18n{appstore.application.tabInstallation}</a></li>
+                <li><a href="#tab3" data-toggle="tab">#i18n{appstore.application.tabComponents}</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
-                    <p>Présentation générale</p>
+                    <p></p>
                 </div>
                 <div class="tab-pane" id="tab2">
-                    <p>Installation</p>
+                    <p></p>
                 </div>
                 <div class="tab-pane" id="tab3">
-                    <p>Liste des plugins</p>
+                    <h4>#i18n{appstore.application.titleComponents}</h4>
+                    <table class="table table-condensed table-striped">
+                        <tr>
+                            <th>#i18n{appstore.application.columnName}</th>
+                            <th>#i18n{appstore.application.columnDescription}</th>
+                            <th>#i18n{appstore.application.columnVersion}</th>
+                        </tr>
+                        <#list components_list as component>
+                        <tr>
+                            <td>${component.title}</td>
+                            <td>${component.description}</td>
+                            <td>${component.version}</td>
+                        </tr>
+                        </#list>
+                    </table>
                 </div>
             </div>
         </div>
