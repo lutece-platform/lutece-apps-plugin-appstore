@@ -11,9 +11,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece</groupId>
-    <artifactId>${application.title}</artifactId>
+    <artifactId>${application.artifactId}</artifactId>
     <packaging>lutece-site</packaging>
-    <version>1.0.0</version>
+    <version>${application.version}</version>
     <name>${application.title}</name>
 
     <repositories>

@@ -43,6 +43,7 @@ import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.portal.web.xpages.XPage;
 import fr.paris.lutece.portal.web.xpages.XPageApplication;
 import fr.paris.lutece.util.html.HtmlTemplate;
+import fr.paris.lutece.util.xml.XmlUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -67,6 +68,11 @@ public class AppStoreApp implements XPageApplication
 
     private static final String PROPERTY_PAGE_PATH = "appstore.pagePathLabel";
     private static final String PROPERTY_PAGE_TITLE = "appstore.pageTitle";
+    
+    private static final String TAG_PAGE_LINK = "page_link";
+    private static final String TAG_PAGE_NAME = "page-name";
+    private static final String TAG_PAGE_URL = "page-url";
+
 
     /**
      * Returns the content of the page appstore.
@@ -82,9 +88,6 @@ public class AppStoreApp implements XPageApplication
         throws SiteMessageException
     {
         XPage page = new XPage(  );
-
-        page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) );
-        page.setPathLabel( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
 
         String strApplicationId = request.getParameter( PARAMETER_ID_APPLICATION );
 
@@ -110,6 +113,8 @@ public class AppStoreApp implements XPageApplication
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_HOMEPAGE, request.getLocale(  ), model );
 
         page.setContent( template.getHtml(  ) );
+        page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) );
+        page.setPathLabel( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
     }
 
     private void getApplicationContent( HttpServletRequest request, XPage page, int nApplicationId )
@@ -123,6 +128,8 @@ public class AppStoreApp implements XPageApplication
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_APPLICATION, request.getLocale(  ), model );
 
         page.setContent( template.getHtml(  ) );
+        page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) + " - " + application.getTitle() );
+        page.setXmlExtendedPathLabel( getXmlExtendedPath( application.getTitle() ));
     }
     
     public String generatePOM( HttpServletRequest request )
@@ -137,4 +144,25 @@ public class AppStoreApp implements XPageApplication
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_POM, request.getLocale(  ), model );
         return template.getHtml();
     }
+    
+        /**
+     * Build XML path infos
+     * @param strPageName The page name
+     * @return The XML that content path info
+     */
+    private String getXmlExtendedPath( String strPageName )
+    {
+        StringBuffer sbXml = new StringBuffer(  );
+        XmlUtil.beginElement( sbXml, TAG_PAGE_LINK );
+        XmlUtil.addElement( sbXml, TAG_PAGE_NAME, AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
+        XmlUtil.addElement( sbXml, TAG_PAGE_URL, "page=appstore" );
+        XmlUtil.endElement( sbXml, TAG_PAGE_LINK );
+        XmlUtil.beginElement( sbXml, TAG_PAGE_LINK );
+        XmlUtil.addElement( sbXml, TAG_PAGE_NAME, strPageName );
+        XmlUtil.addElement( sbXml, TAG_PAGE_URL, "" );
+        XmlUtil.endElement( sbXml, TAG_PAGE_LINK );
+
+        return sbXml.toString(  );
+    }
+
 }

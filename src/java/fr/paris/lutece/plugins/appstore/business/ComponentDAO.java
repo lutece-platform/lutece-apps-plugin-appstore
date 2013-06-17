@@ -55,6 +55,7 @@ public final class ComponentDAO implements IComponentDAO
     private static final String SQL_QUERY_SELECTALL = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component";
     private static final String SQL_QUERY_SELECT_BY_APPLICATION = "SELECT a.id_component, a.group_id, a.title, a.description, a.artifact_id, a.version, a.component_type " +
                   " FROM appstore_component a , appstore_application_component b WHERE a.id_component = b.id_component AND b.id_application = ?";
+    private static final String SQL_QUERY_DELETE_APPLICATION = "DELETE FROM appstore_application_component WHERE id_component = ? ";
 
     /**
      * Generates a new primary key
@@ -141,7 +142,12 @@ public final class ComponentDAO implements IComponentDAO
     @Override
     public void delete( int nComponentId, Plugin plugin )
     {
-        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE_APPLICATION, plugin );
+        daoUtil.setInt( 1, nComponentId );
+        daoUtil.executeUpdate(  );
+        daoUtil.free(  );
+
+        daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
         daoUtil.setInt( 1, nComponentId );
         daoUtil.executeUpdate(  );
         daoUtil.free(  );

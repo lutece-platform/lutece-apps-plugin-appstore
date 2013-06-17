@@ -65,6 +65,33 @@
                     </div>
                 </div>
 
+                <div class="control-group">
+                    <label class="control-label" for="application_presentation" >#i18n{appstore.create_application.rowTitlePresentation} * :</label>
+                    <div class="controls">
+                        <textarea id="application_presentation" name="application_presentation" rows="3" tabindex="1" >${application.presentation!}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_installation" >#i18n{appstore.create_application.rowTitleInstallation} * :</label>
+                    <div class="controls">
+                        <textarea id="application_installation" name="application_installation" rows="3" tabindex="1" >${application.installation!}</textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_artifact_id" >#i18n{appstore.create_application.rowTitleArtifactId} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_artifact_id" name="application_artifact_id" size="60" maxlength="50" tabindex="1"  value="${application.artifactId!}" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_version" >#i18n{appstore.create_application.rowTitleVersion} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="1"  value="${application.version!}"/>
+                    </div>
+                </div>
 
                 <div class="form-actions">   
                     <input class="btn btn-primary" type="submit" value="#i18n{appstore.modify_application.buttonValidate}" tabindex="3" />

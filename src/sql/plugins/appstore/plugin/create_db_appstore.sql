@@ -26,6 +26,12 @@ id_icon int(11) NOT NULL default '0',
 pom_url varchar(50) NOT NULL default '',
 webapp_url varchar(50) NOT NULL default '',
 sql_script_url varchar(50) NOT NULL default '',
+artifact_id varchar(50) NOT NULL default '',
+presentation long varchar NULL,
+installation long varchar NULL,
+version varchar(50) NOT NULL default '',
+build_status int(11) NOT NULL default '0',
+
 PRIMARY KEY (id_application)
 );
 

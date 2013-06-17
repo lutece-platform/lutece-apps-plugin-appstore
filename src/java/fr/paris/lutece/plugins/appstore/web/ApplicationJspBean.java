@@ -75,6 +75,10 @@ public class ApplicationJspBean extends AppStoreJspBean
     private static final String PARAMETER_APPLICATION_POM_URL = "application_pom_url";
     private static final String PARAMETER_APPLICATION_WEBAPP_URL = "application_webapp_url";
     private static final String PARAMETER_APPLICATION_SQL_SCRIPT_URL = "application_sql_script_url";
+    private static final String PARAMETER_APPLICATION_PRESENTATION = "application_presentation";
+    private static final String PARAMETER_APPLICATION_INSTALLATION = "application_installation";
+    private static final String PARAMETER_APPLICATION_ARTIFACT_ID = "application_artifact_id";
+    private static final String PARAMETER_APPLICATION_VERSION = "application_version";
     private static final String PARAMETER_ID_COMPONENT = "id_component";
 
     // templates
@@ -173,59 +177,58 @@ public class ApplicationJspBean extends AppStoreJspBean
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        application.setTitle( request.getParameter( PARAMETER_APPLICATION_TITLE ) );
-
+ 
         if ( request.getParameter( PARAMETER_APPLICATION_DESCRIPTION ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        application.setDescription( request.getParameter( PARAMETER_APPLICATION_DESCRIPTION ) );
 
         if ( request.getParameter( PARAMETER_APPLICATION_ID_CATEGORY ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        int nIdCategory = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_CATEGORY ) );
-        application.setIdCategory( nIdCategory );
 
         if ( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        int nApplicationOrder = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ) );
-        application.setOrder( nApplicationOrder );
 
         if ( request.getParameter( PARAMETER_APPLICATION_ID_ICON ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        int nIdIcon = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_ICON ) );
-        application.setIdIcon( nIdIcon );
-
-        if ( request.getParameter( PARAMETER_APPLICATION_POM_URL ).equals( "" ) )
-        {
-            return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
-        }
-
-        application.setPomUrl( request.getParameter( PARAMETER_APPLICATION_POM_URL ) );
 
         if ( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-        application.setWebappUrl( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ) );
 
         if ( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
+        application.setTitle( request.getParameter( PARAMETER_APPLICATION_TITLE ) );
+        application.setDescription( request.getParameter( PARAMETER_APPLICATION_DESCRIPTION ) );
+        int nIdCategory = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_CATEGORY ) );
+        application.setIdCategory( nIdCategory );
+        int nApplicationOrder = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ) );
+        application.setOrder( nApplicationOrder );
+        int nIdIcon = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_ICON ) );
+        application.setIdIcon( nIdIcon );
+
+        application.setPomUrl( request.getParameter( PARAMETER_APPLICATION_POM_URL ) );
+        application.setWebappUrl( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ) );
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
+        application.setPresentation( request.getParameter(PARAMETER_APPLICATION_PRESENTATION ));
+        application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
+        application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
+        application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
 
         ApplicationHome.create( application );
 
@@ -363,6 +366,10 @@ public class ApplicationJspBean extends AppStoreJspBean
         }
 
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
+        application.setPresentation( request.getParameter(PARAMETER_APPLICATION_PRESENTATION ));
+        application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
+        application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
+        application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
         ApplicationHome.update( application );
 
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
