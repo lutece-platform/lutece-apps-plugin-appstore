@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
+    <bean id="appstore.applicationExtendableResourceService" class="fr.paris.lutece.plugins.appstore.service.ApplicationExtendableResourceService" />
+    
     <bean id="appstore.categoryDAO"  class="fr.paris.lutece.plugins.appstore.business.CategoryDAO" />  
     <bean id="appstore.applicationDAO"  class="fr.paris.lutece.plugins.appstore.business.ApplicationDAO" />  
     <bean id="appstore.componentDAO"  class="fr.paris.lutece.plugins.appstore.business.ComponentDAO" />  

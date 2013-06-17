@@ -33,11 +33,15 @@
  */
 package fr.paris.lutece.plugins.appstore.business;
 
+import fr.paris.lutece.portal.service.resource.IExtendableResource;
+
 /**
  * This is the business class for the object Application
  */
-public class Application
+public class Application implements IExtendableResource
 {
+    public static final String RESOURCE_TYPE = "APP";
+    public static final String RESOURCE_TYPE_DESCRIPTION = "Appstore Application";
     // Variables declarations 
 
     private int _nIdApplication;
@@ -354,5 +358,35 @@ public class Application
     public void setBuildStatus(int nBuildStatus)
     {
         _nBuildStatus = nBuildStatus;
+    }
+
+    @Override
+    public String getIdExtendableResource()
+    {
+        return Integer.toString( _nIdApplication );
+    }
+
+    @Override
+    public String getExtendableResourceType()
+    {
+        return RESOURCE_TYPE;
+    }
+
+    @Override
+    public String getExtendableResourceName()
+    {
+        return _strTitle;
+    }
+
+    @Override
+    public String getExtendableResourceDescription()
+    {
+        return _strDescription;
+    }
+
+    @Override
+    public String getExtendableResourceImageUrl()
+    {
+        return "image?resource_type=appstore_icon_img&id=" + _nIdIcon;
     }
 }

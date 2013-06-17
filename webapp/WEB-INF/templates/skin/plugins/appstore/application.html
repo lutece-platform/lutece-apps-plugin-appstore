@@ -36,17 +36,15 @@
         <div class="tabbable"> 
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab1" data-toggle="tab">#i18n{appstore.application.tabPresentation}</a></li>
-                <li><a href="#tab2" data-toggle="tab">#i18n{appstore.application.tabInstallation}</a></li>
-                <li><a href="#tab3" data-toggle="tab">#i18n{appstore.application.tabComponents}</a></li>
+                <li><a href="#tab2" data-toggle="tab">#i18n{appstore.application.tabComponents}</a></li>
+                <li><a href="#tab3" data-toggle="tab">#i18n{appstore.application.tabInstallation}</a></li>
+                <li><a href="#tab4" data-toggle="tab">#i18n{appstore.application.tabUsers}</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
-                    <p></p>
+                    ${application.presentation!}
                 </div>
                 <div class="tab-pane" id="tab2">
-                    <p></p>
-                </div>
-                <div class="tab-pane" id="tab3">
                     <h4>#i18n{appstore.application.titleComponents}</h4>
                     <table class="table table-condensed table-striped">
                         <tr>
@@ -62,6 +60,13 @@
                         </tr>
                         </#list>
                     </table>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    ${application.installation!}
+                </div>
+                <div class="tab-pane" id="tab4">
+                    @Extender[1,APP,rating,{show:"all"}]@
+                    @Extender[1,APP,comment]@
                 </div>
             </div>
         </div>
