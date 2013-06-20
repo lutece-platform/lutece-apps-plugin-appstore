@@ -4,3 +4,4 @@
 	appstoreIcon.init( request, fr.paris.lutece.plugins.appstore.web.AppStoreJspBean.RIGHT_MANAGEAPPSTORE); 
 	response.sendRedirect(appstoreIcon.doModifyIcon(request) );
 %>
+
