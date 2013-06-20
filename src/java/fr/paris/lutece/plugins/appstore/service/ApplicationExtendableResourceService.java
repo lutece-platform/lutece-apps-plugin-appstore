@@ -37,6 +37,9 @@ import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
 import fr.paris.lutece.portal.service.resource.IExtendableResource;
 import fr.paris.lutece.portal.service.resource.IExtendableResourceService;
+import fr.paris.lutece.portal.service.util.AppPathService;
+import fr.paris.lutece.portal.web.constants.Parameters;
+import fr.paris.lutece.util.url.UrlItem;
 import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
 
@@ -45,13 +48,22 @@ import org.apache.commons.lang.StringUtils;
  */
 public class ApplicationExtendableResourceService implements IExtendableResourceService
 {
-
+    private static final String PARAMETER_XPAGE = "page";
+    private static final String XPAGE = "appstore";
+    private static final String PARAMETER_ID_APPLICATION = "id_application";
+    
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public boolean isInvoked(String strResourceType)
     {
         return Application.RESOURCE_TYPE.equals(strResourceType);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public IExtendableResource getResource(String strIdResource, String strResourceType)
     {
@@ -63,15 +75,33 @@ public class ApplicationExtendableResourceService implements IExtendableResource
         return null;
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String getResourceType()
     {
         return Application.RESOURCE_TYPE;
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String getResourceTypeDescription(Locale locale)
     {
         return Application.RESOURCE_TYPE_DESCRIPTION;
+    }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public String getResourceUrl(String strIdResource, String strResourceType)
+    {
+        UrlItem url = new UrlItem( AppPathService.getPortalUrl( ) );
+        url.addParameter( PARAMETER_XPAGE, XPAGE );
+        url.addParameter( PARAMETER_ID_APPLICATION, strIdResource );
+        return url.getUrl( );
     }
 }
