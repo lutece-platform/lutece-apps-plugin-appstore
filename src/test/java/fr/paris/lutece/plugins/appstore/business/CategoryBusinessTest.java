@@ -54,7 +54,7 @@ public class CategoryBusinessTest extends LuteceTestCase
         Category category = new Category(  );
         category.setId( IDCATEGORY );
         category.setName( NAME1 );
-        category.setCategoryOrder( CATEGORYORDER1 );
+        category.setOrder( CATEGORYORDER1 );
 
         // Create test
         CategoryHome.create( category );
@@ -62,15 +62,15 @@ public class CategoryBusinessTest extends LuteceTestCase
         Category categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
         assertEquals( categoryStored.getId(  ), category.getId(  ) );
         assertEquals( categoryStored.getName(  ), category.getName(  ) );
-        assertEquals( categoryStored.getCategoryOrder(  ), category.getCategoryOrder(  ) );
+        assertEquals( categoryStored.getOrder(  ), category.getOrder(  ) );
 
         // Update test
         category.setName( NAME2 );
-        category.setCategoryOrder( CATEGORYORDER2 );
+        category.setOrder( CATEGORYORDER2 );
         CategoryHome.update( category );
         categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
         assertEquals( categoryStored.getName(  ), category.getName(  ) );
-        assertEquals( categoryStored.getCategoryOrder(  ), category.getCategoryOrder(  ) );
+        assertEquals( categoryStored.getOrder(  ), category.getOrder(  ) );
 
         // List test
         CategoryHome.getCategorysList(  );

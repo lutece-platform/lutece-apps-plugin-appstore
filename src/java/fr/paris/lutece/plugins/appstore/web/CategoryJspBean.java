@@ -149,7 +149,7 @@ public class CategoryJspBean extends AppStoreJspBean
         }
 
         int nCategoryOrder = Integer.parseInt( request.getParameter( PARAMETER_CATEGORY_CATEGORY_ORDER ) );
-        category.setCategoryOrder( nCategoryOrder );
+        category.setOrder( nCategoryOrder );
 
         CategoryHome.create( category );
 
@@ -239,7 +239,7 @@ public class CategoryJspBean extends AppStoreJspBean
         }
 
         int nCategoryOrder = Integer.parseInt( request.getParameter( PARAMETER_CATEGORY_CATEGORY_ORDER ) );
-        category.setCategoryOrder( nCategoryOrder );
+        category.setOrder( nCategoryOrder );
         CategoryHome.update( category );
 
         return JSP_REDIRECT_TO_MANAGE_CATEGORYS;

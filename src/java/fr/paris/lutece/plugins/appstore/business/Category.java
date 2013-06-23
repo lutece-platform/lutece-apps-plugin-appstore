@@ -84,7 +84,7 @@ public class Category
      * Returns the CategoryOrder
      * @return The CategoryOrder
      */
-    public int getCategoryOrder(  )
+    public int getOrder(  )
     {
         return _nCategoryOrder;
     }
@@ -93,7 +93,7 @@ public class Category
      * Sets the CategoryOrder
      * @param nCategoryOrder The CategoryOrder
      */
-    public void setCategoryOrder( int nCategoryOrder )
+    public void setOrder( int nCategoryOrder )
     {
         _nCategoryOrder = nCategoryOrder;
     }

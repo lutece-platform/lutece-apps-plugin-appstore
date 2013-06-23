@@ -90,7 +90,7 @@ public final class CategoryDAO implements ICategoryDAO
 
         daoUtil.setInt( 1, category.getId(  ) );
         daoUtil.setString( 2, category.getName(  ) );
-        daoUtil.setInt( 3, category.getCategoryOrder(  ) );
+        daoUtil.setInt( 3, category.getOrder(  ) );
 
         daoUtil.executeUpdate(  );
         daoUtil.free(  );
@@ -116,7 +116,7 @@ public final class CategoryDAO implements ICategoryDAO
 
             category.setId( daoUtil.getInt( 1 ) );
             category.setName( daoUtil.getString( 2 ) );
-            category.setCategoryOrder( daoUtil.getInt( 3 ) );
+            category.setOrder( daoUtil.getInt( 3 ) );
         }
 
         daoUtil.free(  );
@@ -148,7 +148,7 @@ public final class CategoryDAO implements ICategoryDAO
 
         daoUtil.setInt( 1, category.getId(  ) );
         daoUtil.setString( 2, category.getName(  ) );
-        daoUtil.setInt( 3, category.getCategoryOrder(  ) );
+        daoUtil.setInt( 3, category.getOrder(  ) );
         daoUtil.setInt( 4, category.getId(  ) );
 
         daoUtil.executeUpdate(  );
@@ -172,7 +172,7 @@ public final class CategoryDAO implements ICategoryDAO
 
             category.setId( daoUtil.getInt( 1 ) );
             category.setName( daoUtil.getString( 2 ) );
-            category.setCategoryOrder( daoUtil.getInt( 3 ) );
+            category.setOrder( daoUtil.getInt( 3 ) );
 
             categoryList.add( category );
         }
