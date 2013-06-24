@@ -62,9 +62,3 @@ INSERT INTO appstore_application_component (id_application, id_component) VALUES
 INSERT INTO appstore_application_component (id_application, id_component) VALUES (2,3);
 INSERT INTO appstore_application_component (id_application, id_component) VALUES (5,4);
 INSERT INTO appstore_application_component (id_application, id_component) VALUES (5,5);
-
---
--- Dumping data for table `extend_resource_extender`
---
-INSERT INTO extend_resource_extender (id_extender, extender_type, id_resource, resource_type) VALUES (1,'comment','*','APP');
-INSERT INTO extend_resource_extender (id_extender, extender_type, id_resource, resource_type) VALUES (2,'rating','*','APP');
