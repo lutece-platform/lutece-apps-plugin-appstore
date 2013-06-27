@@ -44,8 +44,10 @@ import fr.paris.lutece.portal.web.xpages.XPage;
 import fr.paris.lutece.portal.web.xpages.XPageApplication;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.xml.XmlUtil;
+import java.util.ArrayList;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -108,13 +110,26 @@ public class AppStoreApp implements XPageApplication
     {
         Map<String, Object> model = new HashMap<String, Object>(  );
 
-        model.put( MARK_APPLICATIONS_LIST, ApplicationHome.getApplicationsList(  ) );
+        model.put( MARK_APPLICATIONS_LIST, getActiveApplications() );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_HOMEPAGE, request.getLocale(  ), model );
 
         page.setContent( template.getHtml(  ) );
         page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) );
         page.setPathLabel( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
+    }
+    
+    private List<Application> getActiveApplications()
+    {
+        List<Application> list = new ArrayList<Application>();
+        for( Application application : ApplicationHome.getApplicationsList(  ))
+        {
+            if( application.getPublishStatus() > 0 )
+            {
+                list.add(application);
+            }
+        }
+        return list;
     }
 
     private void getApplicationContent( HttpServletRequest request, XPage page, int nApplicationId )

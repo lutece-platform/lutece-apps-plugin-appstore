@@ -18,7 +18,7 @@
             <div class="control-group">
                 <label class="control-label" for="application_description" >#i18n{appstore.create_application.rowTitleDescription} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_description" name="application_description" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_description" name="application_description" size="60" maxlength="50" tabindex="2" />
                 </div>
             </div>
             <div class="control-group">
@@ -28,69 +28,79 @@
                     
                 </div>
             </div>
+            
+            <div class="control-group">
+                <label class="control-label" for="application_publish_status" >#i18n{appstore.create_application.rowTitlePublishStatus} * :</label>
+                <div class="controls">
+                    <input type="text" id="application_publish_status" name="application_publish_status" size="60" maxlength="50" tabindex="3" />
+                </div>
+            </div>
+            
             <div class="control-group">
                 <label class="control-label" for="application_applicationOrder" >#i18n{appstore.create_application.rowTitleApplication_order} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" tabindex="4" />
                 </div>
             </div>
+            
             <div class="control-group">
                 <label class="control-label" for="application_idIcon" >#i18n{appstore.create_application.rowTitleId_icon} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" tabindex="5" />
                 </div>
             </div>
+            
             <div class="control-group">
                 <label class="control-label" for="application_pomUrl" >#i18n{appstore.create_application.rowTitlePom_url} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_pom_url" name="application_pom_url" maxlength="255" tabindex="6" />
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_webappUrl" >#i18n{appstore.create_application.rowTitleWebapp_url} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_webapp_url" name="application_webapp_url" maxlength="255" tabindex="7" />
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_sqlScriptUrl" >#i18n{appstore.create_application.rowTitleSql_script_url} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" maxlength="255" tabindex="8" />
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_presentation" >#i18n{appstore.create_application.rowTitlePresentation} * :</label>
                 <div class="controls">
-                    <textarea id="application_presentation" name="application_presentation" rows="3" tabindex="1" > </textarea>
+                    <textarea id="application_presentation" name="application_presentation" rows="3" tabindex="9" > </textarea>
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_installation" >#i18n{appstore.create_application.rowTitleInstallation} * :</label>
                 <div class="controls">
-                    <textarea id="application_installation" name="application_installation" rows="3" tabindex="1" ></textarea>
+                    <textarea id="application_installation" name="application_installation" rows="3" tabindex="10" ></textarea>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="application_artifact_id" >#i18n{appstore.create_application.rowTitleArtifactId} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_artifact_id" name="application_artifact_id" size="60" maxlength="50" tabindex="1" />
+                    <input type="text" id="application_artifact_id" name="application_artifact_id" size="60" maxlength="50" tabindex="11" />
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="application_version" >#i18n{appstore.create_application.rowTitleVersion} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="1" value="1.0.0"/>
+                    <input type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="12" value="1.0.0"/>
                 </div>
             </div>
             
             <div class="form-actions">
-                <input class="btn btn-primary" type="submit" value="#i18n{appstore.create_application.buttonValidate}" tabindex="3" />
+                <input class="btn btn-primary" type="submit" value="#i18n{appstore.create_application.buttonValidate}" tabindex="13" />
             </div>
         </fieldset>
     </form>

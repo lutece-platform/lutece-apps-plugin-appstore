@@ -59,6 +59,7 @@ public class Application implements IExtendableResource
     private String _strInstallation;
     private String _strVersion;
     private int _nBuildStatus;
+    private int _nPublishStatus;
 
     /**
      * Returns the IdApplication
@@ -358,6 +359,26 @@ public class Application implements IExtendableResource
     public void setBuildStatus(int nBuildStatus)
     {
         _nBuildStatus = nBuildStatus;
+    }
+
+    /**
+     * Returns the PublishStatus
+     *
+     * @return The PublishStatus
+     */
+    public int getPublishStatus()
+    {
+        return _nPublishStatus;
+    }
+
+    /**
+     * Sets the PublishStatus
+     *
+     * @param nPublishStatus The PublishStatus
+     */
+    public void setPublishStatus(int nPublishStatus)
+    {
+        _nPublishStatus = nPublishStatus;
     }
 
     @Override

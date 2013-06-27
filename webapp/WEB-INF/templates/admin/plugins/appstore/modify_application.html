@@ -12,14 +12,14 @@
                 <div class="control-group">
                     <label class="control-label" for="application_title" >#i18n{appstore.modify_application.rowTitleTitle} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_title" name="application_title" size="60" maxlength="50" value="${application.title}" tabindex="1" />
+                        <input type="text" id="application_title" name="application_title" maxlength="50" value="${application.title}" tabindex="1" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_description" >#i18n{appstore.modify_application.rowTitleDescription} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_description" name="application_description" size="60" maxlength="50" value="${application.description}" tabindex="1" />
+                        <input type="text" id="application_description" name="application_description" maxlength="50" value="${application.description}" tabindex="1" />
                     </div>
                 </div>
 
@@ -27,6 +27,13 @@
                     <label class="control-label" for="application_id_category" >#i18n{appstore.modify_application.rowTitleId_category} * :</label>
                     <div class="controls">
                         <@comboWithParams name="application_id_category" items=categories_list default_value="${application.idCategory}" additionalParameters="class=\"\"" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="application_publish_status" >#i18n{appstore.modify_application.rowTitlePublishStatus} * :</label>
+                    <div class="controls">
+                        <input type="text" id="application_publish_status" name="application_publish_status" maxlength="1" value="${application.publishStatus}" tabindex="1" />
                     </div>
                 </div>
 
@@ -47,21 +54,21 @@
                 <div class="control-group">
                     <label class="control-label" for="application_pom_url" >#i18n{appstore.modify_application.rowTitlePom_url} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_pom_url" name="application_pom_url" size="60" maxlength="50" value="${application.pomUrl}" tabindex="1" />
+                        <input type="text" id="application_pom_url" name="application_pom_url" maxlength="255" value="${application.pomUrl}" tabindex="1" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_webapp_url" >#i18n{appstore.modify_application.rowTitleWebapp_url} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_webapp_url" name="application_webapp_url" size="60" maxlength="50" value="${application.webappUrl}" tabindex="1" />
+                        <input type="text" id="application_webapp_url" name="application_webapp_url" maxlength="255" value="${application.webappUrl}" tabindex="1" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_sql_script_url" >#i18n{appstore.modify_application.rowTitleSql_script_url} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_sql_script_url" name="application_sql_script_url" size="60" maxlength="50" value="${application.sqlScriptUrl}" tabindex="1" />
+                        <input type="text" id="application_sql_script_url" name="application_sql_script_url" maxlength="255" value="${application.sqlScriptUrl}" tabindex="1" />
                     </div>
                 </div>
 
@@ -82,14 +89,14 @@
                 <div class="control-group">
                     <label class="control-label" for="application_artifact_id" >#i18n{appstore.create_application.rowTitleArtifactId} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_artifact_id" name="application_artifact_id" size="60" maxlength="50" tabindex="1"  value="${application.artifactId!}" />
+                        <input type="text" id="application_artifact_id" name="application_artifact_id" maxlength="50" tabindex="1"  value="${application.artifactId!}" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_version" >#i18n{appstore.create_application.rowTitleVersion} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="1"  value="${application.version!}"/>
+                        <input type="text" id="application_version" name="application_version" maxlength="50" tabindex="1"  value="${application.version!}"/>
                     </div>
                 </div>
 

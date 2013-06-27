@@ -79,6 +79,7 @@ public class ApplicationJspBean extends AppStoreJspBean
     private static final String PARAMETER_APPLICATION_INSTALLATION = "application_installation";
     private static final String PARAMETER_APPLICATION_ARTIFACT_ID = "application_artifact_id";
     private static final String PARAMETER_APPLICATION_VERSION = "application_version";
+    private static final String PARAMETER_APPLICATION_PUBLISH_STATUS = "application_publish_status";
     private static final String PARAMETER_ID_COMPONENT = "id_component";
 
     // templates
@@ -221,6 +222,7 @@ public class ApplicationJspBean extends AppStoreJspBean
         application.setOrder( nApplicationOrder );
         int nIdIcon = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_ICON ) );
         application.setIdIcon( nIdIcon );
+        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ));
 
         application.setPomUrl( request.getParameter( PARAMETER_APPLICATION_POM_URL ) );
         application.setWebappUrl( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ) );
@@ -229,6 +231,7 @@ public class ApplicationJspBean extends AppStoreJspBean
         application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
         application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
         application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
+        application.setPublishStatus( nPublishStatus );
 
         ApplicationHome.create( application );
 
@@ -370,6 +373,8 @@ public class ApplicationJspBean extends AppStoreJspBean
         application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
         application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
         application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
+        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ));
+        application.setPublishStatus( nPublishStatus );
         ApplicationHome.update( application );
 
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
