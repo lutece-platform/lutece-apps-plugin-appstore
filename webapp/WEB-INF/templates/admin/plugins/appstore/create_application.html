@@ -32,42 +32,42 @@
             <div class="control-group">
                 <label class="control-label" for="application_publish_status" >#i18n{appstore.create_application.rowTitlePublishStatus} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_publish_status" name="application_publish_status" size="60" maxlength="50" tabindex="3" />
+                    <@comboWithParams name="application_publish_status" items=publish_status_list default_value="1" additionalParameters="class=\"\"" />
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_applicationOrder" >#i18n{appstore.create_application.rowTitleApplication_order} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" tabindex="4" />
+                    <input class="input-mini" type="text" id="spinner" name="application_application_order" size="60" maxlength="50" tabindex="4" />
                 </div>
             </div>
-            
+                       
             <div class="control-group">
                 <label class="control-label" for="application_idIcon" >#i18n{appstore.create_application.rowTitleId_icon} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" tabindex="5" />
+                    <@radioIconList name="application_id_icon" default_value=-1 icons=icons_list />
                 </div>
             </div>
-            
+ <!--           
             <div class="control-group">
                 <label class="control-label" for="application_pomUrl" >#i18n{appstore.create_application.rowTitlePom_url} * :</label>
                 <div class="controls">
                     <input type="text" id="application_pom_url" name="application_pom_url" maxlength="255" tabindex="6" />
                 </div>
             </div>
-            
+  -->          
             <div class="control-group">
                 <label class="control-label" for="application_webappUrl" >#i18n{appstore.create_application.rowTitleWebapp_url} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_webapp_url" name="application_webapp_url" maxlength="255" tabindex="7" />
+                    <input class="input-xxlarge" type="text" id="application_webapp_url" name="application_webapp_url" maxlength="255" tabindex="7" />
                 </div>
             </div>
             
             <div class="control-group">
                 <label class="control-label" for="application_sqlScriptUrl" >#i18n{appstore.create_application.rowTitleSql_script_url} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_sql_script_url" name="application_sql_script_url" maxlength="255" tabindex="8" />
+                    <input class="input-xxlarge" type="text" id="application_sql_script_url" name="application_sql_script_url" maxlength="255" tabindex="8" />
                 </div>
             </div>
             
@@ -95,7 +95,7 @@
             <div class="control-group">
                 <label class="control-label" for="application_version" >#i18n{appstore.create_application.rowTitleVersion} * :</label>
                 <div class="controls">
-                    <input type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="12" value="1.0.0"/>
+                    <input class="input-mini" type="text" id="application_version" name="application_version" size="60" maxlength="50" tabindex="12" value="1.0.0"/>
                 </div>
             </div>
             

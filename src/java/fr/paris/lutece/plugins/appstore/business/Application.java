@@ -43,6 +43,9 @@ public class Application implements IExtendableResource
     public static final String RESOURCE_TYPE = "APP";
     public static final String RESOURCE_TYPE_DESCRIPTION = "Appstore Application";
     // Variables declarations 
+    public static final int NOT_PUBLISHED = 0;
+    public static final int PUBLISHED = 1;
+    public static final int PUBLISHED_NEW = 2;
 
     private int _nIdApplication;
     private String _strTitle;

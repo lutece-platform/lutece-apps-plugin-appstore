@@ -37,12 +37,15 @@ import fr.paris.lutece.plugins.appstore.business.Application;
 import fr.paris.lutece.plugins.appstore.business.ApplicationHome;
 import fr.paris.lutece.plugins.appstore.business.CategoryHome;
 import fr.paris.lutece.plugins.appstore.business.ComponentHome;
+import fr.paris.lutece.plugins.appstore.business.IconHome;
+import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.portal.web.constants.Messages;
 import fr.paris.lutece.portal.web.util.LocalizedPaginator;
+import fr.paris.lutece.util.ReferenceList;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.html.Paginator;
 import fr.paris.lutece.util.url.UrlItem;
@@ -98,6 +101,8 @@ public class ApplicationJspBean extends AppStoreJspBean
     private static final String MARK_CATEGORIES_LIST = "categories_list";
     private static final String MARK_COMPONENTS_LIST = "components_list";
     private static final String MARK_APP_COMPONENTS_LIST = "app_components_list";
+    private static final String MARK_PUBLISH_STATUS_LIST = "publish_status_list";
+    private static final String MARK_ICONS_LIST = "icons_list";
 
     // Jsp Definition
     private static final String JSP_DO_REMOVE_APPLICATION = "jsp/admin/plugins/appstore/DoRemoveApplication.jsp";
@@ -109,6 +114,8 @@ public class ApplicationJspBean extends AppStoreJspBean
 
     // Messages
     private static final String MESSAGE_CONFIRM_REMOVE_APPLICATION = "appstore.message.confirmRemoveApplication";
+    private static final String PROPERTY_NOT_PUBLISHED = "appstore.label.notPublished";
+    private static final String PROPERTY_PUBLISHED = "appstore.label.published";
 
     /**
      * Returns the list of application
@@ -157,6 +164,8 @@ public class ApplicationJspBean extends AppStoreJspBean
 
         Map<String, Object> model = new HashMap<String, Object>(  );
         model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories(  ) );
+        model.put( MARK_PUBLISH_STATUS_LIST , getPublishStatusList( request ) );
+        model.put( MARK_ICONS_LIST, IconHome.getListIcons( getPlugin(  ) ) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_CREATE_APPLICATION, getLocale(  ), model );
 
@@ -224,7 +233,6 @@ public class ApplicationJspBean extends AppStoreJspBean
         application.setIdIcon( nIdIcon );
         int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ));
 
-        application.setPomUrl( request.getParameter( PARAMETER_APPLICATION_POM_URL ) );
         application.setWebappUrl( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ) );
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
         application.setPresentation( request.getParameter(PARAMETER_APPLICATION_PRESENTATION ));
@@ -286,6 +294,8 @@ public class ApplicationJspBean extends AppStoreJspBean
         model.put( MARK_APPLICATION, application );
         model.put( MARK_COMPONENTS_LIST, ComponentHome.getComponentsList() );
         model.put( MARK_APP_COMPONENTS_LIST, ComponentHome.findByApplication(nId) );
+        model.put( MARK_PUBLISH_STATUS_LIST , getPublishStatusList( request ) );
+        model.put( MARK_ICONS_LIST, IconHome.getListIcons( getPlugin(  ) ) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_APPLICATION, getLocale(  ), model );
 
@@ -349,13 +359,6 @@ public class ApplicationJspBean extends AppStoreJspBean
         int nIdIcon = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_ICON ) );
         application.setIdIcon( nIdIcon );
 
-        if ( request.getParameter( PARAMETER_APPLICATION_POM_URL ).equals( "" ) )
-        {
-            return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
-        }
-
-        application.setPomUrl( request.getParameter( PARAMETER_APPLICATION_POM_URL ) );
-
         if ( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
@@ -395,5 +398,13 @@ public class ApplicationJspBean extends AppStoreJspBean
         }
         
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
+    }
+    
+    private ReferenceList getPublishStatusList( HttpServletRequest request )
+    {
+        ReferenceList list = new ReferenceList();
+        list.addItem( Application.NOT_PUBLISHED, I18nService.getLocalizedString( PROPERTY_NOT_PUBLISHED, request.getLocale() ));
+        list.addItem( Application.PUBLISHED, I18nService.getLocalizedString( PROPERTY_PUBLISHED, request.getLocale() ));
+        return list;
     }
 }

@@ -33,31 +33,31 @@
                 <div class="control-group">
                     <label class="control-label" for="application_publish_status" >#i18n{appstore.modify_application.rowTitlePublishStatus} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_publish_status" name="application_publish_status" maxlength="1" value="${application.publishStatus}" tabindex="1" />
+                        <@comboWithParams name="application_publish_status" items=publish_status_list default_value="${application.publishStatus}" additionalParameters="class=\"\"" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_application_order" >#i18n{appstore.modify_application.rowTitleApplication_order} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" value="${application.order}" tabindex="1" />
+                        <input class="input-mini" type="text" id="application_application_order" name="application_application_order" size="60" maxlength="50" value="${application.order}" tabindex="1" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="application_id_icon" >#i18n{appstore.modify_application.rowTitleId_icon} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_id_icon" name="application_id_icon" size="60" maxlength="50" value="${application.idIcon}" tabindex="1" />
+                        <@radioIconList name="application_id_icon" default_value=application.idIcon icons=icons_list />
                     </div>
                 </div>
-
+<!--
                 <div class="control-group">
                     <label class="control-label" for="application_pom_url" >#i18n{appstore.modify_application.rowTitlePom_url} * :</label>
                     <div class="controls">
                         <input type="text" id="application_pom_url" name="application_pom_url" maxlength="255" value="${application.pomUrl}" tabindex="1" />
                     </div>
                 </div>
-
+-->
                 <div class="control-group">
                     <label class="control-label" for="application_webapp_url" >#i18n{appstore.modify_application.rowTitleWebapp_url} * :</label>
                     <div class="controls">
@@ -96,7 +96,7 @@
                 <div class="control-group">
                     <label class="control-label" for="application_version" >#i18n{appstore.create_application.rowTitleVersion} * :</label>
                     <div class="controls">
-                        <input type="text" id="application_version" name="application_version" maxlength="50" tabindex="1"  value="${application.version!}"/>
+                        <input class="input-mini" type="text" id="application_version" name="application_version" maxlength="50" tabindex="1"  value="${application.version!}"/>
                     </div>
                 </div>
 
