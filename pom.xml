@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-appstore</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>0.9.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>Lutece appstore plugin</name>
 
     <repositories>
@@ -43,9 +43,8 @@
     </dependencies>
 
     <properties>
-        <componentName>appstore</componentName>
-        <jiraProjectName>LUTECE</jiraProjectName>
-        <jiraComponentId>10036</jiraComponentId>
+        <jiraProjectName>APPSTORE</jiraProjectName>
+        <jiraComponentId>12051</jiraComponentId>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
         
