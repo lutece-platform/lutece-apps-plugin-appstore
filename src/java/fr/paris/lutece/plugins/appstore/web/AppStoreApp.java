@@ -42,8 +42,8 @@ import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.portal.web.xpages.XPage;
 import fr.paris.lutece.portal.web.xpages.XPageApplication;
+import fr.paris.lutece.util.ReferenceList;
 import fr.paris.lutece.util.html.HtmlTemplate;
-import fr.paris.lutece.util.xml.XmlUtil;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -71,9 +71,8 @@ public class AppStoreApp implements XPageApplication
     private static final String PROPERTY_PAGE_PATH = "appstore.pagePathLabel";
     private static final String PROPERTY_PAGE_TITLE = "appstore.pageTitle";
     
-    private static final String TAG_PAGE_LINK = "page_link";
-    private static final String TAG_PAGE_NAME = "page-name";
-    private static final String TAG_PAGE_URL = "page-url";
+    private static final String URL_HOME_APPSTORE = "page=appstore";
+    
 
 
     /**
@@ -144,7 +143,7 @@ public class AppStoreApp implements XPageApplication
 
         page.setContent( template.getHtml(  ) );
         page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) + " - " + application.getTitle() );
-        page.setXmlExtendedPathLabel( getXmlExtendedPath( application.getTitle() ));
+        page.setExtendedPathLabel( getXmlExtendedPath( application.getTitle() ));
     }
     
     public String generatePOM( HttpServletRequest request )
@@ -160,24 +159,18 @@ public class AppStoreApp implements XPageApplication
         return template.getHtml();
     }
     
-        /**
+    /**
      * Build XML path infos
      * @param strPageName The page name
      * @return The XML that content path info
      */
-    private String getXmlExtendedPath( String strPageName )
+    private ReferenceList getXmlExtendedPath( String strPageName )
     {
-        StringBuffer sbXml = new StringBuffer(  );
-        XmlUtil.beginElement( sbXml, TAG_PAGE_LINK );
-        XmlUtil.addElement( sbXml, TAG_PAGE_NAME, AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
-        XmlUtil.addElement( sbXml, TAG_PAGE_URL, "page=appstore" );
-        XmlUtil.endElement( sbXml, TAG_PAGE_LINK );
-        XmlUtil.beginElement( sbXml, TAG_PAGE_LINK );
-        XmlUtil.addElement( sbXml, TAG_PAGE_NAME, strPageName );
-        XmlUtil.addElement( sbXml, TAG_PAGE_URL, "" );
-        XmlUtil.endElement( sbXml, TAG_PAGE_LINK );
+        ReferenceList list = new ReferenceList();
+        list.addItem( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ), URL_HOME_APPSTORE );
+        list.addItem( strPageName, "" );
 
-        return sbXml.toString(  );
+        return list;
     }
 
 }

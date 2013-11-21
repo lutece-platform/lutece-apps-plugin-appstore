@@ -5,6 +5,8 @@
 package fr.paris.lutece.plugins.appstore.service;
 
 import fr.paris.lutece.plugins.appstore.business.Component;
+import fr.paris.lutece.portal.service.util.AppLogService;
+import fr.paris.lutece.portal.service.util.AppPropertiesService;
 
 import org.jsoup.Jsoup;
 
@@ -15,12 +17,12 @@ import org.jsoup.select.Elements;
 
 
 /**
- *
- * @author pierre
+ * Component Info Service
  */
 public class ComponentInfoService
 {
-    private static final String NEXUS_URL = "http://dev.lutece.paris.fr/nexus/content/groups/maven_repository/fr/paris/lutece/plugins/";
+    private static final String PROPERTY_MAVEN_URL_PLUGINS = "appstore.maven.url.plugins";
+    private static final String NEXUS_URL = AppPropertiesService.getProperty(PROPERTY_MAVEN_URL_PLUGINS);
 
     public static void getReleaseVersion( Component component )
     {
@@ -41,6 +43,7 @@ public class ComponentInfoService
         }
         catch ( Exception e )
         {
+            AppLogService.error( "AppStore - ComponentInfoService : Error retrieving release version : " + e.getMessage() , e );
             component.setVersion( "Release not found" );
         }
     }

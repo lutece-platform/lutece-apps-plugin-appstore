@@ -41,4 +41,14 @@
 	<!-- Portlet parameters -->
     <portlets>
    </portlets>
+   
+       <!-- Daemons -->
+    <daemons>
+        <daemon>
+            <daemon-id>appstoreUpdater</daemon-id>
+            <daemon-name>appstore.daemon.updater.name</daemon-name>
+            <daemon-description>appstore.daemon.updater.description</daemon-description>
+            <daemon-class>fr.paris.lutece.plugins.appstore.service.UpdaterDaemon</daemon-class>
+        </daemon>
+    </daemons>
 </plug-in>
