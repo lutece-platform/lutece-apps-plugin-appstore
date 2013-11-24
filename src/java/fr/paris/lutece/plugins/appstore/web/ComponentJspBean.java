@@ -161,7 +161,7 @@ public class ComponentJspBean extends AppStoreJspBean
         component.setArtifactId( request.getParameter( PARAMETER_COMPONENT_ARTIFACT_ID ) );
         component.setGroupId( request.getParameter( PARAMETER_COMPONENT_GROUP_ID ) );
         component.setComponentType( request.getParameter( PARAMETER_COMPONENT_COMPONENT_TYPE ) );
-        ComponentInfoService.getReleaseVersion( component );
+        ComponentInfoService.setReleaseVersion( component );
 
         ComponentHome.create( component );
 
@@ -251,7 +251,7 @@ public class ComponentJspBean extends AppStoreJspBean
         component.setArtifactId( request.getParameter( PARAMETER_COMPONENT_ARTIFACT_ID ) );
         component.setGroupId( request.getParameter( PARAMETER_COMPONENT_GROUP_ID ) );
         component.setComponentType( request.getParameter( PARAMETER_COMPONENT_COMPONENT_TYPE ) );
-        ComponentInfoService.getReleaseVersion( component );
+        ComponentInfoService.setReleaseVersion( component );
         ComponentHome.update( component );
 
         return JSP_REDIRECT_TO_MANAGE_COMPONENTS;

@@ -52,13 +52,17 @@ public class UpdaterService
         for( Component component : ComponentHome.getComponentsList())
         {
             String strVersion = component.getVersion();
-            ComponentInfoService.getReleaseVersion(component);
+            ComponentInfoService.setReleaseVersion(component);
             if( ! component.getVersion().equals( strVersion ))
             {
                 ComponentHome.update(component);
                 sbLogs.append( "Component ").append(component.getArtifactId()).append( " updated from version ").append( strVersion ).append( " to ").append( component.getVersion()).append( ".\n");
             }
         }
+        
+        // Update Site POM version
+        ComponentInfoService.setPomSiteVersion();
+        
         return sbLogs.toString();
     }
     
