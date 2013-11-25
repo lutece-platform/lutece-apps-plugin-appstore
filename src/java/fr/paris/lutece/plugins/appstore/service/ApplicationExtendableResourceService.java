@@ -40,8 +40,11 @@ import fr.paris.lutece.portal.service.resource.IExtendableResourceService;
 import fr.paris.lutece.portal.service.util.AppPathService;
 import fr.paris.lutece.portal.web.constants.Parameters;
 import fr.paris.lutece.util.url.UrlItem;
-import java.util.Locale;
+
 import org.apache.commons.lang.StringUtils;
+
+import java.util.Locale;
+
 
 /**
  * Application Extendable Resource Service
@@ -51,27 +54,29 @@ public class ApplicationExtendableResourceService implements IExtendableResource
     private static final String PARAMETER_XPAGE = "page";
     private static final String XPAGE = "appstore";
     private static final String PARAMETER_ID_APPLICATION = "id_application";
-    
+
     /**
      * {@inheritDoc }
      */
     @Override
-    public boolean isInvoked(String strResourceType)
+    public boolean isInvoked( String strResourceType )
     {
-        return Application.RESOURCE_TYPE.equals(strResourceType);
+        return Application.RESOURCE_TYPE.equals( strResourceType );
     }
 
     /**
      * {@inheritDoc }
      */
     @Override
-    public IExtendableResource getResource(String strIdResource, String strResourceType)
+    public IExtendableResource getResource( String strIdResource, String strResourceType )
     {
-        if (StringUtils.isNotBlank(strIdResource) && StringUtils.isNumeric(strIdResource))
+        if ( StringUtils.isNotBlank( strIdResource ) && StringUtils.isNumeric( strIdResource ) )
         {
-            int nIdApplication = Integer.parseInt(strIdResource);
-            return ApplicationHome.findByPrimaryKey(nIdApplication);
+            int nIdApplication = Integer.parseInt( strIdResource );
+
+            return ApplicationHome.findByPrimaryKey( nIdApplication );
         }
+
         return null;
     }
 
@@ -79,7 +84,7 @@ public class ApplicationExtendableResourceService implements IExtendableResource
      * {@inheritDoc }
      */
     @Override
-    public String getResourceType()
+    public String getResourceType(  )
     {
         return Application.RESOURCE_TYPE;
     }
@@ -88,7 +93,7 @@ public class ApplicationExtendableResourceService implements IExtendableResource
      * {@inheritDoc }
      */
     @Override
-    public String getResourceTypeDescription(Locale locale)
+    public String getResourceTypeDescription( Locale locale )
     {
         return Application.RESOURCE_TYPE_DESCRIPTION;
     }
@@ -97,11 +102,12 @@ public class ApplicationExtendableResourceService implements IExtendableResource
      * {@inheritDoc }
      */
     @Override
-    public String getResourceUrl(String strIdResource, String strResourceType)
+    public String getResourceUrl( String strIdResource, String strResourceType )
     {
-        UrlItem url = new UrlItem( AppPathService.getPortalUrl( ) );
+        UrlItem url = new UrlItem( AppPathService.getPortalUrl(  ) );
         url.addParameter( PARAMETER_XPAGE, XPAGE );
         url.addParameter( PARAMETER_ID_APPLICATION, strIdResource );
-        return url.getUrl( );
+
+        return url.getUrl(  );
     }
 }

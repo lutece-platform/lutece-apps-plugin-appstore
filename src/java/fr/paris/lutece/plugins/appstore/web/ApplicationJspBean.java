@@ -164,7 +164,7 @@ public class ApplicationJspBean extends AppStoreJspBean
 
         Map<String, Object> model = new HashMap<String, Object>(  );
         model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories(  ) );
-        model.put( MARK_PUBLISH_STATUS_LIST , getPublishStatusList( request ) );
+        model.put( MARK_PUBLISH_STATUS_LIST, getPublishStatusList( request ) );
         model.put( MARK_ICONS_LIST, IconHome.getListIcons( getPlugin(  ) ) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_CREATE_APPLICATION, getLocale(  ), model );
@@ -187,36 +187,30 @@ public class ApplicationJspBean extends AppStoreJspBean
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
- 
         if ( request.getParameter( PARAMETER_APPLICATION_DESCRIPTION ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
-
 
         if ( request.getParameter( PARAMETER_APPLICATION_ID_CATEGORY ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-
         if ( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
-
 
         if ( request.getParameter( PARAMETER_APPLICATION_ID_ICON ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
 
-
         if ( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ).equals( "" ) )
         {
             return AdminMessageService.getMessageUrl( request, Messages.MANDATORY_FIELDS, AdminMessage.TYPE_STOP );
         }
-
 
         if ( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ).equals( "" ) )
         {
@@ -225,20 +219,24 @@ public class ApplicationJspBean extends AppStoreJspBean
 
         application.setTitle( request.getParameter( PARAMETER_APPLICATION_TITLE ) );
         application.setDescription( request.getParameter( PARAMETER_APPLICATION_DESCRIPTION ) );
+
         int nIdCategory = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_CATEGORY ) );
         application.setIdCategory( nIdCategory );
+
         int nApplicationOrder = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_APPLICATION_ORDER ) );
         application.setOrder( nApplicationOrder );
+
         int nIdIcon = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_ID_ICON ) );
         application.setIdIcon( nIdIcon );
-        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ));
+
+        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ) );
 
         application.setWebappUrl( request.getParameter( PARAMETER_APPLICATION_WEBAPP_URL ) );
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
-        application.setPresentation( request.getParameter(PARAMETER_APPLICATION_PRESENTATION ));
-        application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
-        application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
-        application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
+        application.setPresentation( request.getParameter( PARAMETER_APPLICATION_PRESENTATION ) );
+        application.setInstallation( request.getParameter( PARAMETER_APPLICATION_INSTALLATION ) );
+        application.setArtifactId( request.getParameter( PARAMETER_APPLICATION_ARTIFACT_ID ) );
+        application.setVersion( request.getParameter( PARAMETER_APPLICATION_VERSION ) );
         application.setPublishStatus( nPublishStatus );
 
         ApplicationHome.create( application );
@@ -292,9 +290,9 @@ public class ApplicationJspBean extends AppStoreJspBean
         Map<String, Object> model = new HashMap<String, Object>(  );
         model.put( MARK_CATEGORIES_LIST, CategoryHome.getCategories(  ) );
         model.put( MARK_APPLICATION, application );
-        model.put( MARK_COMPONENTS_LIST, ComponentHome.getComponentsList() );
-        model.put( MARK_APP_COMPONENTS_LIST, ComponentHome.findByApplication(nId) );
-        model.put( MARK_PUBLISH_STATUS_LIST , getPublishStatusList( request ) );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.getComponentsList(  ) );
+        model.put( MARK_APP_COMPONENTS_LIST, ComponentHome.findByApplication( nId ) );
+        model.put( MARK_PUBLISH_STATUS_LIST, getPublishStatusList( request ) );
         model.put( MARK_ICONS_LIST, IconHome.getListIcons( getPlugin(  ) ) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_APPLICATION, getLocale(  ), model );
@@ -372,39 +370,42 @@ public class ApplicationJspBean extends AppStoreJspBean
         }
 
         application.setSqlScriptUrl( request.getParameter( PARAMETER_APPLICATION_SQL_SCRIPT_URL ) );
-        application.setPresentation( request.getParameter(PARAMETER_APPLICATION_PRESENTATION ));
-        application.setInstallation( request.getParameter(PARAMETER_APPLICATION_INSTALLATION ));
-        application.setArtifactId( request.getParameter(PARAMETER_APPLICATION_ARTIFACT_ID ));
-        application.setVersion( request.getParameter(PARAMETER_APPLICATION_VERSION ));
-        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ));
+        application.setPresentation( request.getParameter( PARAMETER_APPLICATION_PRESENTATION ) );
+        application.setInstallation( request.getParameter( PARAMETER_APPLICATION_INSTALLATION ) );
+        application.setArtifactId( request.getParameter( PARAMETER_APPLICATION_ARTIFACT_ID ) );
+        application.setVersion( request.getParameter( PARAMETER_APPLICATION_VERSION ) );
+
+        int nPublishStatus = Integer.parseInt( request.getParameter( PARAMETER_APPLICATION_PUBLISH_STATUS ) );
         application.setPublishStatus( nPublishStatus );
         ApplicationHome.update( application );
 
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
     }
-    
+
     public String doModifyComponentsList( HttpServletRequest request )
     {
-        String[] ids = request.getParameterValues(PARAMETER_ID_COMPONENT);
-        String strApplicationId = request.getParameter(PARAMETER_ID_APPLICATION);
+        String[] ids = request.getParameterValues( PARAMETER_ID_COMPONENT );
+        String strApplicationId = request.getParameter( PARAMETER_ID_APPLICATION );
         int nApplicationId = Integer.parseInt( strApplicationId );
-        
+
         ApplicationHome.clearComponentsList( nApplicationId );
-        
-        for( int i = 0 ; i < ids.length ; i++ )
+
+        for ( int i = 0; i < ids.length; i++ )
         {
             int nIdComponent = Integer.parseInt( ids[i] );
-            ApplicationHome.addComponent( nApplicationId , nIdComponent );
+            ApplicationHome.addComponent( nApplicationId, nIdComponent );
         }
-        
+
         return JSP_REDIRECT_TO_MANAGE_APPLICATIONS;
     }
-    
+
     private ReferenceList getPublishStatusList( HttpServletRequest request )
     {
-        ReferenceList list = new ReferenceList();
-        list.addItem( Application.NOT_PUBLISHED, I18nService.getLocalizedString( PROPERTY_NOT_PUBLISHED, request.getLocale() ));
-        list.addItem( Application.PUBLISHED, I18nService.getLocalizedString( PROPERTY_PUBLISHED, request.getLocale() ));
+        ReferenceList list = new ReferenceList(  );
+        list.addItem( Application.NOT_PUBLISHED,
+            I18nService.getLocalizedString( PROPERTY_NOT_PUBLISHED, request.getLocale(  ) ) );
+        list.addItem( Application.PUBLISHED, I18nService.getLocalizedString( PROPERTY_PUBLISHED, request.getLocale(  ) ) );
+
         return list;
     }
 }

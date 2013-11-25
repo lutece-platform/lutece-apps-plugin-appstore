@@ -111,7 +111,7 @@ public final class ComponentHome
     {
         return _dao.selectComponentsList( _plugin );
     }
-    
+
     /**
      * Returns a list of component used by the application
      * @param nApplicationId The application ID
@@ -121,6 +121,4 @@ public final class ComponentHome
     {
         return _dao.selectByApplication( nApplicationId, _plugin );
     }
-
-    
 }

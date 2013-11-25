@@ -56,14 +56,13 @@ public class ComponentInfoService
     private static final String PROPERTY_MAVEN_REPO_URL = "appstore.maven.repository.url";
     private static final String URL_MAVEN_REPO = AppPropertiesService.getProperty( PROPERTY_MAVEN_REPO_URL );
     private static final String PROPERTY_MAVEN_PATH_PLUGINS = "appstore.maven.repository.path.plugins";
-    private static final String URL_PLUGINS = URL_MAVEN_REPO + AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_PLUGINS );
+    private static final String URL_PLUGINS = URL_MAVEN_REPO +
+        AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_PLUGINS );
     private static final String PROPERTY_MAVEN_PATH_SITE_POM = "appstore.maven.repository.path.site-pom";
-    private static final String URL_SITE_POM = URL_MAVEN_REPO + AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_SITE_POM );
-    
-    
+    private static final String URL_SITE_POM = URL_MAVEN_REPO +
+        AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_SITE_POM );
     private static final String KEY_SITE_POM_VERSION = "appstore.pom.site.version";
     private static final String RELEASE_NOT_FOUND = "Release not found";
-    
 
     /**
      * Set the component's version
@@ -71,18 +70,18 @@ public class ComponentInfoService
      */
     public static void setReleaseVersion( Component component )
     {
-        component.setVersion( getVersion ( URL_PLUGINS + component.getArtifactId(  ) ) );
+        component.setVersion( getVersion( URL_PLUGINS + component.getArtifactId(  ) ) );
     }
-    
+
     /**
      * Set the POM site version
      */
-    public static void setPomSiteVersion( )
+    public static void setPomSiteVersion(  )
     {
-         String strVersion = getVersion ( URL_SITE_POM );
-         DatastoreService.setDataValue( KEY_SITE_POM_VERSION , strVersion );
+        String strVersion = getVersion( URL_SITE_POM );
+        DatastoreService.setDataValue( KEY_SITE_POM_VERSION, strVersion );
     }
-    
+
     /**
      * Retrieve a version from the maven repository
      * @param strUrl The maven repository URL
@@ -91,12 +90,12 @@ public class ComponentInfoService
     private static String getVersion( String strUrl )
     {
         String strVersion = RELEASE_NOT_FOUND;
-        
+
         try
         {
-            HttpAccess httpAccess = new HttpAccess();
+            HttpAccess httpAccess = new HttpAccess(  );
             String strHtml = httpAccess.doGet( strUrl );
-            Document jarList =  Jsoup.parse( strHtml );
+            Document jarList = Jsoup.parse( strHtml );
             Elements trList = jarList.select( "td a" );
 
             for ( int i = 4; i < trList.size(  ); i++ )
@@ -107,9 +106,10 @@ public class ComponentInfoService
         }
         catch ( HttpAccessException e )
         {
-            AppLogService.error( "AppStore - ComponentInfoService : Error retrieving release version : " + e.getMessage() , e );
+            AppLogService.error( "AppStore - ComponentInfoService : Error retrieving release version : " +
+                e.getMessage(  ), e );
         }
+
         return strVersion;
-        
     }
 }

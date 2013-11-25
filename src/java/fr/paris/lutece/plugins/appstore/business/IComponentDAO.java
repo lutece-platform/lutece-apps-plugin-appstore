@@ -83,12 +83,11 @@ public interface IComponentDAO
     */
     Collection<Component> selectComponentsList( Plugin plugin );
 
-    
     /**
      * Returns a list of component used by the application
      * @param nApplicationId The application ID
      * @param plugin the Plugin
      * @return a List of Component
      */
-     List<Component> selectByApplication(int nApplicationId, Plugin _plugin);
+    List<Component> selectByApplication( int nApplicationId, Plugin _plugin );
 }

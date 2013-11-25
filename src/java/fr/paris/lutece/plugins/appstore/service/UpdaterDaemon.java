@@ -31,24 +31,22 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.appstore.service;
 
 import fr.paris.lutece.portal.service.daemon.Daemon;
+
 
 /**
  * Updater Daemon
  */
 public class UpdaterDaemon extends Daemon
 {
-
     /**
      * {@inheritDoc }
      */
     @Override
-    public void run()
+    public void run(  )
     {
-        setLastRunLogs( UpdaterService.updateComponentInfo() );
+        setLastRunLogs( UpdaterService.updateComponentInfo(  ) );
     }
-    
 }

@@ -47,19 +47,18 @@ public final class ApplicationDAO implements IApplicationDAO
 {
     // Constants
     private static final String SQL_QUERY_NEW_PK = "SELECT max( id_application ) FROM appstore_application";
-    private static final String SQL_QUERY_SELECT = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name,"
-            + " a.artifact_id, a.presentation, a.installation, a.version, a.build_status, a.publish_status "
-            + " FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category AND id_application = ?";
+    private static final String SQL_QUERY_SELECT = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name," +
+        " a.artifact_id, a.presentation, a.installation, a.version, a.build_status, a.publish_status " +
+        " FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category AND id_application = ?";
     private static final String SQL_QUERY_INSERT = "INSERT INTO appstore_application ( id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status, publish_status ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_application WHERE id_application = ? ";
     private static final String SQL_QUERY_UPDATE = "UPDATE appstore_application SET id_application = ?, title = ?, description = ?, id_category = ?, id_order = ?, id_icon = ?, pom_url = ?, webapp_url = ?, sql_script_url = ?, artifact_id = ?, presentation = ?, installation = ?, version = ?, build_status = ?, publish_status = ?  WHERE id_application = ?";
-    private static final String SQL_QUERY_SELECTALL = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name, "
-            + " a.artifact_id, a.presentation, a.installation, a.version, a.build_status, a.publish_status " 
-            + " FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category ORDER by a.id_order";
-
+    private static final String SQL_QUERY_SELECTALL = "SELECT a.id_application, a.title, a.description, a.id_category, a.id_order, a.id_icon, a.pom_url, a.webapp_url, a.sql_script_url, b.name, " +
+        " a.artifact_id, a.presentation, a.installation, a.version, a.build_status, a.publish_status " +
+        " FROM appstore_application a, appstore_category b WHERE a.id_category = b.id_category ORDER by a.id_order";
     private static final String SQL_QUERY_DELETE_COMPONENT = "DELETE FROM appstore_application_component WHERE id_application = ? ";
     private static final String SQL_QUERY_INSERT_COMPONENT = "INSERT INTO appstore_application_component ( id_application, id_component ) VALUES ( ?, ? ) ";
-    
+
     /**
      * Generates a new primary key
      * @param plugin The Plugin
@@ -100,12 +99,12 @@ public final class ApplicationDAO implements IApplicationDAO
         daoUtil.setString( 7, application.getPomUrl(  ) );
         daoUtil.setString( 8, application.getWebappUrl(  ) );
         daoUtil.setString( 9, application.getSqlScriptUrl(  ) );
-        daoUtil.setString( 10, application.getArtifactId() );
-        daoUtil.setString( 11, application.getPresentation() );
-        daoUtil.setString( 12, application.getInstallation() );
-        daoUtil.setString( 13, application.getVersion() );
-        daoUtil.setInt( 14, application.getBuildStatus() );
-        daoUtil.setInt( 15, application.getPublishStatus() );
+        daoUtil.setString( 10, application.getArtifactId(  ) );
+        daoUtil.setString( 11, application.getPresentation(  ) );
+        daoUtil.setString( 12, application.getInstallation(  ) );
+        daoUtil.setString( 13, application.getVersion(  ) );
+        daoUtil.setInt( 14, application.getBuildStatus(  ) );
+        daoUtil.setInt( 15, application.getPublishStatus(  ) );
 
         daoUtil.executeUpdate(  );
         daoUtil.free(  );
@@ -140,12 +139,12 @@ public final class ApplicationDAO implements IApplicationDAO
             application.setWebappUrl( daoUtil.getString( 8 ) );
             application.setSqlScriptUrl( daoUtil.getString( 9 ) );
             application.setCategory( daoUtil.getString( 10 ) );
-            application.setArtifactId( daoUtil.getString( 11 ));
-            application.setPresentation( daoUtil.getString( 12 ));
-            application.setInstallation( daoUtil.getString( 13 ));
-            application.setVersion( daoUtil.getString( 14 ));
-            application.setBuildStatus(daoUtil.getInt( 15 ));
-            application.setPublishStatus(daoUtil.getInt( 16 ));
+            application.setArtifactId( daoUtil.getString( 11 ) );
+            application.setPresentation( daoUtil.getString( 12 ) );
+            application.setInstallation( daoUtil.getString( 13 ) );
+            application.setVersion( daoUtil.getString( 14 ) );
+            application.setBuildStatus( daoUtil.getInt( 15 ) );
+            application.setPublishStatus( daoUtil.getInt( 16 ) );
         }
 
         daoUtil.free(  );
@@ -161,13 +160,12 @@ public final class ApplicationDAO implements IApplicationDAO
     @Override
     public void delete( int nApplicationId, Plugin plugin )
     {
-        clearComponentsList( nApplicationId, plugin);
-        
+        clearComponentsList( nApplicationId, plugin );
+
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
         daoUtil.setInt( 1, nApplicationId );
         daoUtil.executeUpdate(  );
         daoUtil.free(  );
-        
     }
 
     /**
@@ -189,12 +187,12 @@ public final class ApplicationDAO implements IApplicationDAO
         daoUtil.setString( 7, application.getPomUrl(  ) );
         daoUtil.setString( 8, application.getWebappUrl(  ) );
         daoUtil.setString( 9, application.getSqlScriptUrl(  ) );
-        daoUtil.setString( 10, application.getArtifactId() );
-        daoUtil.setString( 11, application.getPresentation() );
-        daoUtil.setString( 12, application.getInstallation() );
-        daoUtil.setString( 13, application.getVersion() );
-        daoUtil.setInt( 14, application.getBuildStatus() );
-        daoUtil.setInt( 15, application.getPublishStatus() );
+        daoUtil.setString( 10, application.getArtifactId(  ) );
+        daoUtil.setString( 11, application.getPresentation(  ) );
+        daoUtil.setString( 12, application.getInstallation(  ) );
+        daoUtil.setString( 13, application.getVersion(  ) );
+        daoUtil.setInt( 14, application.getBuildStatus(  ) );
+        daoUtil.setInt( 15, application.getPublishStatus(  ) );
         daoUtil.setInt( 16, application.getId(  ) );
 
         daoUtil.executeUpdate(  );
@@ -227,12 +225,12 @@ public final class ApplicationDAO implements IApplicationDAO
             application.setWebappUrl( daoUtil.getString( 8 ) );
             application.setSqlScriptUrl( daoUtil.getString( 9 ) );
             application.setCategory( daoUtil.getString( 10 ) );
-            application.setArtifactId( daoUtil.getString( 11 ));
-            application.setPresentation( daoUtil.getString( 12 ));
-            application.setInstallation( daoUtil.getString( 13 ));
-            application.setVersion( daoUtil.getString( 14 ));
-            application.setBuildStatus(daoUtil.getInt( 15 ));
-            application.setPublishStatus(daoUtil.getInt( 16 ));
+            application.setArtifactId( daoUtil.getString( 11 ) );
+            application.setPresentation( daoUtil.getString( 12 ) );
+            application.setInstallation( daoUtil.getString( 13 ) );
+            application.setVersion( daoUtil.getString( 14 ) );
+            application.setBuildStatus( daoUtil.getInt( 15 ) );
+            application.setPublishStatus( daoUtil.getInt( 16 ) );
 
             applicationList.add( application );
         }
@@ -243,16 +241,16 @@ public final class ApplicationDAO implements IApplicationDAO
     }
 
     @Override
-    public void clearComponentsList(int nApplicationId, Plugin plugin)
+    public void clearComponentsList( int nApplicationId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE_COMPONENT, plugin );
         daoUtil.setInt( 1, nApplicationId );
         daoUtil.executeUpdate(  );
         daoUtil.free(  );
-   }
+    }
 
     @Override
-    public void addComponent(int nApplicationId, int nComponentId, Plugin plugin)
+    public void addComponent( int nApplicationId, int nComponentId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT_COMPONENT, plugin );
 

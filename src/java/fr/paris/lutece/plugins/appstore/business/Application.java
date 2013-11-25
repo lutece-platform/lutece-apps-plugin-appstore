@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.appstore.business;
 
 import fr.paris.lutece.portal.service.resource.IExtendableResource;
 
+
 /**
  * This is the business class for the object Application
  */
@@ -42,11 +43,11 @@ public class Application implements IExtendableResource
 {
     public static final String RESOURCE_TYPE = "APP";
     public static final String RESOURCE_TYPE_DESCRIPTION = "Appstore Application";
+
     // Variables declarations 
     public static final int NOT_PUBLISHED = 0;
     public static final int PUBLISHED = 1;
     public static final int PUBLISHED_NEW = 2;
-
     private int _nIdApplication;
     private String _strTitle;
     private String _strDescription;
@@ -69,7 +70,7 @@ public class Application implements IExtendableResource
      *
      * @return The IdApplication
      */
-    public int getId()
+    public int getId(  )
     {
         return _nIdApplication;
     }
@@ -79,7 +80,7 @@ public class Application implements IExtendableResource
      *
      * @param nIdApplication The IdApplication
      */
-    public void setId(int nIdApplication)
+    public void setId( int nIdApplication )
     {
         _nIdApplication = nIdApplication;
     }
@@ -89,7 +90,7 @@ public class Application implements IExtendableResource
      *
      * @return The Title
      */
-    public String getTitle()
+    public String getTitle(  )
     {
         return _strTitle;
     }
@@ -99,7 +100,7 @@ public class Application implements IExtendableResource
      *
      * @param strTitle The Title
      */
-    public void setTitle(String strTitle)
+    public void setTitle( String strTitle )
     {
         _strTitle = strTitle;
     }
@@ -109,7 +110,7 @@ public class Application implements IExtendableResource
      *
      * @return The Description
      */
-    public String getDescription()
+    public String getDescription(  )
     {
         return _strDescription;
     }
@@ -119,7 +120,7 @@ public class Application implements IExtendableResource
      *
      * @param strDescription The Description
      */
-    public void setDescription(String strDescription)
+    public void setDescription( String strDescription )
     {
         _strDescription = strDescription;
     }
@@ -129,7 +130,7 @@ public class Application implements IExtendableResource
      *
      * @return The IdCategory
      */
-    public int getIdCategory()
+    public int getIdCategory(  )
     {
         return _nIdCategory;
     }
@@ -139,7 +140,7 @@ public class Application implements IExtendableResource
      *
      * @param nIdCategory The IdCategory
      */
-    public void setIdCategory(int nIdCategory)
+    public void setIdCategory( int nIdCategory )
     {
         _nIdCategory = nIdCategory;
     }
@@ -149,7 +150,7 @@ public class Application implements IExtendableResource
      *
      * @return The Category
      */
-    public String getCategory()
+    public String getCategory(  )
     {
         return _strCategory;
     }
@@ -159,7 +160,7 @@ public class Application implements IExtendableResource
      *
      * @param strCategory The Category
      */
-    public void setCategory(String strCategory)
+    public void setCategory( String strCategory )
     {
         _strCategory = strCategory;
     }
@@ -169,7 +170,7 @@ public class Application implements IExtendableResource
      *
      * @return The ApplicationOrder
      */
-    public int getOrder()
+    public int getOrder(  )
     {
         return _nOrder;
     }
@@ -179,7 +180,7 @@ public class Application implements IExtendableResource
      *
      * @param nApplicationOrder The ApplicationOrder
      */
-    public void setOrder(int nApplicationOrder)
+    public void setOrder( int nApplicationOrder )
     {
         _nOrder = nApplicationOrder;
     }
@@ -189,7 +190,7 @@ public class Application implements IExtendableResource
      *
      * @return The IdIcon
      */
-    public int getIdIcon()
+    public int getIdIcon(  )
     {
         return _nIdIcon;
     }
@@ -199,7 +200,7 @@ public class Application implements IExtendableResource
      *
      * @param nIdIcon The IdIcon
      */
-    public void setIdIcon(int nIdIcon)
+    public void setIdIcon( int nIdIcon )
     {
         _nIdIcon = nIdIcon;
     }
@@ -209,7 +210,7 @@ public class Application implements IExtendableResource
      *
      * @return The PomUrl
      */
-    public String getPomUrl()
+    public String getPomUrl(  )
     {
         return _strPomUrl;
     }
@@ -219,7 +220,7 @@ public class Application implements IExtendableResource
      *
      * @param strPomUrl The PomUrl
      */
-    public void setPomUrl(String strPomUrl)
+    public void setPomUrl( String strPomUrl )
     {
         _strPomUrl = strPomUrl;
     }
@@ -229,7 +230,7 @@ public class Application implements IExtendableResource
      *
      * @return The WebappUrl
      */
-    public String getWebappUrl()
+    public String getWebappUrl(  )
     {
         return _strWebappUrl;
     }
@@ -239,7 +240,7 @@ public class Application implements IExtendableResource
      *
      * @param strWebappUrl The WebappUrl
      */
-    public void setWebappUrl(String strWebappUrl)
+    public void setWebappUrl( String strWebappUrl )
     {
         _strWebappUrl = strWebappUrl;
     }
@@ -249,7 +250,7 @@ public class Application implements IExtendableResource
      *
      * @return The SqlScriptUrl
      */
-    public String getSqlScriptUrl()
+    public String getSqlScriptUrl(  )
     {
         return _strSqlScriptUrl;
     }
@@ -259,7 +260,7 @@ public class Application implements IExtendableResource
      *
      * @param strSqlScriptUrl The SqlScriptUrl
      */
-    public void setSqlScriptUrl(String strSqlScriptUrl)
+    public void setSqlScriptUrl( String strSqlScriptUrl )
     {
         _strSqlScriptUrl = strSqlScriptUrl;
     }
@@ -269,7 +270,7 @@ public class Application implements IExtendableResource
      *
      * @return The ArtifactId
      */
-    public String getArtifactId()
+    public String getArtifactId(  )
     {
         return _strArtifactId;
     }
@@ -279,7 +280,7 @@ public class Application implements IExtendableResource
      *
      * @param strArtifactId The ArtifactId
      */
-    public void setArtifactId(String strArtifactId)
+    public void setArtifactId( String strArtifactId )
     {
         _strArtifactId = strArtifactId;
     }
@@ -289,7 +290,7 @@ public class Application implements IExtendableResource
      *
      * @return The Presentation
      */
-    public String getPresentation()
+    public String getPresentation(  )
     {
         return _strPresentation;
     }
@@ -299,7 +300,7 @@ public class Application implements IExtendableResource
      *
      * @param strPresentation The Presentation
      */
-    public void setPresentation(String strPresentation)
+    public void setPresentation( String strPresentation )
     {
         _strPresentation = strPresentation;
     }
@@ -309,7 +310,7 @@ public class Application implements IExtendableResource
      *
      * @return The Installation
      */
-    public String getInstallation()
+    public String getInstallation(  )
     {
         return _strInstallation;
     }
@@ -319,7 +320,7 @@ public class Application implements IExtendableResource
      *
      * @param strInstallation The Installation
      */
-    public void setInstallation(String strInstallation)
+    public void setInstallation( String strInstallation )
     {
         _strInstallation = strInstallation;
     }
@@ -329,7 +330,7 @@ public class Application implements IExtendableResource
      *
      * @return The Version
      */
-    public String getVersion()
+    public String getVersion(  )
     {
         return _strVersion;
     }
@@ -339,7 +340,7 @@ public class Application implements IExtendableResource
      *
      * @param strVersion The Version
      */
-    public void setVersion(String strVersion)
+    public void setVersion( String strVersion )
     {
         _strVersion = strVersion;
     }
@@ -349,7 +350,7 @@ public class Application implements IExtendableResource
      *
      * @return The BuildStatus
      */
-    public int getBuildStatus()
+    public int getBuildStatus(  )
     {
         return _nBuildStatus;
     }
@@ -359,7 +360,7 @@ public class Application implements IExtendableResource
      *
      * @param nBuildStatus The BuildStatus
      */
-    public void setBuildStatus(int nBuildStatus)
+    public void setBuildStatus( int nBuildStatus )
     {
         _nBuildStatus = nBuildStatus;
     }
@@ -369,7 +370,7 @@ public class Application implements IExtendableResource
      *
      * @return The PublishStatus
      */
-    public int getPublishStatus()
+    public int getPublishStatus(  )
     {
         return _nPublishStatus;
     }
@@ -379,37 +380,37 @@ public class Application implements IExtendableResource
      *
      * @param nPublishStatus The PublishStatus
      */
-    public void setPublishStatus(int nPublishStatus)
+    public void setPublishStatus( int nPublishStatus )
     {
         _nPublishStatus = nPublishStatus;
     }
 
     @Override
-    public String getIdExtendableResource()
+    public String getIdExtendableResource(  )
     {
         return Integer.toString( _nIdApplication );
     }
 
     @Override
-    public String getExtendableResourceType()
+    public String getExtendableResourceType(  )
     {
         return RESOURCE_TYPE;
     }
 
     @Override
-    public String getExtendableResourceName()
+    public String getExtendableResourceName(  )
     {
         return _strTitle;
     }
 
     @Override
-    public String getExtendableResourceDescription()
+    public String getExtendableResourceDescription(  )
     {
         return _strDescription;
     }
 
     @Override
-    public String getExtendableResourceImageUrl()
+    public String getExtendableResourceImageUrl(  )
     {
         return "image?resource_type=appstore_icon_img&id=" + _nIdIcon;
     }

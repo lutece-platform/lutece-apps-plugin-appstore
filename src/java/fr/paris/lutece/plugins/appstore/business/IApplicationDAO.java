@@ -82,7 +82,7 @@ public interface IApplicationDAO
     */
     Collection<Application> selectApplicationsList( Plugin plugin );
 
-    void clearComponentsList(int nApplicationId, Plugin _plugin);
+    void clearComponentsList( int nApplicationId, Plugin _plugin );
 
-    void addComponent(int nApplicationId, int nComponentId, Plugin _plugin);
+    void addComponent( int nApplicationId, int nComponentId, Plugin _plugin );
 }

@@ -31,11 +31,11 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.appstore.service;
 
 import fr.paris.lutece.plugins.appstore.business.Component;
 import fr.paris.lutece.plugins.appstore.business.ComponentHome;
+
 
 /**
  * Updater Service
@@ -46,25 +46,26 @@ public class UpdaterService
      * Update component infos
      * @return The logs
      */
-    public static String updateComponentInfo( )
+    public static String updateComponentInfo(  )
     {
-        StringBuilder sbLogs = new StringBuilder();
-        for( Component component : ComponentHome.getComponentsList())
+        StringBuilder sbLogs = new StringBuilder(  );
+
+        for ( Component component : ComponentHome.getComponentsList(  ) )
         {
-            String strVersion = component.getVersion();
-            ComponentInfoService.setReleaseVersion(component);
-            if( ! component.getVersion().equals( strVersion ))
+            String strVersion = component.getVersion(  );
+            ComponentInfoService.setReleaseVersion( component );
+
+            if ( !component.getVersion(  ).equals( strVersion ) )
             {
-                ComponentHome.update(component);
-                sbLogs.append( "Component ").append(component.getArtifactId()).append( " updated from version ").append( strVersion ).append( " to ").append( component.getVersion()).append( ".\n");
+                ComponentHome.update( component );
+                sbLogs.append( "Component " ).append( component.getArtifactId(  ) ).append( " updated from version " )
+                      .append( strVersion ).append( " to " ).append( component.getVersion(  ) ).append( ".\n" );
             }
         }
-        
+
         // Update Site POM version
-        ComponentInfoService.setPomSiteVersion();
-        
-        return sbLogs.toString();
+        ComponentInfoService.setPomSiteVersion(  );
+
+        return sbLogs.toString(  );
     }
-    
-    
 }
