@@ -18,47 +18,170 @@ INSERT INTO appstore_icon (id_icon, name, mime_type, file_value, width, height) 
 --
 -- Dumping data for table `appstore_application`
 --
-INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status) VALUES (1,'Site éditorial minimum','Pas de gestion documentaire',1,1,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','site-edito-mini','<p>Ce site permet uniquement de saisir les contenus à partir de portlets HTML. Il n\'intègre pas les fonctions de gestion documentaire (espace de gestion, workflow de validation, étape de publication).</p>\r\n\r\n<p>Ce site intègre les fonctionnalités de base suivantes :</p>\r\n<ul>\r\n  <li>Fonctions de base de recherche en texte intégral (moteur Lucene) avec statistiques de termes  recherchés</li>\r\n  <li>Formulaire de contact avec captcha anti-robots</li>\r\n  <li>Fonctions de SEO offrant la réécriture d\'urls techniques en urls explicites (extension .html possible)</li>\r\n  <li>Intégration Google Analytics et Tag de vérification Google Webmaster Tools</li>\r\n  <li>Gestion des thèmes graphiques avec 5 thèmes Bootstrap Responsive pré-installés</li>\r\n  <li>Informations système en back office (OS, JVM, Mémoire, pool de connexions, dernier démarrage, ...)</li>\r\n  <li>Modules d\'extension des contenus : commentaires, votes, nombre de vues, partage réseaux sociaux</li>\r\n</ul>','<ul>\r\n<li>Créer votre base de données à l\'aide du script téléchargé.</li>\r\n<li>Dézippper la webapp dans le répertoire webapps de votre serveur web Java (Tomcat, ...) </li>\r\n<li>Configurer le fichier /WEB-INF/conf/db.properties avec les paramètres de votre de base de données.</li>\r\n<li>Démarrer votre serveur web</li>\r\n</ul>\r\n<p>\r\nEn cas de problème consulter les logs sous WEB-INF/logs.\r\n</p>\r\n\r\n','1.0.0',0);
-INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status) VALUES (2,'Site éditorial simple','Gestion documentaire',1,2,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','site-edito-base','<p>Ce site intègre les fonctionnalités de base suivantes :</p>\r\n<ul>\r\n  <li>Fonctions de base de recherche en texte intégral (moteur Lucene) avec statistiques de termes  recherchés</li>\r\n  <li>Formulaire de contact avec captcha anti-robots</li>\r\n  <li>Fonctions de SEO offrant la réécriture d\'urls techniques en urls explicites (extension .html possible)</li>\r\n  <li>Intégration Google Analytics et Tag de vérification Google Webmaster Tools</li>\r\n  <li>Gestion des thèmes graphiques avec 5 thèmes Bootstrap Responsive pré-installés</li>\r\n  <li>Modules d\'extension des contenus : commentaires, votes, nombre de vues, partage réseaux sociaux</li>\r\n  <li>Informations système en back office (OS, JVM, Mémoire, pool de connexions, dernier démarrage, ...)</li>\r\n</ul>\r\n\r\n<p>Il intégre en plus une gestion documentaire :</p>\r\n<ul>\r\n<li>Des espaces hiérarchiques de stockage des documents</li>\r\n<li>La gestion des permissions sur les documents (création, visualisation, validation, publication, ...)</li>\r\n<li>Un modèle dynamique de structure de documents</li>\r\n<li>Un moteur de règles pour le workflow de gestion des documents</li>\r\n<li>Une base multimédia</li>\r\n<li>Des services d\'insertion de liens dans l\'éditeur WYSIWYG HTML</li>\r\n<li>L\'indexation full text des documents</li>\r\n</ul>','','1.0.0',0);
-INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status) VALUES (3,'Site éditorial riche','Gestion documentaire et autres fonctions',1,3,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','',NULL,NULL,'',0);
-INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status) VALUES (4,'Site avec authentification','Authentification base de données',2,10,1,'pom.xml','site-edito-auth.war','site-edito-auth.sql','site-edito-auth','','','1.0.0',0);
-INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status) VALUES (5,'Forum','Pas de gestion documentaire',3,20,1,'pom.xml','site-forum.war','site-forum.sql','site-forum','','','1.0.0',0);
+INSERT INTO appstore_application (id_application, title, description, id_category, id_order, id_icon, pom_url, webapp_url, sql_script_url, artifact_id, presentation, installation, version, build_status, publish_status) VALUES 
+(1,'Site éditorial minimum','Pas de gestion documentaire',1,1,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','site-edito-mini','<p>Ce site permet uniquement de saisir les contenus à partir de portlets HTML. Il n\'intègre pas les fonctions de gestion documentaire (espace de gestion, workflow de validation, étape de publication).</p>\r\n\r\n<p>Ce site intègre les fonctionnalités de base suivantes :</p>\r\n<ul>\r\n  <li>Fonctions de base de recherche en texte intégral (moteur Lucene) avec statistiques de termes  recherchés</li>\r\n  <li>Formulaire de contact avec captcha anti-robots</li>\r\n  <li>Fonctions de SEO offrant la réécriture d\'urls techniques en urls explicites (extension .html possible)</li>\r\n  <li>Intégration Google Analytics et Tag de vérification Google Webmaster Tools</li>\r\n  <li>Gestion des thèmes graphiques avec 5 thèmes Bootstrap Responsive pré-installés</li>\r\n  <li>Informations système en back office (OS, JVM, Mémoire, pool de connexions, dernier démarrage, ...)</li>\r\n  <li>Modules d\'extension des contenus : commentaires, votes, nombre de vues, partage réseaux sociaux</li>\r\n</ul>','<ul>\r\n<li>Créer votre base de données à l\'aide du script téléchargé.</li>\r\n<li>Dézippper la webapp dans le répertoire webapps de votre serveur web Java (Tomcat, ...) </li>\r\n<li>Configurer le fichier /WEB-INF/conf/db.properties avec les paramètres de votre de base de données.</li>\r\n<li>Démarrer votre serveur web</li>\r\n</ul>\r\n<p>\r\nEn cas de problème consulter les logs sous WEB-INF/logs.\r\n</p>\r\n\r\n','1.0.0',0,1),
+(2,'Site éditorial simple','Gestion documentaire',1,2,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','site-edito-base','<p>Ce site intègre les fonctionnalités de base suivantes :</p>\r\n<ul>\r\n  <li>Fonctions de base de recherche en texte intégral (moteur Lucene) avec statistiques de termes  recherchés</li>\r\n  <li>Formulaire de contact avec captcha anti-robots</li>\r\n  <li>Fonctions de SEO offrant la réécriture d\'urls techniques en urls explicites (extension .html possible)</li>\r\n  <li>Intégration Google Analytics et Tag de vérification Google Webmaster Tools</li>\r\n  <li>Gestion des thèmes graphiques avec 5 thèmes Bootstrap Responsive pré-installés</li>\r\n  <li>Modules d\'extension des contenus : commentaires, votes, nombre de vues, partage réseaux sociaux</li>\r\n  <li>Informations système en back office (OS, JVM, Mémoire, pool de connexions, dernier démarrage, ...)</li>\r\n</ul>\r\n\r\n<p>Il intégre en plus une gestion documentaire :</p>\r\n<ul>\r\n<li>Des espaces hiérarchiques de stockage des documents</li>\r\n<li>La gestion des permissions sur les documents (création, visualisation, validation, publication, ...)</li>\r\n<li>Un modèle dynamique de structure de documents</li>\r\n<li>Un moteur de règles pour le workflow de gestion des documents</li>\r\n<li>Une base multimédia</li>\r\n<li>Des services d\'insertion de liens dans l\'éditeur WYSIWYG HTML</li>\r\n<li>L\'indexation full text des documents</li>\r\n</ul>','','1.0.0',0,1),
+(3,'Site éditorial riche','Gestion documentaire et autres fonctions',1,3,1,'pom.xml','site-edito-mini.war','site-edito-mini.sql','',NULL,NULL,'',0,1),
+(4,'Site avec authentification','Authentification base de données',2,10,1,'pom.xml','site-edito-auth.war','site-edito-auth.sql','site-edito-auth','','','1.0.0',0,1),
+(5,'Forum','Pas de gestion documentaire',3,20,1,'pom.xml','site-forum.war','site-forum.sql','site-forum','','','1.0.0',0,1),
+(6,'Site Opendata','Site Opendata',3,21,1,'pom.xml','site-opendata.war','site-opendata.sql','site-opendata','','','1.0.0',0,1);
 
 --
 -- Dumping data for table `appstore_component`
 --
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (2,'fr.paris.lutece.plugins','Document','Gestion documentaire','plugin-document','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (3,'fr.paris.lutece.plugins','SEO','Optimisations pour les moteurs de recherche','plugin-seo','2.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (4,'fr.paris.lutece.plugins','Contact','Formulaire de contact','plugin-contact','3.0.1','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (5,'fr.paris.lutece.plugins','Extend','Extensions des contenus','plugin-extend','1.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (6,'fr.paris.lutece.plugins','Portlet Pages filles','Portlet de liens vers les pages filles','plugin-childpages','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (7,'fr.paris.lutece.plugins','Extend - Commentaires','Extension pour ajouter des commentaires','module-extend-comment','1.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (8,'fr.paris.lutece.plugins','Extend - Feedback','Extension pour donner un avis','module-extend-feedback','1.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (9,'fr.paris.lutece.plugins','Extend - Réseau sociaux','Extension pour partager sur les réseaux sociaux','module-extend-opengraph','1.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (10,'fr.paris.lutece.plugins','Outils Google','Google Analytics - Webmaster tools','plugin-gtools','1.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (11,'fr.paris.lutece.plugins','Portlet HTML','Portlet de contenu HTML','plugin-html','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (12,'fr.paris.lutece.plugins','Captcha ','Captcha pour les formulaires','plugin-jcaptcha','2.1.4','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (13,'fr.paris.lutece.plugins','Moteur de recherche','Moteur de recherche Lucene','library-lucene','1.0.5','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (14,'fr.paris.lutece.plugins','Statistiques des recherches','Statistiques des recherches faites sur le site','plugin-searchstats','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (15,'fr.paris.lutece.plugins','Informations système','Informations du système','plugin-systeminfo','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (16,'fr.paris.lutece.plugins','Nuage de tags','Nuage de tags','plugin-tagcloud','3.0.0','lutece-plugin');
-INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES (17,'fr.paris.lutece.plugins','Gestion des Thèmes','Gestion des thèmes graphiques','plugin-theme','2.0.0','lutece-plugin');
+INSERT INTO appstore_component (id_component, group_id, title, description, artifact_id, version, component_type) VALUES 
+(2, 'fr.paris.lutece.plugins', 'Document', 'Gestion documentaire', 'plugin-document', '3.1.1', 'lutece-plugin'),
+(3, 'fr.paris.lutece.plugins', 'SEO', 'Optimisations pour les moteurs de recherche', 'plugin-seo', '3.0.0', 'lutece-plugin'),
+(4, 'fr.paris.lutece.plugins', 'Contact', 'Formulaire de contact', 'plugin-contact', '4.0.0', 'lutece-plugin'),
+(5, 'fr.paris.lutece.plugins', 'Extend', 'Extensions des contenus', 'plugin-extend', '1.1.0', 'lutece-plugin'),
+(6, 'fr.paris.lutece.plugins', 'Portlet Pages filles', 'Portlet de liens vers les pages filles', 'plugin-childpages', '3.0.0', 'lutece-plugin'),
+(7, 'fr.paris.lutece.plugins', 'Extend - Commentaires', 'Extension pour ajouter des commentaires', 'module-extend-comment', '1.1.1', 'lutece-plugin'),
+(8, 'fr.paris.lutece.plugins', 'Extend - Feedback', 'Extension pour donner un avis', 'module-extend-feedback', '1.0.1', 'lutece-plugin'),
+(9, 'fr.paris.lutece.plugins', 'Extend - Réseau sociaux', 'Extension pour partager sur les réseaux sociaux', 'module-extend-opengraph', '1.1.0', 'lutece-plugin'),
+(10, 'fr.paris.lutece.plugins', 'Outils Google', 'Google Analytics - Webmaster tools', 'plugin-gtools', '1.0.0', 'lutece-plugin'),
+(11, 'fr.paris.lutece.plugins', 'Portlet HTML', 'Portlet de contenu HTML', 'plugin-html', '3.0.0', 'lutece-plugin'),
+(12, 'fr.paris.lutece.plugins', 'Captcha ', 'Captcha pour les formulaires', 'plugin-jcaptcha', '2.1.4', 'lutece-plugin'),
+(13, 'fr.paris.lutece.plugins', 'Moteur de recherche', 'Moteur de recherche Lucene', 'library-lucene', '1.0.5', 'lutece-plugin'),
+(14, 'fr.paris.lutece.plugins', 'Statistiques des recherches', 'Statistiques des recherches faites sur le site', 'plugin-searchstats', '4.0.0', 'lutece-plugin'),
+(15, 'fr.paris.lutece.plugins', 'Informations système', 'Informations du système', 'plugin-systeminfo', '3.0.1', 'lutece-plugin'),
+(16, 'fr.paris.lutece.plugins', 'Nuage de tags', 'Nuage de tags', 'plugin-tagcloud', '4.0.0', 'lutece-plugin'),
+(17, 'fr.paris.lutece.plugins', 'Gestion des Thèmes', 'Gestion des thèmes graphiques', 'plugin-theme', '3.0.0', 'lutece-plugin'),
+(18, 'fr.paris.lutece.plugins', 'Digg', 'Digg like', 'plugin-digglike', '2.2.9', 'lutece-plugin'),
+(21, 'fr.paris.lutece.plugins', 'Form', 'Création et gestion de formulaires', 'plugin-form', '3.1.1', 'lutece-plugin'),
+(22, 'fr.paris.lutece.plugins', 'Calendar', 'Agenda permettant d\'afficher des évènements', 'plugin-calendar', '4.0.0', 'lutece-plugin'),
+(24, 'fr.paris.lutece.plugins', 'Wiki', 'Créateur de pages Wiki', 'plugin-wiki', '1.1.0', 'lutece-plugin'),
+(23, 'fr.paris.lutece.plugins', 'Upload', 'Ajout de fichier à la webapp', 'plugin-upload', '3.0.0', 'lutece-plugin'),
+(26, 'fr.paris.lutece.plugins', 'Page HTML', 'Page HTML hors arborescence du site', 'plugin-htmlpage', '3.0.1', 'lutece-plugin'),
+(29, 'fr.paris.lutece.plugins', 'Module Extend ratings', 'Module Extend ratings', 'module-extend-rating', '1.1.0', 'lutece-plugin'),
+(28, 'fr.paris.lutece.plugins', 'Newsletter', 'Newsletter', 'plugin-newsletter', '3.0.0', 'lutece-plugin'),
+(27, 'fr.paris.lutece.plugins', 'Librairie multimedia', 'Librairie multimedia', 'plugin-library', '4.0.0', 'lutece-plugin'),
+(25, 'fr.paris.lutece.plugins', 'Webservices CKAN', 'Exposition des jeux de données via l\'API CKAN 3.0', 'module-document-ckan', '1.1.1', 'lutece-plugin'),
+(30, 'fr.paris.lutece.plugins', 'Module Extend statistics', 'Module Extend statistics', 'module-extend-statistics', '1.0.1', 'lutece-plugin'),
+(31, 'fr.paris.lutece.plugins', 'Plugin captcha', 'Plugin captcha', 'plugin-captcha', '1.0.1', 'lutece-plugin'),
+(32, 'fr.paris.lutece.plugins', 'Module Newsletter document', 'Module Newsletter document', 'module-newsletter-document', '1.0.0', 'lutece-plugin'),
+(33, 'fr.paris.lutece.plugins', 'Plugin menus', 'Plugin menus', 'plugin-menus', '2.0.0', 'lutece-plugin'),
+(34, 'fr.paris.lutece.plugins', 'Plugin profiles', 'Plugin profiles', 'plugin-profiles', '1.0.4', 'lutece-plugin'),
+(35, 'fr.paris.lutece.plugins', 'Plugin rss', 'Plugin rss', 'plugin-rss', '3.0.0', 'lutece-plugin'),
+(36, 'fr.paris.lutece.plugins', 'Module extend actionbar', 'Module extend actionbar', 'module-extend-actionbar', '1.0.0', 'lutece-plugin'),
+(37, 'fr.paris.lutece.plugins', 'Module extend actionhit', 'Module extend actionhit', 'module-extend-actionhit', '1.0.0', 'lutece-plugin'),
+(38, 'fr.paris.lutece.plugins', 'Module extend comment extendable', 'Module extend comment extendable', 'module-extend-comment-extendable', '1.0.0', 'lutece-plugin'),
+(39, 'fr.paris.lutece.plugins', 'Module seo digglike', 'Module seo digglike', 'module-seo-digglike', 'Release not found', 'lutece-plugin'),
+(40, 'fr.paris.lutece.plugins', 'Module seo document', 'Module seo document', 'module-seo-document', '2.0.0', 'lutece-plugin'),
+(41, 'fr.paris.lutece.plugins', 'Module seo robots', 'Module seo robots', 'module-seo-robots', '1.0.1', 'lutece-plugin'),
+(42, 'fr.paris.lutece.plugins', 'Plugin regular expression', 'Plugin regular expression', 'plugin-regularexpression', '3.0.0', 'lutece-plugin'),
+(43, 'fr.paris.lutece.plugins', 'Module captcha-jcaptcha', 'Module captcha-jcaptcha', 'module-captcha-jcaptcha', '2.1.7', 'lutece-plugin');
 
 --
 -- Dumping data for table `appstore_application_component`
 --
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,2);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,3);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,4);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,6);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,10);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,11);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,13);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,14);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,15);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (1,17);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (2,1);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (2,2);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (2,3);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (5,4);
-INSERT INTO appstore_application_component (id_application, id_component) VALUES (5,5);
+INSERT INTO appstore_application_component (id_application, id_component) VALUES 
+	(1, 3),
+	(1, 4),
+	(1, 5),
+	(1, 6),
+	(1, 7),
+	(1, 8),
+	(1, 9),
+	(1, 10),
+	(1, 11),
+	(1, 12),
+	(1, 13),
+	(1, 14),
+	(1, 15),
+	(1, 17),
+	(2, 2),
+	(2, 3),
+	(2, 4),
+	(2, 5),
+	(2, 6),
+	(2, 7),
+	(2, 8),
+	(2, 9),
+	(2, 10),
+	(2, 11),
+	(2, 12),
+	(2, 13),
+	(2, 14),
+	(2, 15),
+	(2, 16),
+	(2, 17),
+	(3, 2),
+	(3, 3),
+	(3, 4),
+	(3, 5),
+	(3, 6),
+	(3, 7),
+	(3, 8),
+	(3, 9),
+	(3, 10),
+	(3, 11),
+	(3, 12),
+	(3, 13),
+	(3, 14),
+	(3, 15),
+	(3, 16),
+	(3, 17),
+	(3, 21),
+	(3, 22),
+	(4, 2),
+	(4, 3),
+	(4, 4),
+	(4, 5),
+	(4, 6),
+	(4, 7),
+	(4, 8),
+	(4, 9),
+	(4, 10),
+	(4, 11),
+	(4, 13),
+	(4, 14),
+	(4, 15),
+	(4, 16),
+	(4, 17),
+	(4, 18),
+	(4, 21),
+	(4, 22),
+	(5, 3),
+	(5, 4),
+	(5, 6),
+	(5, 10),
+	(5, 11),
+	(5, 12),
+	(5, 13),
+	(5, 14),
+	(5, 15),
+	(5, 18),
+	(6, 2),
+	(6, 3),
+	(6, 4),
+	(6, 5),
+	(6, 6),
+	(6, 7),
+	(6, 8),
+	(6, 9),
+	(6, 10),
+	(6, 11),
+	(6, 12),
+	(6, 14),
+	(6, 15),
+	(6, 17),
+	(6, 18),
+	(6, 21),
+	(6, 25),
+	(6, 26),
+	(6, 27),
+	(6, 28),
+	(6, 29),
+	(6, 30),
+	(6, 31),
+	(6, 32),
+	(6, 33),
+	(6, 34),
+	(6, 35),
+	(6, 36),
+	(6, 37),
+	(6, 38),
+	(6, 40),
+	(6, 41),
+	(6, 42),
+	(6, 43);
