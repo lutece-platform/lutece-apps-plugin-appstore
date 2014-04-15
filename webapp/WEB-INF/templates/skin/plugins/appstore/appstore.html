@@ -1,32 +1,25 @@
 
-<div class="row-fluid">
-    <div class="span12">
-        <div class="hero-unit">
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
             <h1>#i18n{appstore.appstore.title}</h1>
             <p>#i18n{appstore.appstore.subtitle}</p>
         </div>
-        <ul class="thumbnails">
+        <div id="beta">(beta)</div> 
+        <ul class="thumbnails list-unstyled">
             <#list applications_list as application>
             
-            <#if application_index % 4 = 0 >
-            
-            </ul>
-            <ul class="thumbnails">
-            
-            </#if>
-            
-            <li class="span3">
-                <div class="thumbnail">
-                    <img src="image?resource_type=appstore_icon_img&id=${application.idIcon}" width="240" height="240" />
+            <li class="col-md-3 col-sm-4 col-xs-6">
+                <div class="thumbnail" style="height:380px;">
+                    <img class="img-responsive" src="image?resource_type=appstore_icon_img&id=${application.idIcon}" width="240" height="240" />
 
                    
-                    <a class="btn btn-primary offset3" href="jsp/site/Portal.jsp?page=appstore&id_application=${application.id}" />
-                    <i class="icon-shopping-cart icon-white"></i>
+                    <a class="btn btn-primary" href="jsp/site/Portal.jsp?page=appstore&id_application=${application.id}" />
+                    <i class="glyphicon glyphicon-shopping-cart"></i>
                     #i18n{appstore.appstore.buttonChoose}
-                    
                     </a>
                     
-                    <br>
+                    <br />
 
                     <h4>${application.title}</h4>
                     <p>${application.description}</p>
@@ -37,3 +30,4 @@
         </ul>
     </div>
 </div>
+
