@@ -65,7 +65,7 @@ INSERT INTO appstore_component (id_component, group_id, title, description, arti
 (36, 'fr.paris.lutece.plugins', 'Module extend actionbar', 'Module extend actionbar', 'module-extend-actionbar', '1.0.0', 'lutece-plugin'),
 (37, 'fr.paris.lutece.plugins', 'Module extend actionhit', 'Module extend actionhit', 'module-extend-actionhit', '1.0.0', 'lutece-plugin'),
 (38, 'fr.paris.lutece.plugins', 'Module extend comment extendable', 'Module extend comment extendable', 'module-extend-comment-extendable', '1.0.0', 'lutece-plugin'),
-(39, 'fr.paris.lutece.plugins', 'Module seo digglike', 'Module seo digglike', 'module-seo-digglike', 'Release not found', 'lutece-plugin'),
+-- (39, 'fr.paris.lutece.plugins', 'Module seo digglike', 'Module seo digglike', 'module-seo-digglike', 'Release not found', 'lutece-plugin'),
 (40, 'fr.paris.lutece.plugins', 'Module seo document', 'Module seo document', 'module-seo-document', '2.0.0', 'lutece-plugin'),
 (41, 'fr.paris.lutece.plugins', 'Module seo robots', 'Module seo robots', 'module-seo-robots', '1.0.1', 'lutece-plugin'),
 (42, 'fr.paris.lutece.plugins', 'Plugin regular expression', 'Plugin regular expression', 'plugin-regularexpression', '3.0.0', 'lutece-plugin'),
