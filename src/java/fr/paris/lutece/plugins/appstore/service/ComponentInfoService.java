@@ -98,10 +98,14 @@ public class ComponentInfoService
             Document jarList = Jsoup.parse( strHtml );
             Elements trList = jarList.select( "td a" );
 
-            for ( int i = 4; i < trList.size(  ); i++ )
+            for ( int i = 0; i < trList.size(  ); i++ )
             {
                 Element tr = trList.get( i );
-                strVersion = tr.text(  ).replaceAll( "\\/", "" );
+                String strAnchor = tr.text(  );
+                if ( strAnchor.matches( "^[\\d].*" ) )
+                {
+                    strVersion = strAnchor.replaceAll( "\\/", "" );
+                }
             }
         }
         catch ( HttpAccessException e )
