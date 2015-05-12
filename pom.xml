@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-appstore</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.1</version>
     <name>Lutece appstore plugin</name>
 
     <repositories>
@@ -57,6 +57,7 @@
         <connection>scm:git:https://github.com/lutece-platform/lutece-apps-plugin-appstore.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-apps-plugin-appstore.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-apps-plugin-appstore.git</url>
-    </scm>
+      <tag>lutece-apps-plugin-appstore-1.2.1</tag>
+  </scm>
     
 </project>
