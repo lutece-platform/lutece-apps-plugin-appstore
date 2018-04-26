@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,6 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.Locale;
 
-
 /**
  * Application Extendable Resource Service
  */
@@ -84,7 +83,7 @@ public class ApplicationExtendableResourceService implements IExtendableResource
      * {@inheritDoc }
      */
     @Override
-    public String getResourceType(  )
+    public String getResourceType( )
     {
         return Application.RESOURCE_TYPE;
     }
@@ -104,10 +103,10 @@ public class ApplicationExtendableResourceService implements IExtendableResource
     @Override
     public String getResourceUrl( String strIdResource, String strResourceType )
     {
-        UrlItem url = new UrlItem( AppPathService.getPortalUrl(  ) );
+        UrlItem url = new UrlItem( AppPathService.getPortalUrl( ) );
         url.addParameter( PARAMETER_XPAGE, XPAGE );
         url.addParameter( PARAMETER_ID_APPLICATION, strIdResource );
 
-        return url.getUrl(  );
+        return url.getUrl( );
     }
 }

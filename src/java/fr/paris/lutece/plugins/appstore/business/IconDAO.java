@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,55 +39,53 @@ import fr.paris.lutece.util.sql.DAOUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
- * class  IconDAO
+ * class IconDAO
  *
  */
 public class IconDAO implements IIconDAO
 {
     private static final String SQL_QUERY_NEW_PK = "SELECT max( id_icon ) FROM appstore_icon";
-    private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_icon,name,mime_type,file_value,width,height" +
-        " FROM appstore_icon WHERE id_icon=?";
-    private static final String SQL_QUERY_SELECT_ICON = "SELECT id_icon,name,mime_type,width,height" +
-        " FROM appstore_icon ORDER BY name DESC  ";
-    private static final String SQL_QUERY_INSERT = "INSERT INTO  appstore_icon " +
-        "(id_icon,name,mime_type,file_value,width,height)VALUES(?,?,?,?,?,?)";
-    private static final String SQL_QUERY_UPDATE = "UPDATE appstore_icon  SET id_icon=?,name=?,mime_type=?,file_value=?,width=?,height=?" +
-        " WHERE id_icon=?";
-    private static final String SQL_QUERY_UPDATE_METADATA = "UPDATE appstore_icon  SET id_icon=?,name=?,width=?,height=?" +
-        " WHERE id_icon=?";
+    private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_icon,name,mime_type,file_value,width,height" + " FROM appstore_icon WHERE id_icon=?";
+    private static final String SQL_QUERY_SELECT_ICON = "SELECT id_icon,name,mime_type,width,height" + " FROM appstore_icon ORDER BY name DESC  ";
+    private static final String SQL_QUERY_INSERT = "INSERT INTO  appstore_icon " + "(id_icon,name,mime_type,file_value,width,height)VALUES(?,?,?,?,?,?)";
+    private static final String SQL_QUERY_UPDATE = "UPDATE appstore_icon  SET id_icon=?,name=?,mime_type=?,file_value=?,width=?,height=?" + " WHERE id_icon=?";
+    private static final String SQL_QUERY_UPDATE_METADATA = "UPDATE appstore_icon  SET id_icon=?,name=?,width=?,height=?" + " WHERE id_icon=?";
     private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_icon  WHERE id_icon=? ";
 
     /**
-         * Generates a new primary key
-         *
-         * @param plugin the plugin
-         * @return The new primary key
-         */
+     * Generates a new primary key
+     *
+     * @param plugin
+     *            the plugin
+     * @return The new primary key
+     */
     private int newPrimaryKey( Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
         int nKey;
 
-        if ( !daoUtil.next(  ) )
+        if ( !daoUtil.next( ) )
         {
             // if the table is empty
             nKey = 1;
         }
 
         nKey = daoUtil.getInt( 1 ) + 1;
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return nKey;
     }
 
-    /* (non-Javadoc)
-         * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#insert(fr.paris.lutece.plugins.appstore.business.Icon, fr.paris.lutece.portal.service.plugin.Plugin)
-         */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#insert(fr.paris.lutece.plugins.appstore.business.Icon,
+     * fr.paris.lutece.portal.service.plugin.Plugin)
+     */
     public synchronized void insert( Icon icon, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, plugin );
@@ -95,35 +93,38 @@ public class IconDAO implements IIconDAO
         int nPos = 0;
         icon.setId( newPrimaryKey( plugin ) );
 
-        daoUtil.setInt( ++nPos, icon.getId(  ) );
-        daoUtil.setString( ++nPos, icon.getName(  ) );
-        daoUtil.setString( ++nPos, icon.getMimeType(  ) );
-        daoUtil.setBytes( ++nPos, icon.getValue(  ) );
-        daoUtil.setInt( ++nPos, icon.getWidth(  ) );
-        daoUtil.setInt( ++nPos, icon.getHeight(  ) );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.setInt( ++nPos, icon.getId( ) );
+        daoUtil.setString( ++nPos, icon.getName( ) );
+        daoUtil.setString( ++nPos, icon.getMimeType( ) );
+        daoUtil.setBytes( ++nPos, icon.getValue( ) );
+        daoUtil.setInt( ++nPos, icon.getWidth( ) );
+        daoUtil.setInt( ++nPos, icon.getHeight( ) );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
-    /* (non-Javadoc)
-        * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#store(fr.paris.lutece.plugins.appstore.business.Icon, fr.paris.lutece.portal.service.plugin.Plugin)
-        */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#store(fr.paris.lutece.plugins.appstore.business.Icon,
+     * fr.paris.lutece.portal.service.plugin.Plugin)
+     */
     public void store( Icon icon, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
 
         int nPos = 0;
 
-        daoUtil.setInt( ++nPos, icon.getId(  ) );
-        daoUtil.setString( ++nPos, icon.getName(  ) );
-        daoUtil.setString( ++nPos, icon.getMimeType(  ) );
-        daoUtil.setBytes( ++nPos, icon.getValue(  ) );
-        daoUtil.setInt( ++nPos, icon.getWidth(  ) );
-        daoUtil.setInt( ++nPos, icon.getHeight(  ) );
+        daoUtil.setInt( ++nPos, icon.getId( ) );
+        daoUtil.setString( ++nPos, icon.getName( ) );
+        daoUtil.setString( ++nPos, icon.getMimeType( ) );
+        daoUtil.setBytes( ++nPos, icon.getValue( ) );
+        daoUtil.setInt( ++nPos, icon.getWidth( ) );
+        daoUtil.setInt( ++nPos, icon.getHeight( ) );
 
-        daoUtil.setInt( ++nPos, icon.getId(  ) );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.setInt( ++nPos, icon.getId( ) );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
     public void storeMetadata( Icon icon, Plugin plugin )
@@ -132,18 +133,20 @@ public class IconDAO implements IIconDAO
 
         int nPos = 0;
 
-        daoUtil.setInt( ++nPos, icon.getId(  ) );
-        daoUtil.setString( ++nPos, icon.getName(  ) );
-        daoUtil.setInt( ++nPos, icon.getWidth(  ) );
-        daoUtil.setInt( ++nPos, icon.getHeight(  ) );
-        daoUtil.setInt( ++nPos, icon.getId(  ) );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.setInt( ++nPos, icon.getId( ) );
+        daoUtil.setString( ++nPos, icon.getName( ) );
+        daoUtil.setInt( ++nPos, icon.getWidth( ) );
+        daoUtil.setInt( ++nPos, icon.getHeight( ) );
+        daoUtil.setInt( ++nPos, icon.getId( ) );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
-    /* (non-Javadoc)
-         * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#load(int, fr.paris.lutece.portal.service.plugin.Plugin)
-         */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#load(int, fr.paris.lutece.portal.service.plugin.Plugin)
+     */
     public Icon load( int nIdIcon, Plugin plugin )
     {
         Icon icon = null;
@@ -151,13 +154,13 @@ public class IconDAO implements IIconDAO
 
         daoUtil.setInt( 1, nIdIcon );
 
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
         int nPos = 0;
 
-        if ( daoUtil.next(  ) )
+        if ( daoUtil.next( ) )
         {
-            icon = new Icon(  );
+            icon = new Icon( );
             icon.setId( daoUtil.getInt( ++nPos ) );
             icon.setName( daoUtil.getString( ++nPos ) );
             icon.setMimeType( daoUtil.getString( ++nPos ) );
@@ -166,40 +169,44 @@ public class IconDAO implements IIconDAO
             icon.setHeight( daoUtil.getInt( ++nPos ) );
         }
 
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return icon;
     }
 
-    /* (non-Javadoc)
-         * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#delete(int, fr.paris.lutece.portal.service.plugin.Plugin)
-         */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#delete(int, fr.paris.lutece.portal.service.plugin.Plugin)
+     */
     public void delete( int nIdIcon, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
 
         daoUtil.setInt( 1, nIdIcon );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
-    /* (non-Javadoc)
-         * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#selectAll(fr.paris.lutece.portal.service.plugin.Plugin)
-         */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see fr.paris.lutece.plugins.appstore.business.IIconDAO#selectAll(fr.paris.lutece.portal.service.plugin.Plugin)
+     */
     public List<Icon> selectAll( Plugin plugin )
     {
         Icon icon = null;
-        List<Icon> listIcon = new ArrayList<Icon>(  );
+        List<Icon> listIcon = new ArrayList<Icon>( );
 
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT_ICON, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
         int nPos;
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
             nPos = 0;
-            icon = new Icon(  );
+            icon = new Icon( );
             icon.setId( daoUtil.getInt( ++nPos ) );
             icon.setName( daoUtil.getString( ++nPos ) );
             icon.setMimeType( daoUtil.getString( ++nPos ) );
@@ -209,7 +216,7 @@ public class IconDAO implements IIconDAO
             listIcon.add( icon );
         }
 
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return listIcon;
     }

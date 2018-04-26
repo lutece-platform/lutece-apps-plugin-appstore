@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
  * This class provides Data Access methods for Component objects
  */
@@ -53,34 +52,39 @@ public final class ComponentDAO implements IComponentDAO
     private static final String SQL_QUERY_DELETE = "DELETE FROM appstore_component WHERE id_component = ? ";
     private static final String SQL_QUERY_UPDATE = "UPDATE appstore_component SET id_component = ?, group_id = ?, title = ?, description = ?, artifact_id = ?, version = ?, component_type = ? WHERE id_component = ?";
     private static final String SQL_QUERY_SELECTALL = "SELECT id_component, group_id, title, description, artifact_id, version, component_type FROM appstore_component";
-    private static final String SQL_QUERY_SELECT_BY_APPLICATION = "SELECT a.id_component, a.group_id, a.title, a.description, a.artifact_id, a.version, a.component_type " +
-        " FROM appstore_component a , appstore_application_component b WHERE a.id_component = b.id_component AND b.id_application = ?";
+    private static final String SQL_QUERY_SELECT_BY_APPLICATION = "SELECT a.id_component, a.group_id, a.title, a.description, a.artifact_id, a.version, a.component_type "
+            + " FROM appstore_component a , appstore_application_component b WHERE a.id_component = b.id_component AND b.id_application = ?";
     private static final String SQL_QUERY_DELETE_APPLICATION = "DELETE FROM appstore_application_component WHERE id_component = ? ";
 
     /**
      * Generates a new primary key
-     * @param plugin The Plugin
+     * 
+     * @param plugin
+     *            The Plugin
      * @return The new primary key
      */
     public int newPrimaryKey( Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
         int nKey;
 
-        daoUtil.next(  );
+        daoUtil.next( );
 
         nKey = daoUtil.getInt( 1 ) + 1;
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return nKey;
     }
 
     /**
      * Insert a new record in the table.
-     * @param component instance of the Component object to insert
-     * @param plugin The plugin
+     * 
+     * @param component
+     *            instance of the Component object to insert
+     * @param plugin
+     *            The plugin
      */
     @Override
     public void insert( Component component, Plugin plugin )
@@ -89,22 +93,25 @@ public final class ComponentDAO implements IComponentDAO
 
         component.setId( newPrimaryKey( plugin ) );
 
-        daoUtil.setInt( 1, component.getId(  ) );
-        daoUtil.setString( 2, component.getGroupId(  ) );
-        daoUtil.setString( 3, component.getTitle(  ) );
-        daoUtil.setString( 4, component.getDescription(  ) );
-        daoUtil.setString( 5, component.getArtifactId(  ) );
-        daoUtil.setString( 6, component.getVersion(  ) );
-        daoUtil.setString( 7, component.getComponentType(  ) );
+        daoUtil.setInt( 1, component.getId( ) );
+        daoUtil.setString( 2, component.getGroupId( ) );
+        daoUtil.setString( 3, component.getTitle( ) );
+        daoUtil.setString( 4, component.getDescription( ) );
+        daoUtil.setString( 5, component.getArtifactId( ) );
+        daoUtil.setString( 6, component.getVersion( ) );
+        daoUtil.setString( 7, component.getComponentType( ) );
 
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
     /**
      * Load the data of the component from the table
-     * @param nId The identifier of the component
-     * @param plugin The plugin
+     * 
+     * @param nId
+     *            The identifier of the component
+     * @param plugin
+     *            The plugin
      * @return the instance of the Component
      */
     @Override
@@ -112,13 +119,13 @@ public final class ComponentDAO implements IComponentDAO
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
         daoUtil.setInt( 1, nId );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
         Component component = null;
 
-        if ( daoUtil.next(  ) )
+        if ( daoUtil.next( ) )
         {
-            component = new Component(  );
+            component = new Component( );
 
             component.setId( daoUtil.getInt( 1 ) );
             component.setGroupId( daoUtil.getString( 2 ) );
@@ -129,68 +136,76 @@ public final class ComponentDAO implements IComponentDAO
             component.setComponentType( daoUtil.getString( 7 ) );
         }
 
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return component;
     }
 
     /**
      * Delete a record from the table
-     * @param nComponentId The identifier of the component
-     * @param plugin The plugin
+     * 
+     * @param nComponentId
+     *            The identifier of the component
+     * @param plugin
+     *            The plugin
      */
     @Override
     public void delete( int nComponentId, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE_APPLICATION, plugin );
         daoUtil.setInt( 1, nComponentId );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
 
         daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
         daoUtil.setInt( 1, nComponentId );
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
     /**
      * Update the record in the table
-     * @param component The reference of the component
-     * @param plugin The plugin
+     * 
+     * @param component
+     *            The reference of the component
+     * @param plugin
+     *            The plugin
      */
     @Override
     public void store( Component component, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
 
-        daoUtil.setInt( 1, component.getId(  ) );
-        daoUtil.setString( 2, component.getGroupId(  ) );
-        daoUtil.setString( 3, component.getTitle(  ) );
-        daoUtil.setString( 4, component.getDescription(  ) );
-        daoUtil.setString( 5, component.getArtifactId(  ) );
-        daoUtil.setString( 6, component.getVersion(  ) );
-        daoUtil.setString( 7, component.getComponentType(  ) );
-        daoUtil.setInt( 8, component.getId(  ) );
+        daoUtil.setInt( 1, component.getId( ) );
+        daoUtil.setString( 2, component.getGroupId( ) );
+        daoUtil.setString( 3, component.getTitle( ) );
+        daoUtil.setString( 4, component.getDescription( ) );
+        daoUtil.setString( 5, component.getArtifactId( ) );
+        daoUtil.setString( 6, component.getVersion( ) );
+        daoUtil.setString( 7, component.getComponentType( ) );
+        daoUtil.setInt( 8, component.getId( ) );
 
-        daoUtil.executeUpdate(  );
-        daoUtil.free(  );
+        daoUtil.executeUpdate( );
+        daoUtil.free( );
     }
 
     /**
      * Load the data of all the components and returns them as a collection
-     * @param plugin The plugin
+     * 
+     * @param plugin
+     *            The plugin
      * @return The Collection which contains the data of all the components
      */
     @Override
     public Collection<Component> selectComponentsList( Plugin plugin )
     {
-        Collection<Component> componentList = new ArrayList<Component>(  );
+        Collection<Component> componentList = new ArrayList<Component>( );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
-            Component component = new Component(  );
+            Component component = new Component( );
 
             component.setId( daoUtil.getInt( 1 ) );
             component.setGroupId( daoUtil.getString( 2 ) );
@@ -203,7 +218,7 @@ public final class ComponentDAO implements IComponentDAO
             componentList.add( component );
         }
 
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return componentList;
     }
@@ -211,14 +226,14 @@ public final class ComponentDAO implements IComponentDAO
     @Override
     public List<Component> selectByApplication( int nApplicationId, Plugin plugin )
     {
-        List<Component> componentList = new ArrayList<Component>(  );
+        List<Component> componentList = new ArrayList<Component>( );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT_BY_APPLICATION, plugin );
         daoUtil.setInt( 1, nApplicationId );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
-            Component component = new Component(  );
+            Component component = new Component( );
 
             component.setId( daoUtil.getInt( 1 ) );
             component.setGroupId( daoUtil.getString( 2 ) );
@@ -231,7 +246,7 @@ public final class ComponentDAO implements IComponentDAO
             componentList.add( component );
         }
 
-        daoUtil.free(  );
+        daoUtil.free( );
 
         return componentList;
     }

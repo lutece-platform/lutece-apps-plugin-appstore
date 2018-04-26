@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * Category JSP bean
  */
@@ -77,7 +76,8 @@ public class CategoryJspBean extends AppStoreJspBean
     /**
      * Returns the list of category
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the categorys list
      */
     public String getManageCategories( HttpServletRequest request )
@@ -86,55 +86,55 @@ public class CategoryJspBean extends AppStoreJspBean
 
         _strCurrentPageIndex = Paginator.getPageIndex( request, Paginator.PARAMETER_PAGE_INDEX, _strCurrentPageIndex );
         _nDefaultItemsPerPage = AppPropertiesService.getPropertyInt( PROPERTY_DEFAULT_LIST_CATEGORY_PER_PAGE, 50 );
-        _nItemsPerPage = Paginator.getItemsPerPage( request, Paginator.PARAMETER_ITEMS_PER_PAGE, _nItemsPerPage,
-                _nDefaultItemsPerPage );
+        _nItemsPerPage = Paginator.getItemsPerPage( request, Paginator.PARAMETER_ITEMS_PER_PAGE, _nItemsPerPage, _nDefaultItemsPerPage );
 
         UrlItem url = new UrlItem( JSP_MANAGE_CATEGORYS );
-        String strUrl = url.getUrl(  );
-        List<Category> listCategorys = (List<Category>) CategoryHome.getCategorysList(  );
+        String strUrl = url.getUrl( );
+        List<Category> listCategorys = (List<Category>) CategoryHome.getCategorysList( );
 
         // PAGINATOR
-        LocalizedPaginator paginator = new LocalizedPaginator( listCategorys, _nItemsPerPage, strUrl,
-                PARAMETER_PAGE_INDEX, _strCurrentPageIndex, getLocale(  ) );
+        LocalizedPaginator paginator = new LocalizedPaginator( listCategorys, _nItemsPerPage, strUrl, PARAMETER_PAGE_INDEX, _strCurrentPageIndex, getLocale( ) );
 
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
 
         model.put( MARK_NB_ITEMS_PER_PAGE, "" + _nItemsPerPage );
         model.put( MARK_PAGINATOR, paginator );
 
-        model.put( MARK_CATEGORY_LIST, paginator.getPageItems(  ) );
+        model.put( MARK_CATEGORY_LIST, paginator.getPageItems( ) );
 
-        HtmlTemplate templateList = AppTemplateService.getTemplate( TEMPLATE_MANAGE_CATEGORYS, getLocale(  ), model );
+        HtmlTemplate templateList = AppTemplateService.getTemplate( TEMPLATE_MANAGE_CATEGORYS, getLocale( ), model );
 
-        return getAdminPage( templateList.getHtml(  ) );
+        return getAdminPage( templateList.getHtml( ) );
     }
 
     /**
      * Returns the form to create a category
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the html code of the category form
      */
     public String getCreateCategory( HttpServletRequest request )
     {
         setPageTitleProperty( PROPERTY_PAGE_TITLE_CREATE_CATEGORY );
 
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_CREATE_CATEGORY, getLocale(  ), model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_CREATE_CATEGORY, getLocale( ), model );
 
-        return getAdminPage( template.getHtml(  ) );
+        return getAdminPage( template.getHtml( ) );
     }
 
     /**
      * Process the data capture form of a new category
      *
-     * @param request The Http Request
+     * @param request
+     *            The Http Request
      * @return The Jsp URL of the process result
      */
     public String doCreateCategory( HttpServletRequest request )
     {
-        Category category = new Category(  );
+        Category category = new Category( );
 
         if ( request.getParameter( PARAMETER_CATEGORY_NAME ).equals( "" ) )
         {
@@ -159,7 +159,8 @@ public class CategoryJspBean extends AppStoreJspBean
     /**
      * Manages the removal form of a category whose identifier is in the http request
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the html code to confirm
      */
     public String getConfirmRemoveCategory( HttpServletRequest request )
@@ -168,14 +169,14 @@ public class CategoryJspBean extends AppStoreJspBean
         UrlItem url = new UrlItem( JSP_DO_REMOVE_CATEGORY );
         url.addParameter( PARAMETER_CATEGORY_ID_CATEGORY, nId );
 
-        return AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_REMOVE_CATEGORY, url.getUrl(  ),
-            AdminMessage.TYPE_CONFIRMATION );
+        return AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_REMOVE_CATEGORY, url.getUrl( ), AdminMessage.TYPE_CONFIRMATION );
     }
 
     /**
      * Handles the removal form of a category
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the jsp URL to display the form to manage categorys
      */
     public String doRemoveCategory( HttpServletRequest request )
@@ -189,7 +190,8 @@ public class CategoryJspBean extends AppStoreJspBean
     /**
      * Returns the form to update info about a category
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return The HTML form to update info
      */
     public String getModifyCategory( HttpServletRequest request )
@@ -199,18 +201,19 @@ public class CategoryJspBean extends AppStoreJspBean
         int nId = Integer.parseInt( request.getParameter( PARAMETER_CATEGORY_ID_CATEGORY ) );
         Category category = CategoryHome.findByPrimaryKey( nId );
 
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
         model.put( MARK_CATEGORY, category );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_CATEGORY, getLocale(  ), model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MODIFY_CATEGORY, getLocale( ), model );
 
-        return getAdminPage( template.getHtml(  ) );
+        return getAdminPage( template.getHtml( ) );
     }
 
     /**
      * Process the change form of a category
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return The Jsp URL of the process result
      */
     public String doModifyCategory( HttpServletRequest request )

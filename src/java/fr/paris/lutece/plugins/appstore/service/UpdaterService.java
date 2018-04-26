@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.appstore.service;
 import fr.paris.lutece.plugins.appstore.business.Component;
 import fr.paris.lutece.plugins.appstore.business.ComponentHome;
 
-
 /**
  * Updater Service
  */
@@ -44,28 +43,29 @@ public class UpdaterService
 {
     /**
      * Update component infos
+     * 
      * @return The logs
      */
-    public static String updateComponentInfo(  )
+    public static String updateComponentInfo( )
     {
-        StringBuilder sbLogs = new StringBuilder(  );
+        StringBuilder sbLogs = new StringBuilder( );
 
-        for ( Component component : ComponentHome.getComponentsList(  ) )
+        for ( Component component : ComponentHome.getComponentsList( ) )
         {
-            String strVersion = component.getVersion(  );
+            String strVersion = component.getVersion( );
             ComponentInfoService.setReleaseVersion( component );
 
-            if ( !component.getVersion(  ).equals( strVersion ) )
+            if ( !component.getVersion( ).equals( strVersion ) )
             {
                 ComponentHome.update( component );
-                sbLogs.append( "Component " ).append( component.getArtifactId(  ) ).append( " updated from version " )
-                      .append( strVersion ).append( " to " ).append( component.getVersion(  ) ).append( ".\n" );
+                sbLogs.append( "Component " ).append( component.getArtifactId( ) ).append( " updated from version " ).append( strVersion ).append( " to " )
+                        .append( component.getVersion( ) ).append( ".\n" );
             }
         }
 
         // Update Site POM version
-        ComponentInfoService.setPomSiteVersion(  );
+        ComponentInfoService.setPomSiteVersion( );
 
-        return sbLogs.toString(  );
+        return sbLogs.toString( );
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,12 @@
  */
 package fr.paris.lutece.plugins.appstore.business;
 
-
 /**
  * This is the business class for the object Component
  */
 public class Component
 {
-    // Variables declarations 
+    // Variables declarations
     private int _nIdComponent;
     private String _strGroupId;
     private String _strTitle;
@@ -50,16 +49,19 @@ public class Component
 
     /**
      * Returns the IdComponent
+     * 
      * @return The IdComponent
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nIdComponent;
     }
 
     /**
      * Sets the IdComponent
-     * @param nIdComponent The IdComponent
+     * 
+     * @param nIdComponent
+     *            The IdComponent
      */
     public void setId( int nIdComponent )
     {
@@ -68,16 +70,19 @@ public class Component
 
     /**
      * Returns the GroupId
+     * 
      * @return The GroupId
      */
-    public String getGroupId(  )
+    public String getGroupId( )
     {
         return _strGroupId;
     }
 
     /**
      * Sets the GroupId
-     * @param strGroupId The GroupId
+     * 
+     * @param strGroupId
+     *            The GroupId
      */
     public void setGroupId( String strGroupId )
     {
@@ -86,16 +91,19 @@ public class Component
 
     /**
      * Returns the Title
+     * 
      * @return The Title
      */
-    public String getTitle(  )
+    public String getTitle( )
     {
         return _strTitle;
     }
 
     /**
      * Sets the Title
-     * @param strTitle The Title
+     * 
+     * @param strTitle
+     *            The Title
      */
     public void setTitle( String strTitle )
     {
@@ -104,16 +112,19 @@ public class Component
 
     /**
      * Returns the Description
+     * 
      * @return The Description
      */
-    public String getDescription(  )
+    public String getDescription( )
     {
         return _strDescription;
     }
 
     /**
      * Sets the Description
-     * @param strDescription The Description
+     * 
+     * @param strDescription
+     *            The Description
      */
     public void setDescription( String strDescription )
     {
@@ -122,16 +133,19 @@ public class Component
 
     /**
      * Returns the ArtifactId
+     * 
      * @return The ArtifactId
      */
-    public String getArtifactId(  )
+    public String getArtifactId( )
     {
         return _strArtifactId;
     }
 
     /**
      * Sets the ArtifactId
-     * @param strArtifactId The ArtifactId
+     * 
+     * @param strArtifactId
+     *            The ArtifactId
      */
     public void setArtifactId( String strArtifactId )
     {
@@ -140,16 +154,19 @@ public class Component
 
     /**
      * Returns the Version
+     * 
      * @return The Version
      */
-    public String getVersion(  )
+    public String getVersion( )
     {
         return _strVersion;
     }
 
     /**
      * Sets the Version
-     * @param strVersion The Version
+     * 
+     * @param strVersion
+     *            The Version
      */
     public void setVersion( String strVersion )
     {
@@ -158,16 +175,19 @@ public class Component
 
     /**
      * Returns the ComponentType
+     * 
      * @return The ComponentType
      */
-    public String getComponentType(  )
+    public String getComponentType( )
     {
         return _strComponentType;
     }
 
     /**
      * Sets the ComponentType
-     * @param strComponentType The ComponentType
+     * 
+     * @param strComponentType
+     *            The ComponentType
      */
     public void setComponentType( String strComponentType )
     {

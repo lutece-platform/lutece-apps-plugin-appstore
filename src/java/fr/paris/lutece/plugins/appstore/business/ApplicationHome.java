@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 import java.util.Collection;
 
-
 /**
  * This class provides instances management methods (create, find, ...) for Application objects
  */
@@ -52,14 +51,16 @@ public final class ApplicationHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private ApplicationHome(  )
+    private ApplicationHome( )
     {
     }
 
     /**
      * Create an instance of the application class
-     * @param application The instance of the Application which contains the informations to store
-     * @return The  instance of application which has been created with its primary key.
+     * 
+     * @param application
+     *            The instance of the Application which contains the informations to store
+     * @return The instance of application which has been created with its primary key.
      */
     public static Application create( Application application )
     {
@@ -70,8 +71,10 @@ public final class ApplicationHome
 
     /**
      * Update of the application which is specified in parameter
-     * @param application The instance of the Application which contains the data to store
-     * @return The instance of the  application which has been updated
+     * 
+     * @param application
+     *            The instance of the Application which contains the data to store
+     * @return The instance of the application which has been updated
      */
     public static Application update( Application application )
     {
@@ -82,19 +85,23 @@ public final class ApplicationHome
 
     /**
      * Remove the application whose identifier is specified in parameter
-     * @param nApplicationId The application Id
+     * 
+     * @param nApplicationId
+     *            The application Id
      */
     public static void remove( int nApplicationId )
     {
         _dao.delete( nApplicationId, _plugin );
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Returns an instance of a application whose identifier is specified in parameter
-     * @param nKey The application primary key
+     * 
+     * @param nKey
+     *            The application primary key
      * @return an instance of Application
      */
     public static Application findByPrimaryKey( int nKey )
@@ -104,9 +111,10 @@ public final class ApplicationHome
 
     /**
      * Load the data of all the application objects and returns them in form of a collection
+     * 
      * @return the collection which contains the data of all the application objects
      */
-    public static Collection<Application> getApplicationsList(  )
+    public static Collection<Application> getApplicationsList( )
     {
         return _dao.selectApplicationsList( _plugin );
     }

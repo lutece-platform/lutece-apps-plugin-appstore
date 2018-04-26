@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,6 @@ import fr.paris.lutece.portal.service.spring.SpringContextService;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
  * This class provides instances management methods (create, find, ...) for Component objects
  */
@@ -53,14 +52,16 @@ public final class ComponentHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private ComponentHome(  )
+    private ComponentHome( )
     {
     }
 
     /**
      * Create an instance of the component class
-     * @param component The instance of the Component which contains the informations to store
-     * @return The  instance of component which has been created with its primary key.
+     * 
+     * @param component
+     *            The instance of the Component which contains the informations to store
+     * @return The instance of component which has been created with its primary key.
      */
     public static Component create( Component component )
     {
@@ -71,8 +72,10 @@ public final class ComponentHome
 
     /**
      * Update of the component which is specified in parameter
-     * @param component The instance of the Component which contains the data to store
-     * @return The instance of the  component which has been updated
+     * 
+     * @param component
+     *            The instance of the Component which contains the data to store
+     * @return The instance of the component which has been updated
      */
     public static Component update( Component component )
     {
@@ -83,19 +86,23 @@ public final class ComponentHome
 
     /**
      * Remove the component whose identifier is specified in parameter
-     * @param nComponentId The component Id
+     * 
+     * @param nComponentId
+     *            The component Id
      */
     public static void remove( int nComponentId )
     {
         _dao.delete( nComponentId, _plugin );
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Returns an instance of a component whose identifier is specified in parameter
-     * @param nKey The component primary key
+     * 
+     * @param nKey
+     *            The component primary key
      * @return an instance of Component
      */
     public static Component findByPrimaryKey( int nKey )
@@ -105,16 +112,19 @@ public final class ComponentHome
 
     /**
      * Load the data of all the component objects and returns them in form of a collection
+     * 
      * @return the collection which contains the data of all the component objects
      */
-    public static Collection<Component> getComponentsList(  )
+    public static Collection<Component> getComponentsList( )
     {
         return _dao.selectComponentsList( _plugin );
     }
 
     /**
      * Returns a list of component used by the application
-     * @param nApplicationId The application ID
+     * 
+     * @param nApplicationId
+     *            The application ID
      * @return a List of Component
      */
     public static List<Component> findByApplication( int nApplicationId )

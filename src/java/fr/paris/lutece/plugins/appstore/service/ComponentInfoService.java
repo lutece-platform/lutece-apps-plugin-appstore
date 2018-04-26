@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,6 @@ import org.jsoup.nodes.Element;
 
 import org.jsoup.select.Elements;
 
-
 /**
  * Component Info Service
  */
@@ -56,27 +55,27 @@ public class ComponentInfoService
     private static final String PROPERTY_MAVEN_REPO_URL = "appstore.maven.repository.url";
     private static final String URL_MAVEN_REPO = AppPropertiesService.getProperty( PROPERTY_MAVEN_REPO_URL );
     private static final String PROPERTY_MAVEN_PATH_PLUGINS = "appstore.maven.repository.path.plugins";
-    private static final String URL_PLUGINS = URL_MAVEN_REPO +
-        AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_PLUGINS );
+    private static final String URL_PLUGINS = URL_MAVEN_REPO + AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_PLUGINS );
     private static final String PROPERTY_MAVEN_PATH_SITE_POM = "appstore.maven.repository.path.site-pom";
-    private static final String URL_SITE_POM = URL_MAVEN_REPO +
-        AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_SITE_POM );
+    private static final String URL_SITE_POM = URL_MAVEN_REPO + AppPropertiesService.getProperty( PROPERTY_MAVEN_PATH_SITE_POM );
     private static final String KEY_SITE_POM_VERSION = "appstore.pom.site.version";
     private static final String RELEASE_NOT_FOUND = "Release not found";
 
     /**
      * Set the component's version
-     * @param component The component
+     * 
+     * @param component
+     *            The component
      */
     public static void setReleaseVersion( Component component )
     {
-        component.setVersion( getVersion( URL_PLUGINS + component.getArtifactId(  ) ) );
+        component.setVersion( getVersion( URL_PLUGINS + component.getArtifactId( ) ) );
     }
 
     /**
      * Set the POM site version
      */
-    public static void setPomSiteVersion(  )
+    public static void setPomSiteVersion( )
     {
         String strVersion = getVersion( URL_SITE_POM );
         DatastoreService.setDataValue( KEY_SITE_POM_VERSION, strVersion );
@@ -84,7 +83,9 @@ public class ComponentInfoService
 
     /**
      * Retrieve a version from the maven repository
-     * @param strUrl The maven repository URL
+     * 
+     * @param strUrl
+     *            The maven repository URL
      * @return The version
      */
     private static String getVersion( String strUrl )
@@ -93,25 +94,24 @@ public class ComponentInfoService
 
         try
         {
-            HttpAccess httpAccess = new HttpAccess(  );
+            HttpAccess httpAccess = new HttpAccess( );
             String strHtml = httpAccess.doGet( strUrl );
             Document jarList = Jsoup.parse( strHtml );
             Elements trList = jarList.select( "td a" );
 
-            for ( int i = 0; i < trList.size(  ); i++ )
+            for ( int i = 0; i < trList.size( ); i++ )
             {
                 Element tr = trList.get( i );
-                String strAnchor = tr.text(  );
+                String strAnchor = tr.text( );
                 if ( strAnchor.matches( "^[\\d].*" ) )
                 {
                     strVersion = strAnchor.replaceAll( "\\/", "" );
                 }
             }
         }
-        catch ( HttpAccessException e )
+        catch( HttpAccessException e )
         {
-            AppLogService.error( "AppStore - ComponentInfoService : Error retrieving release version : " +
-                e.getMessage(  ), e );
+            AppLogService.error( "AppStore - ComponentInfoService : Error retrieving release version : " + e.getMessage( ), e );
         }
 
         return strVersion;

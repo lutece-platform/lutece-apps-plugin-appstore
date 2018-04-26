@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,55 +38,71 @@ import fr.paris.lutece.portal.service.plugin.Plugin;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
-* IComponentDAO Interface
-*/
+ * IComponentDAO Interface
+ */
 public interface IComponentDAO
 {
     /**
      * Insert a new record in the table.
-     * @param component instance of the Component object to inssert
-     * @param plugin the Plugin
+     * 
+     * @param component
+     *            instance of the Component object to inssert
+     * @param plugin
+     *            the Plugin
      */
     void insert( Component component, Plugin plugin );
 
     /**
-    * Update the record in the table
-    * @param component the reference of the Component
-    * @param plugin the Plugin
-    */
+     * Update the record in the table
+     * 
+     * @param component
+     *            the reference of the Component
+     * @param plugin
+     *            the Plugin
+     */
     void store( Component component, Plugin plugin );
 
     /**
      * Delete a record from the table
-     * @param nIdComponent int identifier of the Component to delete
-     * @param plugin the Plugin
+     * 
+     * @param nIdComponent
+     *            int identifier of the Component to delete
+     * @param plugin
+     *            the Plugin
      */
     void delete( int nIdComponent, Plugin plugin );
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Load the data from the table
-     * @param strId The identifier of the component
-     * @param plugin the Plugin
+     * 
+     * @param strId
+     *            The identifier of the component
+     * @param plugin
+     *            the Plugin
      * @return The instance of the component
      */
     Component load( int nKey, Plugin plugin );
 
     /**
-    * Load the data of all the component objects and returns them as a collection
-    * @param plugin the Plugin
-    * @return The collection which contains the data of all the component objects
-    */
+     * Load the data of all the component objects and returns them as a collection
+     * 
+     * @param plugin
+     *            the Plugin
+     * @return The collection which contains the data of all the component objects
+     */
     Collection<Component> selectComponentsList( Plugin plugin );
 
     /**
      * Returns a list of component used by the application
-     * @param nApplicationId The application ID
-     * @param plugin the Plugin
+     * 
+     * @param nApplicationId
+     *            The application ID
+     * @param plugin
+     *            the Plugin
      * @return a List of Component
      */
     List<Component> selectByApplication( int nApplicationId, Plugin _plugin );

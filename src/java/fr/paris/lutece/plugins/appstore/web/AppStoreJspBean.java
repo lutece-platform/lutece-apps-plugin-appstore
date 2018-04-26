@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.appstore.web;
 
 import fr.paris.lutece.portal.web.admin.PluginAdminPageJspBean;
 
-
 /**
  * AppStore JSP Bean abstract class for JSP Bean
  */
@@ -47,7 +46,7 @@ public abstract class AppStoreJspBean extends PluginAdminPageJspBean
     protected static final String MARK_PAGINATOR = "paginator";
     protected static final String MARK_NB_ITEMS_PER_PAGE = "nb_items_per_page";
 
-    //Variables
+    // Variables
     protected int _nDefaultItemsPerPage;
     protected String _strCurrentPageIndex;
     protected int _nItemsPerPage;

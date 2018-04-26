@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,29 +33,31 @@
  */
 package fr.paris.lutece.plugins.appstore.business;
 
-
 /**
  * This is the business class for the object Category
  */
 public class Category
 {
-    // Variables declarations 
+    // Variables declarations
     private int _nIdCategory;
     private String _strName;
     private int _nCategoryOrder;
 
     /**
      * Returns the IdCategory
+     * 
      * @return The IdCategory
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nIdCategory;
     }
 
     /**
      * Sets the IdCategory
-     * @param nIdCategory The IdCategory
+     * 
+     * @param nIdCategory
+     *            The IdCategory
      */
     public void setId( int nIdCategory )
     {
@@ -64,16 +66,19 @@ public class Category
 
     /**
      * Returns the Name
+     * 
      * @return The Name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
 
     /**
      * Sets the Name
-     * @param strName The Name
+     * 
+     * @param strName
+     *            The Name
      */
     public void setName( String strName )
     {
@@ -82,16 +87,19 @@ public class Category
 
     /**
      * Returns the CategoryOrder
+     * 
      * @return The CategoryOrder
      */
-    public int getOrder(  )
+    public int getOrder( )
     {
         return _nCategoryOrder;
     }
 
     /**
      * Sets the CategoryOrder
-     * @param nCategoryOrder The CategoryOrder
+     * 
+     * @param nCategoryOrder
+     *            The CategoryOrder
      */
     public void setOrder( int nCategoryOrder )
     {

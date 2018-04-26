@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.test.LuteceTestCase;
 
-
 public class CategoryBusinessTest extends LuteceTestCase
 {
     private final static int IDCATEGORY = 1;
@@ -48,10 +47,10 @@ public class CategoryBusinessTest extends LuteceTestCase
     private final static int CATEGORYORDER1 = 1;
     private final static int CATEGORYORDER2 = 2;
 
-    public void testBusiness(  )
+    public void testBusiness( )
     {
         // Initialize an object
-        Category category = new Category(  );
+        Category category = new Category( );
         category.setId( IDCATEGORY );
         category.setName( NAME1 );
         category.setOrder( CATEGORYORDER1 );
@@ -59,25 +58,25 @@ public class CategoryBusinessTest extends LuteceTestCase
         // Create test
         CategoryHome.create( category );
 
-        Category categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
-        assertEquals( categoryStored.getId(  ), category.getId(  ) );
-        assertEquals( categoryStored.getName(  ), category.getName(  ) );
-        assertEquals( categoryStored.getOrder(  ), category.getOrder(  ) );
+        Category categoryStored = CategoryHome.findByPrimaryKey( category.getId( ) );
+        assertEquals( categoryStored.getId( ), category.getId( ) );
+        assertEquals( categoryStored.getName( ), category.getName( ) );
+        assertEquals( categoryStored.getOrder( ), category.getOrder( ) );
 
         // Update test
         category.setName( NAME2 );
         category.setOrder( CATEGORYORDER2 );
         CategoryHome.update( category );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
-        assertEquals( categoryStored.getName(  ), category.getName(  ) );
-        assertEquals( categoryStored.getOrder(  ), category.getOrder(  ) );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId( ) );
+        assertEquals( categoryStored.getName( ), category.getName( ) );
+        assertEquals( categoryStored.getOrder( ), category.getOrder( ) );
 
         // List test
-        CategoryHome.getCategorysList(  );
+        CategoryHome.getCategorysList( );
 
         // Delete test
-        CategoryHome.remove( category.getId(  ) );
-        categoryStored = CategoryHome.findByPrimaryKey( category.getId(  ) );
+        CategoryHome.remove( category.getId( ) );
+        categoryStored = CategoryHome.findByPrimaryKey( category.getId( ) );
         assertNull( categoryStored );
     }
 }

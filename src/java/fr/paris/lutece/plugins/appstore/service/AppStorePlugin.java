@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.appstore.service;
 
 import fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation;
 
-
 /**
  *
  * class AppStorePlugin
@@ -49,8 +48,8 @@ public class AppStorePlugin extends PluginDefaultImplementation
      * Initialize the AppStorePlugin
      */
     @Override
-    public void init(  )
+    public void init( )
     {
-        IconService.getInstance(  ).register(  );
+        IconService.getInstance( ).register( );
     }
 }

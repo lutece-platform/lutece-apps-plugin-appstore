@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2018, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * This class provides a simple implementation of an XPage
  */
@@ -74,17 +73,19 @@ public class AppStoreApp implements XPageApplication, Serializable
     /**
      * Returns the content of the page appstore.
      *
-     * @param request The http request
-     * @param nMode The current mode
-     * @param plugin The plugin object
+     * @param request
+     *            The http request
+     * @param nMode
+     *            The current mode
+     * @param plugin
+     *            The plugin object
      * @throws fr.paris.lutece.portal.service.message.SiteMessageException
-     * Message displayed if an exception occurs
+     *             Message displayed if an exception occurs
      */
     @Override
-    public XPage getPage( HttpServletRequest request, int nMode, Plugin plugin )
-        throws SiteMessageException
+    public XPage getPage( HttpServletRequest request, int nMode, Plugin plugin ) throws SiteMessageException
     {
-        XPage page = new XPage(  );
+        XPage page = new XPage( );
 
         String strApplicationId = request.getParameter( PARAMETER_ID_APPLICATION );
 
@@ -103,24 +104,24 @@ public class AppStoreApp implements XPageApplication, Serializable
 
     private void getHomePageContent( HttpServletRequest request, XPage page )
     {
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
 
-        model.put( MARK_APPLICATIONS_LIST, getActiveApplications(  ) );
+        model.put( MARK_APPLICATIONS_LIST, getActiveApplications( ) );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_HOMEPAGE, request.getLocale(  ), model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_HOMEPAGE, request.getLocale( ), model );
 
-        page.setContent( template.getHtml(  ) );
+        page.setContent( template.getHtml( ) );
         page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) );
         page.setPathLabel( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ) );
     }
 
-    private List<Application> getActiveApplications(  )
+    private List<Application> getActiveApplications( )
     {
-        List<Application> list = new ArrayList<Application>(  );
+        List<Application> list = new ArrayList<Application>( );
 
-        for ( Application application : ApplicationHome.getApplicationsList(  ) )
+        for ( Application application : ApplicationHome.getApplicationsList( ) )
         {
-            if ( application.getPublishStatus(  ) > 0 )
+            if ( application.getPublishStatus( ) > 0 )
             {
                 list.add( application );
             }
@@ -132,40 +133,42 @@ public class AppStoreApp implements XPageApplication, Serializable
     private void getApplicationContent( HttpServletRequest request, XPage page, int nApplicationId )
     {
         Application application = ApplicationHome.findByPrimaryKey( nApplicationId );
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
 
         model.put( MARK_APPLICATION, application );
-        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId(  ) ) );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId( ) ) );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_APPLICATION, request.getLocale(  ), model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_APPLICATION, request.getLocale( ), model );
 
-        page.setContent( template.getHtml(  ) );
-        page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) + " - " + application.getTitle(  ) );
-        page.setExtendedPathLabel( getXmlExtendedPath( application.getTitle(  ) ) );
+        page.setContent( template.getHtml( ) );
+        page.setTitle( AppPropertiesService.getProperty( PROPERTY_PAGE_TITLE ) + " - " + application.getTitle( ) );
+        page.setExtendedPathLabel( getXmlExtendedPath( application.getTitle( ) ) );
     }
 
     public String generatePOM( HttpServletRequest request )
     {
         int nApplicationId = Integer.parseInt( request.getParameter( PARAMETER_ID_APPLICATION ) );
         Application application = ApplicationHome.findByPrimaryKey( nApplicationId );
-        Map<String, Object> model = new HashMap<String, Object>(  );
+        Map<String, Object> model = new HashMap<String, Object>( );
 
         model.put( MARK_APPLICATION, application );
-        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId(  ) ) );
+        model.put( MARK_COMPONENTS_LIST, ComponentHome.findByApplication( application.getId( ) ) );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_POM, request.getLocale(  ), model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_POM, request.getLocale( ), model );
 
-        return template.getHtml(  );
+        return template.getHtml( );
     }
 
     /**
      * Build XML path infos
-     * @param strPageName The page name
+     * 
+     * @param strPageName
+     *            The page name
      * @return The XML that content path info
      */
     private ReferenceList getXmlExtendedPath( String strPageName )
     {
-        ReferenceList list = new ReferenceList(  );
+        ReferenceList list = new ReferenceList( );
         list.addItem( AppPropertiesService.getProperty( PROPERTY_PAGE_PATH ), URL_HOME_APPSTORE );
         list.addItem( strPageName, "" );
 
