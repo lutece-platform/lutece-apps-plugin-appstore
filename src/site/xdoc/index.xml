@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Plugin AppStore</title>
+    </properties>
+    <body>
+        <section name="Plugin AppStore">
+            <subsection name="Introduction">
+                <p>This plugin provides a store of Lutece applications.</p>
+                <p>Each application in the store is defined by :
+                    <ul>
+                        <li> A description of the webapp.</li>
+                        <li> 
+                            The list of plugins that compose the webapp<br/>
+                            The plugin will choose automatically the latest version of the plugin.
+                        </li>
+                        <li> An installation manual</li>
+                    </ul>
+                </p>
+                <p>
+                    The user can make his choice of webapp and download either the war or the pom.xml file. 
+                </p>
+                
+            </subsection>
+            <subsection name="Usage">
+                <p>
+                    Here is an online sample :
+                </p>
+                <pre>
+                    <code>https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore</code>
+                </pre>
+            </subsection>
+        </section>
+    </body>
+</document>
+

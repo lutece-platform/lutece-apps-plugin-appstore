@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Plugin AppStore</title>
+    </properties>
+    <body>
+        <section name="Plugin AppStore">
+            <subsection name = "Introduction">
+                <p> Ce plugin fournit un magasin d'applications Lutece. </p>
+                <p> Chaque application dans le magasin est définie par :
+                    <ul>
+                        <li> Une description de la webapp </li>
+                        <li>
+                            La liste des plugins qui composent la webapp. <br/>
+                            Le plugin choisira automatiquement la dernière version du plugin.
+                        </li>
+                        <li> Un manuel d'installation </li>
+                    </ul>
+                </p>
+                <p>
+                    L'utilisateur peut faire son choix de webapp et télécharger soit le fichier war, soit le fichier pom.xml.
+                </p>
+                
+            </subsection>
+            <subsection name = "Utilisation">
+                <p>
+                    Voici un exemple en ligne:
+                </p>
+                <pre>
+                    <code> https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore </code>
+                </pre>
+            </subsection>
+        </section>
+    </body>
+</document>
+
