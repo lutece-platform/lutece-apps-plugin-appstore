@@ -17,7 +17,7 @@ The user can make his choice of webapp and download either the war or the pom.xm
 ## Usage
 
 Here is an online sample :
- ` [https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore](https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore) ` 
+ [https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore](https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore) 
 
 [Maven documentation and reports](http://dev.lutece.paris.fr/plugins/plugin-appstore/)
 
