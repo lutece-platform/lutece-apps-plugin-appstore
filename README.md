@@ -20,7 +20,7 @@ Here is an online sample :
 
 ```
 
-                     `https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore` 
+                     ` [https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore](https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore) ` 
                 
 ```
 
