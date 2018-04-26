@@ -26,9 +26,7 @@
                 <p>
                     Here is an online sample :
                 </p>
-                <pre>
-                    <code><a href="https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore">https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore</a></code>
-                </pre>
+                <code><a href="https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore">https://fr.lutece.paris.fr/fr/jsp/site/Portal.jsp?page=appstore</a></code>
             </subsection>
         </section>
     </body>
